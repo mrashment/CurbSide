@@ -17,5 +17,5 @@ You can find information on our team, our roles, and our training plan(s) below.
 Main Role: Developer
 
 #### Training
-- Android Studio
-- Web Services
+- Android Dev on Udemy (10 hours)
+- Database/APIs on Udemy (19 hours)
