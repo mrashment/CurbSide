@@ -12,3 +12,10 @@
 
 ## Team Members
 You can find information on our team, our roles, and our training plan(s) below.
+
+### Ashment, Mason (mashment)
+Main Role: Developer
+
+#### Training
+- Android Studio
+- Web Services
