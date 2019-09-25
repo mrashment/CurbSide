@@ -19,3 +19,6 @@ Main Role: Developer
 #### Training
 - Android Dev on Udemy (10 hours)
 - Database/APIs on Udemy (19 hours)
+
+### Serrani, Augustus (gserrani)
+Main Role: Project Manager
