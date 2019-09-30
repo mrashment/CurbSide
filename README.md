@@ -35,3 +35,12 @@ Main Role: GPS tracking and data storage
 - GitHbu (4 hours)
 - Android Studios (25 hours)
 - GPS (16 hours)
+
+### Morrow, Joseph (joemorro)
+Main Role: Backend Developer
+
+#### Training
+- Database/APIS on Udemy, Various Video aids (20 hours)
+- Android Dev on Udemy (8 hours)
+- Andriod Studio (8 hours)
+- Security and Authorization (10 hours)
