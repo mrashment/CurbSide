@@ -5,8 +5,8 @@
 |Item|Value|
 |---|:---:|
 |Team Number|59|
-|Team Name|Truxx|
-|Assigned AI|*Last, First*|
+|Team Name|uEat|
+|Assigned AI|Gupta, Animesh|
 |Platform|Android|
 |Description|An application which can be used to find local food trucks.|
 
