@@ -34,4 +34,4 @@ Main Role: GPS tracking and data storage
 ### Training
 - GitHbu (4 hours)
 - Android Studios (25 hours)
-- GPS (15 hours)
+- GPS (16 hours)
