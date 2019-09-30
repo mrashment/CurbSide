@@ -27,3 +27,11 @@ Main Role: Research and Outreach
 - Android Studio (20 hours)
 - Adobe XD (7 hours)
 - SurveyMonkey (3 hours)
+
+### Van Fossen, Nick (nvanfoss)
+Main Role: GPS tracking and data storage
+
+### Training
+- GitHbu (4 hours)
+- Android Studios (25 hours)
+- GPS (15 hours)
