@@ -5,7 +5,7 @@
 |Item|Value|
 |---|:---:|
 |Team Number|59|
-|Team Name|uEat|
+|Team Name|CurbSide|
 |Assigned AI|Gupta, Animesh|
 |Platform|Android|
 |Description|An application which can be used to find local food trucks.|
@@ -21,7 +21,7 @@ Main Role: Developer
 - Database/APIs on Udemy (19 hours)
 
 ### Serrani, Augustus (gserrani)
-Main Role: Research and Outreach
+Main Role: Research and Outreach, UI/UX Dev
 
 #### Training
 - Android Studio (20 hours)
