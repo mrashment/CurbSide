@@ -6,4 +6,5 @@ public interface User {
      String getEmail();
      void setEmail(String email);
      int getPermissions();
+     void setPermissions(int i);
 }

@@ -25,4 +25,16 @@ public class DefaultUser implements User {
     public int getPermissions() {
         return this.permissions;
     }
+    public void setPermissions(int i) {this.permissions = i;}
+
+    public static void main(String[] args) {
+        User a = new DefaultUser();
+        System.out.println(a.getPermissions());
+        a = new Vendor(a);
+        System.out.println(a.getPermissions());
+        a = new Owner(a);
+        System.out.println(a.getPermissions());
+        a = new Vendor(a);
+        System.out.println(a.getPermissions());
+    }
 }
