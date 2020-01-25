@@ -1,4 +1,4 @@
-# Team 59 - Truxx
+# Team 59 - CurbSide
 
 ## Team Information
 
