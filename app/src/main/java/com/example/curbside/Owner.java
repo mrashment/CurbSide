@@ -1,6 +1,6 @@
 package com.example.curbside;
 
-public class Owner extends Decorator {
+public class Owner extends Vendor {
 
     public Owner(User user) {
         super(user);
