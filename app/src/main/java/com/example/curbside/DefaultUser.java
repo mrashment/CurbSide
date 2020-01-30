@@ -14,22 +14,32 @@ public class DefaultUser implements User {
         this.email = user.getEmail();
     }
 
+    /**
+     * retrieve the users info from the database
+     */
+    public void pullInfo() {
+
+    }
+
+    /**
+     * update the database with new user info
+     */
+    public void updateInfo() {
+
+    }
+
     public String getName() {
         return this.name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
-
     public String getEmail() {
         return this.email;
     }
-
     public void setEmail(String email) {
         this.email = email;
     }
-
     public int getPermissions() {
         return this.permissions;
     }

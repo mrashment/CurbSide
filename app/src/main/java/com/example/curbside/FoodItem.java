@@ -2,6 +2,7 @@ package com.example.curbside;
 
 public class FoodItem {
 
+    private int id;
     private String name;
     private String description;
     private double price;

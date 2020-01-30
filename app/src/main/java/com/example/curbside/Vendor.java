@@ -8,26 +8,29 @@ public abstract class Vendor implements User {
         this.user = user;
     }
 
-    @Override
+    /**
+     * turns on location for food truck, updating database
+     *
+     * @return 1 if successfully executed, -1 otherwise
+     */
+    public int broadcastTruckLocation() {
+        int success = -1;
+
+        return success;
+    }
+
     public String getName() {
         return this.user.getName();
     }
-
-    @Override
     public void setName(String name) {
         this.user.setName(name);
     }
-
-    @Override
     public String getEmail() {
         return this.user.getEmail();
     }
-
-    @Override
     public void setEmail(String email) {
         this.user.setEmail(email);
     }
-
     public int getPermissions() {
         return this.user.getPermissions();
     }
