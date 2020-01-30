@@ -31,7 +31,7 @@ public abstract class Vendor implements User {
     }
 
     public int getPermissions() {
-        return this.user.getPermissions();
+        return this.getPermissions();
     }
     public void setPermissions(int i) {
         this.user.setPermissions(i);

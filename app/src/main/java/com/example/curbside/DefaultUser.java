@@ -30,11 +30,11 @@ public class DefaultUser implements User {
     public static void main(String[] args) {
 //        User a = new DefaultUser();
 //        System.out.println(a.getPermissions());
-//        a = new Vendor(a);
+//        a = new Employee(a);
 //        System.out.println(a.getPermissions());
 //        a = new Owner(a);
 //        System.out.println(a.getPermissions());
-//        a = new Vendor(a);
+//        a = new Employee(a);
 //        System.out.println(a.getPermissions());
     }
 }
