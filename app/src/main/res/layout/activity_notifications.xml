@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:textColor="@color/colorPrimaryDark"
+    tools:context=".Notifications">
+
+    <Button
+        android:id="@+id/announcmentsText"
+        android:layout_width="374dp"
+        android:layout_height="60dp"
+        android:background="@drawable/rounded_corner"
+        android:text="Announcements"
+        android:textAlignment="viewStart"
+        android:textColor="@color/colorPrimaryDark"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.432"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="84dp" />
+
+    <Button
+        android:id="@+id/order_ReadyText"
+        android:layout_width="374dp"
+        android:layout_height="60dp"
+        android:background="@drawable/rounded_corner"
+        android:text="Order Ready"
+        android:textAlignment="viewStart"
+        android:textColor="@color/colorPrimaryDark"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.432"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="178dp" />
+
+    <Button
+        android:id="@+id/location_ChangeText"
+        android:layout_width="374dp"
+        android:layout_height="60dp"
+        android:background="@drawable/rounded_corner"
+        android:text="Location Change"
+        android:textAlignment="viewStart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.486"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="264dp" />
+
+    <Button
+        android:id="@+id/dealsText"
+        android:layout_width="374dp"
+        android:layout_height="60dp"
+        android:background="@drawable/rounded_corner"
+        android:text="Deals"
+        android:textAlignment="viewStart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.567"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="354dp" />
+
+    <Button
+        android:id="@+id/socialText"
+        android:layout_width="374dp"
+        android:layout_height="60dp"
+        android:background="@drawable/rounded_corner"
+        android:text="Social"
+        android:textAlignment="viewStart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.48"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="447dp" />
+
+    <Button
+        android:id="@+id/offersText"
+        android:layout_width="374dp"
+        android:layout_height="60dp"
+        android:background="@drawable/rounded_corner"
+        android:text="Offers"
+        android:textAlignment="viewStart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.486"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="541dp" />
+
+    <Button
+        android:id="@+id/emailText"
+        android:layout_width="374dp"
+        android:layout_height="60dp"
+        android:background="@drawable/rounded_corner"
+        android:text="Email"
+        android:textAlignment="viewStart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.486"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="634dp" />
+
+    <Button
+        android:id="@+id/backToMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/"
+        android:background="@color/colorPrimary"
+        tools:layout_editor_absoluteX="11dp"
+        tools:layout_editor_absoluteY="14dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
