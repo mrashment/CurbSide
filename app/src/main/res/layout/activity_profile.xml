@@ -28,21 +28,18 @@
             android:textSize="21sp"
             android:textStyle="bold" />
 
-    </LinearLayout>
+        <TextView
+            android:layout_width="252dp"
+            android:layout_height="53dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="80dp"
+            android:layout_marginEnd="78dp"
+            android:layout_marginBottom="418dp"
+            android:background="@color/colorAccent"
+            android:text="Jessica Bon Jovi
+                                            Jbon@gmail.com" />
 
-    <TextView
-        android:layout_width="252dp"
-        android:layout_height="53dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_gravity="center"
-        android:layout_marginStart="80dp"
-        android:layout_marginEnd="78dp"
-        android:layout_marginBottom="418dp"
-        android:background="@color/colorAccent"
-        android:text="Jessica Bon Jovi
-                                        Jbon@gmail.com" />
+    </LinearLayout>
 
     <TextView
         android:layout_width="188dp"
@@ -161,6 +158,16 @@
         android:layout_marginEnd="315dp"
         android:layout_marginBottom="106dp"
         android:src="@drawable/lockcubrb" />
+
+    <ImageView
+        android:layout_width="53dp"
+        android:layout_height="40dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginEnd="312dp"
+        android:layout_marginBottom="33dp"
+        android:src="@drawable/phonecurb" />
 
 
 </RelativeLayout>
