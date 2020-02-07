@@ -98,7 +98,7 @@
         android:id="@+id/backToMenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/"
+        android:src="@drawable/rounded_corner"
         android:background="@color/colorPrimary"
         tools:layout_editor_absoluteX="11dp"
         tools:layout_editor_absoluteY="14dp" />
