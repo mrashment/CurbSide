@@ -15,7 +15,7 @@
         android:background="@drawable/rounded_corner"
         android:text="Announcements"
         android:textAlignment="viewStart"
-        android:textColor="@color/colorPrimaryDark"
+        android:textColor="@color/graylight"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.432"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,7 +28,7 @@
         android:background="@drawable/rounded_corner"
         android:text="Order Ready"
         android:textAlignment="viewStart"
-        android:textColor="@color/colorPrimaryDark"
+        android:textColor="@color/graylight"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.432"
         app:layout_constraintStart_toStartOf="parent"
@@ -41,6 +41,7 @@
         android:background="@drawable/rounded_corner"
         android:text="Location Change"
         android:textAlignment="viewStart"
+        android:textColor="@color/graylight"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.486"
         app:layout_constraintStart_toStartOf="parent"
@@ -56,6 +57,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.567"
         app:layout_constraintStart_toStartOf="parent"
+        android:textColor="@color/graylight"
         tools:layout_editor_absoluteY="354dp" />
 
     <Button
