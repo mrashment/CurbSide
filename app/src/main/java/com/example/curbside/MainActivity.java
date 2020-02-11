@@ -19,7 +19,7 @@ import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 
 public class MainActivity extends AppCompatActivity {
-
+    private static final String TAG = "MainActivity";
     private int RC_SIGN_IN = 0;
     Button signInButton;
     GoogleSignInClient mGoogleSignInClient;
@@ -34,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
 
         mGoogleSignInClient = GoogleSignIn.getClient(this,gso);
+
+        Log.d(TAG, "onCreate: working");
 
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,9 +62,10 @@ public class MainActivity extends AppCompatActivity {
     private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
         try {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
-
-            startActivity(new Intent(MainActivity.this,HomeActivity.class));
+            Log.d(TAG, "handleSignInResult: Success");
+            startActivity(new Intent(MainActivity.this,MapsActivity.class));
         } catch (ApiException e) {
+
             Log.w("Google Sign In Error","signInResult:failed code =" + e.getStatusCode());
             Toast.makeText(MainActivity.this,"Failed",Toast.LENGTH_LONG).show();
         }

@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.curbside">
 
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -12,6 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyAmmdRjM2ySq16OpwKEwgBLbEUiIcMdmyg"/>
+        <activity android:name=".MapsActivity"/>
         <activity android:name=".ContactDevelopers"></activity>
         <activity android:name=".truckMenu" />
         <activity android:name=".HomeActivity" />
