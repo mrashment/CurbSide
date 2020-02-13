@@ -19,6 +19,7 @@ import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 
 public class MainActivity extends AppCompatActivity {
+    private static final String TAG = "MainActivity";
 
     private int RC_SIGN_IN = 0;
     Button signInButton;
@@ -71,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
         if (account != null) {
+            Log.w(TAG, "onStart: account found" );
             startActivity(new Intent(MainActivity.this,HomeActivity.class));
         }
         super.onStart();
