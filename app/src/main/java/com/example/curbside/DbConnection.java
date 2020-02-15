@@ -1,9 +1,12 @@
 package com.example.curbside;
 
+import android.util.Log;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class DbConnection {
+    private static final String TAG = "DbConnection";
 
     private static DbConnection db;
     private User user;
@@ -25,11 +28,19 @@ public class DbConnection {
     }
     public void setUser(JSONObject json) {
         try {
+            user = new DefaultUser();
             user.setEmail(json.getString("email"));
             user.setName(json.getString("name"));
             user.setPermissions(json.getInt("permission_lev"));
             user.setRewards(json.getInt("rewards"));
+            user.setCompanyID(json.getInt("company_id"));
+            Log.d(TAG, "setUser: User set in DbConnection");
 
+            if (user.permissions == 2)  {
+                user = new Employee(user);
+            } else if (user.permissions == 3) {
+                user = new Owner(user);
+            }
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -42,6 +53,10 @@ public class DbConnection {
      */
     public String getUserInfo() {
         return user.toString();
+    }
+
+    public boolean userIsNull() {
+        return user == null;
     }
 
     public void updateUserInfo() {

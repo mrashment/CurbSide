@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     Button signInButton;
     GoogleSignInClient mGoogleSignInClient;
     private String clientID = "253173760480-le3ljf8ln8oc8osns4f1d7g19ambr119.apps.googleusercontent.com";
+    DbConnection conn = DbConnection.getInstance();
 
 
     @Override
@@ -83,9 +84,10 @@ public class MainActivity extends AppCompatActivity {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
             String email = account.getEmail();
 
-
-
             retrieveUserInfo(account.getEmail());
+            if (conn.userIsNull()) {
+                addUser(account.getEmail(),account.getDisplayName());
+            }
 
 
             startActivity(new Intent(MainActivity.this,HomeActivity.class));
@@ -101,6 +103,9 @@ public class MainActivity extends AppCompatActivity {
         if (account != null) {
             Log.w(TAG, "onStart: account found" );
             retrieveUserInfo(account.getEmail());
+            if (conn.userIsNull()) {
+                addUser(account.getEmail(),account.getDisplayName());
+            }
 
             startActivity(new Intent(MainActivity.this,HomeActivity.class));
         }
@@ -116,8 +121,11 @@ public class MainActivity extends AppCompatActivity {
         String toPost = "email=" + email;
         RetrieveThread thread = new RetrieveThread();
         thread.execute(toPost);
-
-
+    }
+    private void addUser(String email, String name) {
+        String toPost = "email=" + email + "&name=" + name + "&rewards=0";
+        AddThread thread = new AddThread();
+        thread.execute(toPost);
     }
 }
 

@@ -15,8 +15,9 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-class RetrieveThread extends AsyncTask<String,Void,String> {
-    private static final String TAG = "RetrieveThread";
+class AddThread extends AsyncTask<String,Void,String> {
+    private static final String TAG = "AddThread";
+    private String prebytes;
     private byte[] postData;
 
     @Override
@@ -27,13 +28,12 @@ class RetrieveThread extends AsyncTask<String,Void,String> {
 
         switch(response.trim()) {
             case "Failed Connection":
-
-
-            case "Invalid Email":
-
-
-            case "Server error":
-                Log.d(TAG, "onPostExecute: Response not json");
+            case "Failure":
+            case "Email in use":
+                Log.d(TAG, "onPostExecute: Tried to add new user, but email was in use. Retrieving info.");
+                String[] splitString = prebytes.split("&");
+                RetrieveThread retrieveThread = new RetrieveThread();
+                retrieveThread.execute(splitString[0]);
                 break;
             default:
                 try {
@@ -48,31 +48,31 @@ class RetrieveThread extends AsyncTask<String,Void,String> {
 
     @Override
     protected String doInBackground(String... strings) {
-
-        postData = strings[0].getBytes();
+        prebytes = strings[0];
+        postData = prebytes.getBytes();
         StringBuilder sb;
-        Log.d(TAG, "retrieveUserInfo: before try block");
+        Log.d(TAG, "addUser: before try block");
 
-        String jsonString = "Failed Connection";
+        String result = "Failed Connection";
         try {
-            URL url = new URL(DbConnection.USER_INFO);
+            URL url = new URL(DbConnection.USER_ADD);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
-            Log.d(TAG, "retrieveUserInfo: after connection opened");
+            Log.d(TAG, "addUser: after connection opened");
 
             connection.setRequestMethod("POST");
             connection.setDoOutput(true);
             connection.setDoInput(true);
 
 
-            Log.d(TAG, "retrieveUserInfo: after setRequestMethod");
+            Log.d(TAG, "addUser: after setRequestMethod");
 
             OutputStream outputPost = new BufferedOutputStream(connection.getOutputStream());
             outputPost.write(postData);
             outputPost.flush();
             outputPost.close();
 
-            Log.d(TAG, "retrieveUserInfo: before reader");
+            Log.d(TAG, "addUser: before reader");
 
             BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
             sb = new StringBuilder();
@@ -83,9 +83,9 @@ class RetrieveThread extends AsyncTask<String,Void,String> {
             }
             reader.close();
 
-            Log.d(TAG, "retrieveUserInfo: after reader, sb has " + sb.toString());
+            Log.d(TAG, "addUser: after reader, sb has " + sb.toString());
 
-            jsonString = sb.toString();
+            result = sb.toString();
 
 
 
@@ -98,7 +98,8 @@ class RetrieveThread extends AsyncTask<String,Void,String> {
             e.printStackTrace();
         }
 
-        Log.d(TAG, "doInBackground: jsonString = " + jsonString);
-        return jsonString;
+        Log.d(TAG, "doInBackground: jsonString = " + result);
+        return result;
     }
 }
+

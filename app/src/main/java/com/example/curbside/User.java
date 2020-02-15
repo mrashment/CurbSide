@@ -5,6 +5,7 @@ public abstract class User {
      String email;
      int rewards;
      int permissions;
+     int companyID = -1;
 
 
      public String getName() {
@@ -37,6 +38,12 @@ public abstract class User {
 
      public void setPermissions(int permissions) {
           this.permissions = permissions;
+     }
+     public int getCompanyID() {
+          return this.companyID;
+     }
+     public void setCompanyID(int ID) {
+          this.companyID = ID;
      }
 
      @Override
