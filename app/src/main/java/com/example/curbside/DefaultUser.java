@@ -1,17 +1,20 @@
 package com.example.curbside;
 
-public class DefaultUser implements User {
+public class DefaultUser extends User {
 
     private String name;
     private String email;
+    private int rewards;
     private int permissions = 1;
 
     public DefaultUser() { }
+
 
     // used when changing a vendor back to a default user
     public DefaultUser(User user) {
         this.name = user.getName();
         this.email = user.getEmail();
+        this.rewards = user.getRewards();
     }
 
     /**
@@ -27,23 +30,6 @@ public class DefaultUser implements User {
     public void updateInfo() {
 
     }
-
-    public String getName() {
-        return this.name;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
-    public String getEmail() {
-        return this.email;
-    }
-    public void setEmail(String email) {
-        this.email = email;
-    }
-    public int getPermissions() {
-        return this.permissions;
-    }
-    public void setPermissions(int i) {this.permissions = i;}
 
     public static void main(String[] args) {
         User a = new DefaultUser();
