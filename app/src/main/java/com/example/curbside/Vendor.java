@@ -1,6 +1,6 @@
 package com.example.curbside;
 
-public abstract class Vendor implements User {
+public abstract class Vendor extends User {
 
     private User user;
 
@@ -17,25 +17,6 @@ public abstract class Vendor implements User {
         int success = -1;
 
         return success;
-    }
-
-    public String getName() {
-        return this.user.getName();
-    }
-    public void setName(String name) {
-        this.user.setName(name);
-    }
-    public String getEmail() {
-        return this.user.getEmail();
-    }
-    public void setEmail(String email) {
-        this.user.setEmail(email);
-    }
-    public int getPermissions() {
-        return this.user.getPermissions();
-    }
-    public void setPermissions(int i) {
-        this.user.setPermissions(i);
     }
 
 }

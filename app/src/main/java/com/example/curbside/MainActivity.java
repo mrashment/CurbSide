@@ -13,16 +13,20 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.common.SignInButton;
-import com.google.android.gms.common.api.Api;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 
+import java.util.concurrent.ExecutionException;
+
 public class MainActivity extends AppCompatActivity {
+    private static final String TAG = "MainActivity";
 
     private int RC_SIGN_IN = 0;
     Button signInButton;
     GoogleSignInClient mGoogleSignInClient;
+    private String clientID = "253173760480-le3ljf8ln8oc8osns4f1d7g19ambr119.apps.googleusercontent.com";
+    private DbConnection conn = DbConnection.getInstance();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +35,11 @@ public class MainActivity extends AppCompatActivity {
 
         signInButton = findViewById(R.id.btn_google_signin);
 
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.server_client_id))
+                .requestEmail()
+                .build();
+
 
         mGoogleSignInClient = GoogleSignIn.getClient(this,gso);
 
@@ -61,7 +69,10 @@ public class MainActivity extends AppCompatActivity {
         try {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
 
+            retrieveUserInfo(account);
+
             startActivity(new Intent(MainActivity.this,HomeActivity.class));
+
         } catch (ApiException e) {
             Log.w("Google Sign In Error","signInResult:failed code =" + e.getStatusCode());
             Toast.makeText(MainActivity.this,"Failed",Toast.LENGTH_LONG).show();
@@ -71,9 +82,23 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
         if (account != null) {
+            Log.w(TAG, "onStart: account found" );
+            retrieveUserInfo(account);
+            Log.d(TAG, "onStart: isNull = " + conn.userIsNull());
+
             startActivity(new Intent(MainActivity.this,HomeActivity.class));
         }
         super.onStart();
+    }
+
+    /**
+     * Creates a new {@link User} object in {@link DbConnection} from info retrieved from the database
+     *
+     * @param account
+     */
+    private void retrieveUserInfo(GoogleSignInAccount account) {
+        RetrieveThread thread = new RetrieveThread();
+        thread.execute(account);
     }
 }
 
