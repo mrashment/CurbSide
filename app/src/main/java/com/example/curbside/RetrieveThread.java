@@ -1,7 +1,11 @@
 package com.example.curbside;
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
+
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -15,13 +19,21 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-class RetrieveThread extends AsyncTask<String,Void,String> {
+/**
+ * Should only be used to retrieve user information on login or if you are sure they already
+ * exist in the database. Otherwise it will create a new user and store them.
+ */
+class RetrieveThread extends AsyncTask<GoogleSignInAccount,Void,String> {
     private static final String TAG = "RetrieveThread";
     private byte[] postData;
+    GoogleSignInAccount account;
+
+    public RetrieveThread() {
+
+    }
 
     @Override
     protected void onPostExecute(String response) {
-
         JSONObject json;
         DbConnection conn = DbConnection.getInstance();
 
@@ -31,13 +43,16 @@ class RetrieveThread extends AsyncTask<String,Void,String> {
 
             case "Invalid Email":
 
+                String toPost = "email=" + account.getEmail() + "&name=" + account.getDisplayName() + "&rewards=0";
+                AddThread thread = new AddThread();
+                thread.execute(account);
 
             case "Server error":
                 Log.d(TAG, "onPostExecute: Response not json");
                 break;
             default:
                 try {
-                    json = new JSONObject(response);
+                    json = new JSONObject(response.trim());
                     conn.setUser(json);
                     Log.d(TAG, "onPostExecute: " + conn.getUserInfo());
                 } catch (JSONException e) {
@@ -47,9 +62,10 @@ class RetrieveThread extends AsyncTask<String,Void,String> {
     }
 
     @Override
-    protected String doInBackground(String... strings) {
-
-        postData = strings[0].getBytes();
+    protected String doInBackground(GoogleSignInAccount... accounts) {
+        account = accounts[0];
+        String stringData = "email=" + account.getEmail();
+        postData = stringData.getBytes();
         StringBuilder sb;
         Log.d(TAG, "retrieveUserInfo: before try block");
 

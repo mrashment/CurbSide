@@ -3,7 +3,6 @@ package com.example.curbside;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,23 +13,10 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.common.SignInButton;
-import com.google.android.gms.common.api.Api;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedOutputStream;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
@@ -39,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     Button signInButton;
     GoogleSignInClient mGoogleSignInClient;
     private String clientID = "253173760480-le3ljf8ln8oc8osns4f1d7g19ambr119.apps.googleusercontent.com";
-    DbConnection conn = DbConnection.getInstance();
+    private DbConnection conn = DbConnection.getInstance();
 
 
     @Override
@@ -82,13 +68,8 @@ public class MainActivity extends AppCompatActivity {
     private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
         try {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
-            String email = account.getEmail();
 
-            retrieveUserInfo(account.getEmail());
-            if (conn.userIsNull()) {
-                addUser(account.getEmail(),account.getDisplayName());
-            }
-
+            retrieveUserInfo(account);
 
             startActivity(new Intent(MainActivity.this,HomeActivity.class));
 
@@ -102,10 +83,8 @@ public class MainActivity extends AppCompatActivity {
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
         if (account != null) {
             Log.w(TAG, "onStart: account found" );
-            retrieveUserInfo(account.getEmail());
-            if (conn.userIsNull()) {
-                addUser(account.getEmail(),account.getDisplayName());
-            }
+            retrieveUserInfo(account);
+            Log.d(TAG, "onStart: isNull = " + conn.userIsNull());
 
             startActivity(new Intent(MainActivity.this,HomeActivity.class));
         }
@@ -115,17 +94,11 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Creates a new {@link User} object in {@link DbConnection} from info retrieved from the database
      *
-     * @param email
+     * @param account
      */
-    private void retrieveUserInfo(String email) {
-        String toPost = "email=" + email;
+    private void retrieveUserInfo(GoogleSignInAccount account) {
         RetrieveThread thread = new RetrieveThread();
-        thread.execute(toPost);
-    }
-    private void addUser(String email, String name) {
-        String toPost = "email=" + email + "&name=" + name + "&rewards=0";
-        AddThread thread = new AddThread();
-        thread.execute(toPost);
+        thread.execute(account);
     }
 }
 

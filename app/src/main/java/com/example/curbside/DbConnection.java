@@ -1,5 +1,6 @@
 package com.example.curbside;
 
+import android.content.Context;
 import android.util.Log;
 
 import org.json.JSONException;
@@ -8,8 +9,9 @@ import org.json.JSONObject;
 public class DbConnection {
     private static final String TAG = "DbConnection";
 
-    private static DbConnection db;
+    private static final DbConnection db = new DbConnection();
     private User user;
+    private boolean isNull = true;
 
     // we don't want multiple connections at once, so use getInstance() to get this object
     private DbConnection() {
@@ -21,9 +23,6 @@ public class DbConnection {
     public static final String USER_ADD = "https://cgi.sice.indiana.edu/~team59/useradd.php"; // adds user to db
 
     public static DbConnection getInstance() {
-        if (db == null) {
-            db = new DbConnection();
-        }
         return db;
     }
     public void setUser(JSONObject json) {
@@ -35,6 +34,7 @@ public class DbConnection {
             user.setRewards(json.getInt("rewards"));
             user.setCompanyID(json.getInt("company_id"));
             Log.d(TAG, "setUser: User set in DbConnection");
+            isNull = false;
 
             if (user.permissions == 2)  {
                 user = new Employee(user);
@@ -56,7 +56,7 @@ public class DbConnection {
     }
 
     public boolean userIsNull() {
-        return user == null;
+        return isNull;
     }
 
     public void updateUserInfo() {

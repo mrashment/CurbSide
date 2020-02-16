@@ -3,6 +3,8 @@ package com.example.curbside;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -15,7 +17,8 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-class AddThread extends AsyncTask<String,Void,String> {
+class AddThread extends AsyncTask<GoogleSignInAccount,Void,String> {
+    GoogleSignInAccount account;
     private static final String TAG = "AddThread";
     private String prebytes;
     private byte[] postData;
@@ -30,10 +33,7 @@ class AddThread extends AsyncTask<String,Void,String> {
             case "Failed Connection":
             case "Failure":
             case "Email in use":
-                Log.d(TAG, "onPostExecute: Tried to add new user, but email was in use. Retrieving info.");
-                String[] splitString = prebytes.split("&");
-                RetrieveThread retrieveThread = new RetrieveThread();
-                retrieveThread.execute(splitString[0]);
+                Log.d(TAG, "onPostExecute: Tried to add new user, but email was in use");
                 break;
             default:
                 try {
@@ -47,8 +47,9 @@ class AddThread extends AsyncTask<String,Void,String> {
     }
 
     @Override
-    protected String doInBackground(String... strings) {
-        prebytes = strings[0];
+    protected String doInBackground(GoogleSignInAccount... accounts) {
+        GoogleSignInAccount account = accounts[0];
+        prebytes = "name=" + account.getDisplayName() + "&email=" + account.getEmail() + "&rewards=0";
         postData = prebytes.getBytes();
         StringBuilder sb;
         Log.d(TAG, "addUser: before try block");
