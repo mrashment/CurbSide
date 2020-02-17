@@ -23,6 +23,7 @@ public class HomeActivity extends FragmentActivity implements OnMapReadyCallback
     Location currentLocation;
     FusedLocationProviderClient fusedLocationProviderClient;
     private static final int REQUEST_CODE = 101;
+    private DbConnection connection;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +31,9 @@ public class HomeActivity extends FragmentActivity implements OnMapReadyCallback
         setContentView(R.layout.activity_home);
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+        connection = DbConnection.getInstance();
         fetchLocation();
+
     }
 
     private void fetchLocation() {
@@ -47,6 +50,11 @@ public class HomeActivity extends FragmentActivity implements OnMapReadyCallback
                 if (location != null) {
                     currentLocation = location;
                     Toast.makeText(getApplicationContext(), currentLocation.getLatitude() + "" + currentLocation.getLongitude(), Toast.LENGTH_SHORT).show();
+                    if (connection.userIsNull()) {
+                        Toast.makeText(HomeActivity.this,"User is null",Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(HomeActivity.this,"Hello, " + connection.getUser().getName(),Toast.LENGTH_SHORT).show();
+                    }
                     SupportMapFragment supportMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.myMap);
                     assert supportMapFragment != null;
                     supportMapFragment.getMapAsync(HomeActivity.this);

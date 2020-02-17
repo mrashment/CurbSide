@@ -51,8 +51,12 @@ public class DbConnection {
      * calls user.toString()
      * @return a string displaying the user's info
      */
-    public String getUserInfo() {
+    public String printUserInfo() {
         return user.toString();
+    }
+
+    public User getUser() {
+        return this.user;
     }
 
     public boolean userIsNull() {
