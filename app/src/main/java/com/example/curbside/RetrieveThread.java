@@ -54,7 +54,7 @@ class RetrieveThread extends AsyncTask<GoogleSignInAccount,Void,String> {
                 try {
                     json = new JSONObject(response.trim());
                     conn.setUser(json);
-                    Log.d(TAG, "onPostExecute: " + conn.getUserInfo());
+                    Log.d(TAG, "onPostExecute: " + conn.printUserInfo());
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

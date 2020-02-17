@@ -39,7 +39,7 @@ class AddThread extends AsyncTask<GoogleSignInAccount,Void,String> {
                 try {
                     json = new JSONObject(response);
                     conn.setUser(json);
-                    Log.d(TAG, "onPostExecute: " + conn.getUserInfo());
+                    Log.d(TAG, "onPostExecute: " + conn.printUserInfo());
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
