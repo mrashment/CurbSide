@@ -9,4 +9,5 @@
     <string name="password">Password</string>
     <string name="map_key" translatable="false">AIzaSyBmDVbSqDq9kQkIZe_c9N7FWhDTDVh-hiM</string>
     <string name="server_client_id" translatable="false">253173760480-le3ljf8ln8oc8osns4f1d7g19ambr119.apps.googleusercontent.com</string>
+    <string name="action_settings">Settings</string>
 </resources>
