@@ -6,9 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".ContactDevelopers">
 
-    <androidx.fragment.app.FragmentContainerView
-
-        />
+    <androidx.fragment.app.FragmentContainerVie
 
     <TextView
         android:id="@+id/textView4"
