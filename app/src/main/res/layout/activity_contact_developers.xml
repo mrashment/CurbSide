@@ -17,7 +17,7 @@
             android:layout_width="380dp"
             android:layout_height="246dp"
             android:layout_gravity="center_horizontal"
-            android:src="@drawable/curblogo" />
+            android:src="@drawable/cublogo" />
 
 
     </LinearLayout>
@@ -42,7 +42,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginEnd="333dp"
         android:layout_marginBottom="383dp"
-        android:src="@drawable/email" />
+        android:src="@drawable/gmaillogo" />
 
     <TextView
         android:layout_width="320dp"
@@ -64,7 +64,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginEnd="333dp"
         android:layout_marginBottom="323dp"
-        android:src="@drawable/email" />
+        android:src="@drawable/gmaillogo" />
 
     <TextView
         android:layout_width="303dp"
@@ -86,7 +86,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginEnd="333dp"
         android:layout_marginBottom="266dp"
-        android:src="@drawable/email" />
+        android:src="@drawable/gmaillogo" />
 
     <TextView
         android:layout_width="303dp"
@@ -108,7 +108,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginEnd="333dp"
         android:layout_marginBottom="210dp"
-        android:src="@drawable/email" />
+        android:src="@drawable/gmaillogo" />
 
     <ImageView
         android:layout_width="72dp"
