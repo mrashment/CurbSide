@@ -22,9 +22,8 @@
         <activity android:name=".ContactDevelopers" />
         <activity android:name=".truckMenu" />
         <activity android:name=".Profile" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".HomeActivity"
-            android:theme="@style/AppTheme.NoActionBar" >
+        <activity android:name=".HomeActivity" android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
