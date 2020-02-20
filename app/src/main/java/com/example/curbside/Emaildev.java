@@ -2,7 +2,6 @@ package com.example.curbside;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -19,7 +18,7 @@ public class Emaildev extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_emaildev);
 
         mEditTextTo = findViewById(R.id.edit_text_to);
         mEditTextSubject = findViewById(R.id.edit_text_subject);
@@ -27,6 +26,7 @@ public class Emaildev extends AppCompatActivity {
 
         Button buttonSend = findViewById(R.id.button_send);
         buttonSend.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 sendMail();
