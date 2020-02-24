@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
 
             retrieveUserInfo(account);
 
-            startActivity(new Intent(MainActivity.this,HomeActivity.class));
+            startActivity(new Intent(MainActivity.this,HomeActivityJava.class));
 
         } catch (ApiException e) {
             Log.w("Google Sign In Error","signInResult:failed code =" + e.getStatusCode());
@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
             retrieveUserInfo(account);
             Log.d(TAG, "onStart: isNull = " + conn.userIsNull());
 
-            startActivity(new Intent(MainActivity.this,HomeActivity.class));
+            startActivity(new Intent(MainActivity.this,HomeActivityJava.class));
         }
         super.onStart();
     }
