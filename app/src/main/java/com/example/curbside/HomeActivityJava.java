@@ -20,6 +20,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.ResolvableApiException;
@@ -58,6 +60,9 @@ public class HomeActivityJava extends AppCompatActivity implements OnMapReadyCal
     private static final int REQUEST_CHECK_SETTINGS = 43;
     private GoogleMap googleMap;
     private FusedLocationProviderClient fusedLocationProviderClient;
+    private ArrayList<Truck> trucks;
+    private RecyclerView recyclerView;
+    private HomePageCardAdapter cardAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +72,17 @@ public class HomeActivityJava extends AppCompatActivity implements OnMapReadyCal
         SupportMapFragment mapFragment = (SupportMapFragment)getSupportFragmentManager().findFragmentById(R.id.myMap);
         mapFragment.getMapAsync(this);
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+
+        trucks = new ArrayList<>();
+        trucks.add(new Truck("La Poblana Taco Truck",new Company("La Poblana")));
+        trucks.add(new Truck("The Big Cheeze",new Company("Cheeze Inc.")));
+        trucks.add(new Truck("Pili's Party Taco",new Company("Taco Party LLC")));
+
+        recyclerView = findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this,RecyclerView.HORIZONTAL,false));
+        cardAdapter = new HomePageCardAdapter(trucks);
+        recyclerView.setAdapter(cardAdapter);
+
     }
 
     @Override

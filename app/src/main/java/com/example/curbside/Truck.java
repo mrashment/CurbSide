@@ -7,12 +7,22 @@ public class Truck {
     private String name;
     private Company company;
     private ArrayList<FoodMenu> menus;
+    private String hours;
 
     public Truck(String name, Company company) {
         this.name = name;
         this.company = company;
+        this.hours = "9:00am-9:00pm";
     }
 
+
+    public String getHours() {
+        return hours;
+    }
+
+    public void setHours(String hours) {
+        this.hours = hours;
+    }
     public Company getCompany() {
         return company;
     }
