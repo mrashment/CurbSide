@@ -14,12 +14,16 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -63,6 +67,7 @@ public class HomeActivityJava extends AppCompatActivity implements OnMapReadyCal
     private ArrayList<Truck> trucks;
     private RecyclerView recyclerView;
     private HomePageCardAdapter cardAdapter;
+    private Button locationButton,menuButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,6 +87,18 @@ public class HomeActivityJava extends AppCompatActivity implements OnMapReadyCal
         recyclerView.setLayoutManager(new LinearLayoutManager(this,RecyclerView.HORIZONTAL,false));
         cardAdapter = new HomePageCardAdapter(trucks);
         recyclerView.setAdapter(cardAdapter);
+        recyclerView.addItemDecoration(new DividerItemDecoration(this,
+                DividerItemDecoration.HORIZONTAL));
+
+        locationButton  = findViewById(R.id.locationButton);
+        locationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getCurrentLocation();
+            }
+        });
+        menuButton = findViewById(R.id.menuButton);
+
 
     }
 
@@ -93,8 +110,8 @@ public class HomeActivityJava extends AppCompatActivity implements OnMapReadyCal
 
         if (isPermissionGiven()) {
             googleMap.setMyLocationEnabled(true);
-            googleMap.getUiSettings().setMyLocationButtonEnabled(true);
-            googleMap.getUiSettings().setZoomControlsEnabled(true);
+            googleMap.getUiSettings().setMyLocationButtonEnabled(false);
+            googleMap.getUiSettings().setZoomControlsEnabled(false);
             getCurrentLocation();
 
         } else {
