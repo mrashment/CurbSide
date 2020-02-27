@@ -1,11 +1,11 @@
 package com.example.curbside;
 
 public abstract class User {
-     String name;
-     String email;
-     int rewards;
-     int permissions;
-     int companyID = -1;
+     private String name;
+     private String email;
+     private int rewards;
+     private int permissions;
+     private int companyID = -1;
 
 
      public String getName() {

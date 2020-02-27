@@ -11,6 +11,7 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -60,7 +61,7 @@ import java.util.List;
 import java.util.Locale;
 
 public class HomeActivityJava extends AppCompatActivity implements OnMapReadyCallback, PermissionListener {
-
+    private static final String TAG = "HomeActivityJava";
     private static final int REQUEST_CHECK_SETTINGS = 43;
     private GoogleMap googleMap;
     private FusedLocationProviderClient fusedLocationProviderClient;
@@ -78,17 +79,11 @@ public class HomeActivityJava extends AppCompatActivity implements OnMapReadyCal
         mapFragment.getMapAsync(this);
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
-        trucks = new ArrayList<>();
-        trucks.add(new Truck("La Poblana Taco Truck",new Company("La Poblana")));
-        trucks.add(new Truck("The Big Cheeze",new Company("Cheeze Inc.")));
-        trucks.add(new Truck("Pili's Party Taco",new Company("Taco Party LLC")));
+//        findNearbyTrucks();
 
         recyclerView = findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this,RecyclerView.HORIZONTAL,false));
-        cardAdapter = new HomePageCardAdapter(trucks);
-        recyclerView.setAdapter(cardAdapter);
-        recyclerView.addItemDecoration(new DividerItemDecoration(this,
-                DividerItemDecoration.HORIZONTAL));
+        recyclerView.setVisibility(RecyclerView.INVISIBLE);
+
 
         locationButton  = findViewById(R.id.locationButton);
         locationButton.setOnClickListener(new View.OnClickListener() {
@@ -99,8 +94,27 @@ public class HomeActivityJava extends AppCompatActivity implements OnMapReadyCal
         });
         menuButton = findViewById(R.id.menuButton);
 
-
     }
+
+    private void findNearbyTrucks() {
+        TrucksThread trucksThread = new TrucksThread(this);
+        Log.d(TAG, "findNearbyTrucks: latitude = " + mLastLocation.getLatitude() + " longitude = " + mLastLocation.getLongitude() );
+        trucksThread.execute(mLastLocation.getLatitude(),mLastLocation.getLongitude());
+    }
+    public void displayNearbyTrucks(ArrayList<Truck> fromThread) {
+        trucks = fromThread;
+        if (trucks != null) {
+            recyclerView.setVisibility(RecyclerView.VISIBLE);
+            recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
+            cardAdapter = new HomePageCardAdapter(trucks);
+            recyclerView.setAdapter(cardAdapter);
+            recyclerView.addItemDecoration(new DividerItemDecoration(this,
+                    DividerItemDecoration.HORIZONTAL));
+        } else {
+            Toast.makeText(this,"No nearby trucks",Toast.LENGTH_LONG).show();
+        }
+    }
+
 
     @Override
     public void onMapReady(GoogleMap gMap) {
@@ -153,13 +167,15 @@ public class HomeActivityJava extends AppCompatActivity implements OnMapReadyCal
         });
     }
 
+    Location mLastLocation;
+
     private void getLastLocation() {
         fusedLocationProviderClient.getLastLocation()
                 .addOnCompleteListener(new OnCompleteListener<Location>() {
                     @Override
                     public void onComplete(@NonNull Task<Location> task) {
                         if (task.isSuccessful() && task.getResult() != null) {
-                            Location mLastLocation = task.getResult();
+                            mLastLocation = task.getResult();
 
                             String address = "No known address";
 
@@ -191,12 +207,16 @@ public class HomeActivityJava extends AppCompatActivity implements OnMapReadyCal
                                     .zoom(17f)
                                     .build();
                             googleMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+                            findNearbyTrucks();
                         } else {
                             Toast.makeText(HomeActivityJava.this, "No current location found", Toast.LENGTH_LONG).show();
                         }
+
                     }
+
                 });
     }
+
 
     private boolean isPermissionGiven() {
         return ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED;
