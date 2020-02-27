@@ -72,6 +72,7 @@ public class TrucksThread extends AsyncTask<Double,Void, Boolean> {
                 } catch (Exception e) {
                     Log.d(TAG, "doInBackground: no open or close time");
                 }
+                truck.setBio(nextTruck.getString("bio"));
                 truck.setLat(nextTruck.getDouble("latitude"));
                 truck.setLng(nextTruck.getDouble("longitude"));
                 trucks.add(truck);

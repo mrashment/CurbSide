@@ -18,6 +18,13 @@ public class Truck {
         this.hours = "9:00am-9:00pm";
     }
 
+    public String getBio() {
+        return bio;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
+    }
 
     public double getLat() {
         return lat;
