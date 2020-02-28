@@ -1,12 +1,28 @@
 package com.example.curbside;
 
+import java.util.ArrayList;
+
 public abstract class User {
      private String name;
      private String email;
      private int rewards;
      private int permissions;
      private int companyID = -1;
+     private ArrayList<Integer> favIds;
 
+     public ArrayList<Integer> getFavIds() {
+          return favIds;
+     }
+
+     public void setFavIds(String[] favIds) {
+          this.favIds = new ArrayList<>();
+          for (String id : favIds) {
+               if (!id.equals("")) {
+                    int newid = Integer.parseInt(id);
+                    this.favIds.add(newid);
+               }
+          }
+     }
 
      public String getName() {
           return name;

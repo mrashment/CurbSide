@@ -191,16 +191,6 @@ public class HomeActivityJava extends AppCompatActivity implements OnMapReadyCal
                                 e.printStackTrace();
                             }
 
-                            BitmapDescriptor icon = BitmapDescriptorFactory.fromBitmap(BitmapFactory.decodeResource(HomeActivityJava.this.getResources(), R.drawable.ic_pickup));
-                            if (mLastLocation != null) {
-//                                googleMap.addMarker(
-//                                        new MarkerOptions()
-//                                                .position(new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude()))
-//                                                .title("Current Location")
-//                                                .snippet(address)
-//                                                .icon(icon));
-                            } else {throw new NullPointerException("Expression 'mLastLocation' must not be null");}
-
                             CameraPosition cameraPosition = new CameraPosition.Builder()
                                     .target(new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude()))
                                     .zoom(17f)

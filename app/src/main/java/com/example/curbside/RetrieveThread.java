@@ -34,7 +34,8 @@ class RetrieveThread extends AsyncTask<GoogleSignInAccount,Void,String> {
 
     @Override
     protected void onPostExecute(String response) {
-        JSONObject json;
+        JSONObject jsonUser;
+        JSONObject jsonFavorites;
         DbConnection conn = DbConnection.getInstance();
 
         switch(response.trim()) {
@@ -52,9 +53,15 @@ class RetrieveThread extends AsyncTask<GoogleSignInAccount,Void,String> {
                 break;
             default:
                 try {
-                    json = new JSONObject(response.trim());
-                    conn.setUser(json);
+                    String both = response.trim();
+                    String[] separate = both.split("\n");
+
+                    jsonUser = new JSONObject(separate[0]);
+                    conn.setUser(jsonUser);
+                    String[] items = separate[1].replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("\\s", "").split(",");
+                    conn.getUser().setFavIds(items);
                     Log.d(TAG, "onPostExecute: " + conn.printUserInfo());
+                    Log.d(TAG, "onPostExecute: " + conn.getUser().getFavIds().toString());
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -95,7 +102,7 @@ class RetrieveThread extends AsyncTask<GoogleSignInAccount,Void,String> {
             String line;
 
             while ((line = reader.readLine()) != null) {
-                sb.append(line + '\n');
+                sb.append(line).append("\n");
             }
             reader.close();
 
