@@ -1,8 +1,9 @@
 package com.example.curbside;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Company {
+public class Company implements Serializable {
 
     private String name;
     private boolean legal;

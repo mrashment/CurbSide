@@ -53,6 +53,7 @@ public class HomePageCardAdapter extends RecyclerView.Adapter<HomePageCardAdapte
         public ViewHolder(@NonNull View itemView, Context context) {
             super(itemView);
 
+            this.itemView.setOnClickListener(this);
             this.truckNameTextView = itemView.findViewById(R.id.truckNameTextView);
             this.companyNameTextView = itemView.findViewById(R.id.companyNameTextView);
             this.hoursTextView = itemView.findViewById(R.id.hoursTextView);
@@ -68,8 +69,8 @@ public class HomePageCardAdapter extends RecyclerView.Adapter<HomePageCardAdapte
             int position = this.getLayoutPosition();
 
             Intent intent = new Intent((context), TruckMenuActivity.class);
-            intent.putExtra("truck", trucks.get(position));
-            (context).startActivity(intent);
+            intent.putExtra("com.example.curbside.truck", trucks.get(position));
+            context.startActivity(intent);
         }
     }
 
