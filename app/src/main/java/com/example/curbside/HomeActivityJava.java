@@ -99,6 +99,7 @@ public class HomeActivityJava extends AppCompatActivity implements OnMapReadyCal
         Log.d(TAG, "findNearbyTrucks: latitude = " + mLastLocation.getLatitude() + " longitude = " + mLastLocation.getLongitude() );
         trucksThread.execute(mLastLocation.getLatitude(),mLastLocation.getLongitude());
     }
+
     public void displayNearbyTrucks(ArrayList<Truck> fromThread) {
         trucks = fromThread;
         if (trucks != null) {
@@ -113,7 +114,6 @@ public class HomeActivityJava extends AppCompatActivity implements OnMapReadyCal
             Toast.makeText(this,"No nearby trucks",Toast.LENGTH_LONG).show();
         }
     }
-
 
     @Override
     public void onMapReady(GoogleMap gMap) {
