@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(MainActivity.this,HomeActivityJava.class));
 
         } catch (ApiException e) {
-            Log.w("Google Sign In Error","signInResult:failed code =" + e.getStatusCode());
+            Log.w("Google Sign In Error","signInResult:failed code =" + e.getMessage());
             Toast.makeText(MainActivity.this,"Failed",Toast.LENGTH_LONG).show();
         }
     }

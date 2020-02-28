@@ -79,8 +79,6 @@ public class HomeActivityJava extends AppCompatActivity implements OnMapReadyCal
         mapFragment.getMapAsync(this);
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
-//        findNearbyTrucks();
-
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setVisibility(RecyclerView.INVISIBLE);
 
@@ -106,10 +104,11 @@ public class HomeActivityJava extends AppCompatActivity implements OnMapReadyCal
         if (trucks != null) {
             recyclerView.setVisibility(RecyclerView.VISIBLE);
             recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
-            cardAdapter = new HomePageCardAdapter(trucks);
+            cardAdapter = new HomePageCardAdapter(trucks, googleMap, this);
             recyclerView.setAdapter(cardAdapter);
             recyclerView.addItemDecoration(new DividerItemDecoration(this,
                     DividerItemDecoration.HORIZONTAL));
+
         } else {
             Toast.makeText(this,"No nearby trucks",Toast.LENGTH_LONG).show();
         }
@@ -194,12 +193,12 @@ public class HomeActivityJava extends AppCompatActivity implements OnMapReadyCal
 
                             BitmapDescriptor icon = BitmapDescriptorFactory.fromBitmap(BitmapFactory.decodeResource(HomeActivityJava.this.getResources(), R.drawable.ic_pickup));
                             if (mLastLocation != null) {
-                                googleMap.addMarker(
-                                        new MarkerOptions()
-                                                .position(new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude()))
-                                                .title("Current Location")
-                                                .snippet(address)
-                                                .icon(icon));
+//                                googleMap.addMarker(
+//                                        new MarkerOptions()
+//                                                .position(new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude()))
+//                                                .title("Current Location")
+//                                                .snippet(address)
+//                                                .icon(icon));
                             } else {throw new NullPointerException("Expression 'mLastLocation' must not be null");}
 
                             CameraPosition cameraPosition = new CameraPosition.Builder()
