@@ -1,8 +1,9 @@
 package com.example.curbside;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Truck {
+public class Truck implements Serializable {
 
     private String name;
     private String bio;

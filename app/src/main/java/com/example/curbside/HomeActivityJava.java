@@ -79,8 +79,6 @@ public class HomeActivityJava extends AppCompatActivity implements OnMapReadyCal
         mapFragment.getMapAsync(this);
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
-//        findNearbyTrucks();
-
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setVisibility(RecyclerView.INVISIBLE);
 
@@ -93,6 +91,13 @@ public class HomeActivityJava extends AppCompatActivity implements OnMapReadyCal
             }
         });
         menuButton = findViewById(R.id.menuButton);
+        menuButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivityJava.this, Profile.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
@@ -106,7 +111,7 @@ public class HomeActivityJava extends AppCompatActivity implements OnMapReadyCal
         if (trucks != null) {
             recyclerView.setVisibility(RecyclerView.VISIBLE);
             recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
-            cardAdapter = new HomePageCardAdapter(trucks);
+            cardAdapter = new HomePageCardAdapter(trucks,this);
             recyclerView.setAdapter(cardAdapter);
             recyclerView.addItemDecoration(new DividerItemDecoration(this,
                     DividerItemDecoration.HORIZONTAL));
@@ -254,19 +259,5 @@ public class HomeActivityJava extends AppCompatActivity implements OnMapReadyCal
             }
         }
         super.onActivityResult(requestCode, resultCode, data);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main,menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.action_settings) {
-            return true;
-        }
-        else return super.onOptionsItemSelected(item);
     }
 }
