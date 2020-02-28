@@ -49,7 +49,6 @@ public class HomePageCardAdapter extends RecyclerView.Adapter<HomePageCardAdapte
         holder.companyNameTextView.setText(trucks.get(position).getCompany().getName());
         holder.hoursTextView.setText(trucks.get(position).getHours());
         BitmapDescriptor icon = BitmapDescriptorFactory.fromBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.ic_pickup));
-        Toast.makeText(context,trucks.get(position).getLat() + " " + trucks.get(position).getLng(),Toast.LENGTH_LONG).show();
         googleMap.addMarker(new MarkerOptions()
                 .position(new LatLng(trucks.get(position).getLat(), trucks.get(position).getLng()))
                 .title(trucks.get(position).getName())
