@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.content.Context;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -39,8 +40,8 @@ public class HomePageCardAdapter extends RecyclerView.Adapter<HomePageCardAdapte
     public HomePageCardAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.home_truck_card,parent,false);
 
+        return new ViewHolder(v, this.context);
 
-        return new ViewHolder(v);
     }
 
     @Override
@@ -60,19 +61,32 @@ public class HomePageCardAdapter extends RecyclerView.Adapter<HomePageCardAdapte
         return trucks.size();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private TextView truckNameTextView,companyNameTextView,hoursTextView;
         private ImageView imageView;
 
-        public ViewHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull View itemView, Context context) {
             super(itemView);
 
+            this.itemView.setOnClickListener(this);
             this.truckNameTextView = itemView.findViewById(R.id.truckNameTextView);
             this.companyNameTextView = itemView.findViewById(R.id.companyNameTextView);
             this.hoursTextView = itemView.findViewById(R.id.hoursTextView);
             this.imageView = itemView.findViewById(R.id.imageView);
+            this.context = context;
 
+        }
+
+        private Context context;
+        @Override
+        public void onClick(View v) {
+
+            int position = this.getLayoutPosition();
+
+            Intent intent = new Intent((context), TruckMenuActivity.class);
+            intent.putExtra("com.example.curbside.truck", trucks.get(position));
+            context.startActivity(intent);
         }
     }
 }

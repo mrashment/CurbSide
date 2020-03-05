@@ -91,6 +91,13 @@ public class HomeActivityJava extends AppCompatActivity implements OnMapReadyCal
             }
         });
         menuButton = findViewById(R.id.menuButton);
+        menuButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivityJava.this, Profile.class);
+                startActivity(intent);
+            }
+        });
         vendorButton = findViewById(R.id.vendorButton);
 
     }
@@ -244,19 +251,5 @@ public class HomeActivityJava extends AppCompatActivity implements OnMapReadyCal
             }
         }
         super.onActivityResult(requestCode, resultCode, data);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main,menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.action_settings) {
-            return true;
-        }
-        else return super.onOptionsItemSelected(item);
     }
 }
