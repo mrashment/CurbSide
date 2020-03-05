@@ -22,6 +22,7 @@
         <activity android:name=".ContactDevelopers" />
         <activity android:name=".TruckMenuActivity" />
         <activity android:name=".Profile" />
+        <activity android:name=".Notifications"/>
         <activity android:name=".HomeActivityJava" android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".MainActivity">
             <intent-filter>

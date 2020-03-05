@@ -5,69 +5,134 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/graylight"
+    android:paddingStart="10dp"
+    android:paddingEnd="10dp"
     tools:context=".TruckMenuActivity">
 
-    <ImageButton
-        android:id="@+id/truckFavoriteButton"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:background="@drawable/truck_favorite_unpressed"
-        app:layout_constraintBottom_toBottomOf="@+id/truckNameTextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/navigationButton"
         android:layout_width="419dp"
         android:layout_height="55dp"
-        android:layout_marginBottom="10dp"
         android:text="Navigate"
-        app:layout_constraintBottom_toTopOf="@+id/linearTruckMenus"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
 
     <LinearLayout
         android:id="@+id/linearTruckMenus"
-        android:layout_width="396dp"
-        android:layout_height="370dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:orientation="vertical"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:background="@color/graylight"
         android:elevation="10dp"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/navigationButton">
 
 
         <Button
-            android:layout_width="wrap_content"
+            android:id="@+id/selectTruckPhotos"
+            android:layout_width="396dp"
             android:layout_height="wrap_content"
             android:text="Photos" />
 
         <Button
-            android:layout_width="wrap_content"
+            android:id="@+id/selectTruckMenu"
+            android:layout_width="396dp"
             android:layout_height="wrap_content"
             android:text="Menu" />
 
         <Button
-            android:layout_width="wrap_content"
+            android:id="@+id/selectTruckReviews"
+            android:layout_width="396dp"
             android:layout_height="wrap_content"
             android:text="Reviews" />
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Photos" />
-        <Button
-            android:layout_width="wrap_content"
+            android:id="@+id/selectTruckContactVendor"
+            android:layout_width="396dp"
             android:layout_height="wrap_content"
             android:text="Contact Vendor" />
 
     </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.555"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+        <Button
+            android:id="@+id/backToHomeButton"
+            android:layout_width="46dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:text="="
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/truckNameText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Truck Name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/truckImage" />
+
+        <ImageButton
+            android:id="@+id/truckFavoriteButton"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <!--            android:background="@drawable/truck_favorite_unpressed"-->
+
+        <TextView
+            android:id="@+id/companyNameText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Company Name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/truckNameText" />
+
+        <TextView
+            android:id="@+id/hoursTruckText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Truck Hours"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/companyNameText" />
+
+        <ImageView
+            android:id="@+id/truckImage"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/cublogo" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.42" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

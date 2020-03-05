@@ -5,105 +5,114 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/graylight"
+    android:padding="20dp"
     android:textColor="@color/colorPrimaryDark"
     tools:context=".Notifications">
 
     <Button
         android:id="@+id/announcmentsText"
-        android:layout_width="374dp"
+        android:layout_width="0dp"
         android:layout_height="60dp"
         android:background="@drawable/rounded_corner"
         android:text="Announcements"
         android:textAlignment="viewStart"
         android:textColor="@color/graylight"
+        app:layout_constraintBottom_toTopOf="@+id/order_ReadyText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.432"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="84dp" />
+        app:layout_constraintTop_toBottomOf="@+id/backToMenu" />
 
     <Button
         android:id="@+id/order_ReadyText"
-        android:layout_width="374dp"
+        android:layout_width="0dp"
         android:layout_height="60dp"
         android:background="@drawable/rounded_corner"
         android:text="Order Ready"
         android:textAlignment="viewStart"
         android:textColor="@color/graylight"
+        app:layout_constraintBottom_toTopOf="@+id/location_ChangeText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.432"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="178dp" />
+        app:layout_constraintTop_toBottomOf="@id/announcmentsText" />
 
     <Button
         android:id="@+id/location_ChangeText"
-        android:layout_width="374dp"
+        android:layout_width="0dp"
         android:layout_height="60dp"
         android:background="@drawable/rounded_corner"
         android:text="Location Change"
         android:textAlignment="viewStart"
         android:textColor="@color/graylight"
+        app:layout_constraintBottom_toTopOf="@+id/dealsText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.486"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="264dp" />
+        app:layout_constraintTop_toBottomOf="@id/order_ReadyText" />
 
     <Button
         android:id="@+id/dealsText"
-        android:layout_width="374dp"
+        android:layout_width="0dp"
         android:layout_height="60dp"
         android:background="@drawable/rounded_corner"
         android:text="Deals"
         android:textAlignment="viewStart"
+        android:textColor="@color/graylight"
+        app:layout_constraintBottom_toTopOf="@+id/socialText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.567"
         app:layout_constraintStart_toStartOf="parent"
-        android:textColor="@color/graylight"
-        tools:layout_editor_absoluteY="354dp" />
+        app:layout_constraintTop_toBottomOf="@id/location_ChangeText" />
 
     <Button
         android:id="@+id/socialText"
-        android:layout_width="374dp"
+        android:layout_width="0dp"
         android:layout_height="60dp"
         android:background="@drawable/rounded_corner"
         android:text="Social"
         android:textAlignment="viewStart"
+        app:layout_constraintBottom_toTopOf="@+id/offersText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.48"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="447dp" />
+        app:layout_constraintTop_toBottomOf="@id/dealsText" />
 
     <Button
         android:id="@+id/offersText"
-        android:layout_width="374dp"
+        android:layout_width="0dp"
         android:layout_height="60dp"
         android:background="@drawable/rounded_corner"
         android:text="Offers"
         android:textAlignment="viewStart"
+        app:layout_constraintBottom_toTopOf="@+id/emailText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.486"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="541dp" />
+        app:layout_constraintTop_toBottomOf="@id/socialText" />
 
     <Button
         android:id="@+id/emailText"
-        android:layout_width="374dp"
+        android:layout_width="0dp"
         android:layout_height="60dp"
         android:background="@drawable/rounded_corner"
         android:text="Email"
         android:textAlignment="viewStart"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.486"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="634dp" />
+        app:layout_constraintTop_toBottomOf="@id/offersText" />
 
     <Button
         android:id="@+id/backToMenu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/rounded_corner"
+        android:layout_width="45dp"
+        android:layout_height="46dp"
         android:background="@color/graylight"
-        tools:layout_editor_absoluteX="11dp"
-        tools:layout_editor_absoluteY="14dp" />
+        android:src="@drawable/rounded_corner"
+        android:text="="
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

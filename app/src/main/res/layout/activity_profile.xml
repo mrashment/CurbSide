@@ -11,162 +11,51 @@
     tools:context=".Profile">
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/gradientbackground"
         android:orientation="vertical"
-        tools:layout_conversion_absoluteHeight="279dp"
-        tools:layout_conversion_absoluteWidth="411dp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp">
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.73">
 
-        <ImageView
-            android:layout_width="202dp"
-            android:layout_height="179dp"
-            android:layout_gravity="center_horizontal"
-            android:src="@drawable/curb" />
+        <Button
+            android:id="@+id/notificationsButton"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="Notifications" />
 
+        <Button
+            android:id="@+id/settingsButton"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="Settings" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="45dp"
-            android:layout_gravity="center_horizontal"
-            android:text="Jessica Bon Jovi"
-            android:textSize="21sp"
-            android:textStyle="bold" />
+        <Button
+            android:id="@+id/accountButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Account" />
 
-        <TextView
-            android:layout_width="252dp"
-            android:layout_height="53dp"
-            android:layout_gravity="center"
-            android:layout_marginStart="80dp"
-            android:layout_marginEnd="78dp"
-            android:layout_marginBottom="418dp"
-            android:background="@color/colorAccent"
-            android:text="Jessica Bon Jovi
-                                            Jbon@gmail.com" />
+        <Button
+            android:id="@+id/privacyButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Privacy" />
 
     </LinearLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Notifications"
-        android:textSize="30dp"
-        android:textStyle="bold"
-        tools:layout_conversion_absoluteHeight="41dp"
-        tools:layout_conversion_absoluteWidth="188dp"
-        tools:layout_editor_absoluteX="110dp"
-        tools:layout_editor_absoluteY="406dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Account"
-        android:textSize="30dp"
-        android:textStyle="bold"
-        tools:layout_conversion_absoluteHeight="41dp"
-        tools:layout_conversion_absoluteWidth="170dp"
-        tools:layout_editor_absoluteX="110dp"
-        tools:layout_editor_absoluteY="532dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Privacy"
-        android:textSize="30dp"
-        android:textStyle="bold"
-        tools:layout_conversion_absoluteHeight="41dp"
-        tools:layout_conversion_absoluteWidth="157dp"
-        tools:layout_editor_absoluteX="112dp"
-        tools:layout_editor_absoluteY="587dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Favorites"
-        android:textSize="30dp"
-        android:textStyle="bold"
-        tools:layout_conversion_absoluteHeight="65dp"
-        tools:layout_conversion_absoluteWidth="215dp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Settings"
-        android:textSize="30dp"
-        android:textStyle="bold"
-        tools:layout_conversion_absoluteHeight="41dp"
-        tools:layout_conversion_absoluteWidth="114dp"
-        tools:layout_editor_absoluteX="111dp"
-        tools:layout_editor_absoluteY="472dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Contact Developers"
-        android:textSize="30dp"
-        android:textStyle="bold"
-        tools:layout_conversion_absoluteHeight="77dp"
-        tools:layout_conversion_absoluteWidth="224dp"
-        tools:layout_editor_absoluteX="117dp"
-        tools:layout_editor_absoluteY="646dp" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/heartcurb"
-        tools:layout_conversion_absoluteHeight="40dp"
-        tools:layout_conversion_absoluteWidth="53dp"
-        tools:layout_editor_absoluteX="43dp"
-        tools:layout_editor_absoluteY="346dp" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/bellcurb"
-        tools:layout_conversion_absoluteHeight="40dp"
-        tools:layout_conversion_absoluteWidth="53dp"
-        tools:layout_editor_absoluteX="42dp"
-        tools:layout_editor_absoluteY="406dp" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/headcurb"
-        tools:layout_conversion_absoluteHeight="40dp"
-        tools:layout_conversion_absoluteWidth="53dp"
-        tools:layout_editor_absoluteX="42dp"
-        tools:layout_editor_absoluteY="534dp" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/settingscurb"
-        tools:layout_conversion_absoluteHeight="40dp"
-        tools:layout_conversion_absoluteWidth="53dp"
-        tools:layout_editor_absoluteX="43dp"
-        tools:layout_editor_absoluteY="470dp" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/lockcubrb"
-        tools:layout_conversion_absoluteHeight="40dp"
-        tools:layout_conversion_absoluteWidth="53dp"
-        tools:layout_editor_absoluteX="43dp"
-        tools:layout_editor_absoluteY="586dp" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/phonecurb"
-        tools:layout_conversion_absoluteHeight="40dp"
-        tools:layout_conversion_absoluteWidth="53dp"
-        tools:layout_editor_absoluteX="46dp"
-        tools:layout_editor_absoluteY="658dp" />
+    <Button
+        android:id="@+id/backToHomeButton"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="="
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
