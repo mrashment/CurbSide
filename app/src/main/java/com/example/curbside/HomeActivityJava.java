@@ -68,7 +68,7 @@ public class HomeActivityJava extends AppCompatActivity implements OnMapReadyCal
     private ArrayList<Truck> trucks;
     private RecyclerView recyclerView;
     private HomePageCardAdapter cardAdapter;
-    private Button locationButton,menuButton;
+    private Button locationButton,menuButton, vendorButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,6 +91,7 @@ public class HomeActivityJava extends AppCompatActivity implements OnMapReadyCal
             }
         });
         menuButton = findViewById(R.id.menuButton);
+        vendorButton = findViewById(R.id.vendorButton);
 
     }
 
