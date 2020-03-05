@@ -99,6 +99,13 @@ public class HomeActivityJava extends AppCompatActivity implements OnMapReadyCal
             }
         });
         vendorButton = findViewById(R.id.vendorButton);
+        vendorButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivityJava.this, VendorOptionsActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 

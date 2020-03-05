@@ -22,6 +22,24 @@
         app:layout_constraintVertical_bias="0.73">
 
         <Button
+            android:id="@+id/trucksButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Trucks" />
+
+        <Button
+            android:id="@+id/menusButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Menus" />
+
+        <Button
+            android:id="@+id/companyInfoButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Company Info" />
+
+        <Button
             android:id="@+id/notificationsButton"
             android:layout_width="match_parent"
             android:layout_height="60dp"
@@ -34,16 +52,16 @@
             android:text="Settings" />
 
         <Button
-            android:id="@+id/companyInfoButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Account" />
-
-        <Button
             android:id="@+id/addTruckButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Privacy" />
+            android:text="Add Truck" />
+
+        <Button
+            android:id="@+id/employeesButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Employees" />
 
     </LinearLayout>
 

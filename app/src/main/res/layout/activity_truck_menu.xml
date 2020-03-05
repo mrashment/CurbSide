@@ -94,11 +94,12 @@
 
         <ImageButton
             android:id="@+id/truckFavoriteButton"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/truck_favorite_unpressed"
+            app:layout_constraintBottom_toBottomOf="@+id/backToHomeButton"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-        <!--            android:background="@drawable/truck_favorite_unpressed"-->
+            app:layout_constraintTop_toTopOf="@+id/backToHomeButton" />
 
         <TextView
             android:id="@+id/companyNameText"

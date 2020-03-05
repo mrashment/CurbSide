@@ -42,12 +42,12 @@ public class TruckMenuActivity extends AppCompatActivity {
 
                 if(isPressed==false){
 
-//                    imageButton.setBackgroundResource(R.drawable.truck_favorite_pressed);
+                    imageButton.setBackgroundResource(R.drawable.truck_favorite_pressed);
                     isPressed=true;
 
                 }else if(isPressed==true){
 
-//                    imageButton.setBackgroundResource(R.drawable.truck_favorite_unpressed);
+                    imageButton.setBackgroundResource(R.drawable.truck_favorite_unpressed);
                     isPressed=false;
 
                 }
