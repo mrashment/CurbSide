@@ -68,7 +68,7 @@ public class HomeActivityJava extends AppCompatActivity implements OnMapReadyCal
     private ArrayList<Truck> trucks;
     private RecyclerView recyclerView;
     private HomePageCardAdapter cardAdapter;
-    private Button locationButton,menuButton, vendorButton;
+    private Button locationButton,menuButton, vendorButton, favoritesButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,6 +104,13 @@ public class HomeActivityJava extends AppCompatActivity implements OnMapReadyCal
             public void onClick(View v) {
                 Intent intent = new Intent(HomeActivityJava.this, VendorOptionsActivity.class);
                 startActivity(intent);
+            }
+        });
+        favoritesButton = findViewById(R.id.favoritesButton);
+        favoritesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
 

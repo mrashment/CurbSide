@@ -8,18 +8,19 @@ public abstract class User {
      private int rewards;
      private int permissions;
      private int companyID = -1;
-     private ArrayList<Integer> favIds;
+     private Integer[] favIds;
+     private ArrayList<Truck> favTrucks;
 
-     public ArrayList<Integer> getFavIds() {
+     public Integer[] getFavIds() {
           return favIds;
      }
 
-     public void setFavIds(String[] favIds) {
-          this.favIds = new ArrayList<>();
-          for (String id : favIds) {
-               if (!id.equals("")) {
-                    int newid = Integer.parseInt(id);
-                    this.favIds.add(newid);
+     public void setFavIds(String[] stringIds) {
+          this.favIds = new Integer[stringIds.length];
+          for (int i = 0; i < stringIds.length; i++) {
+               if (!stringIds[i].equals("")) {
+                    int newid = Integer.parseInt(stringIds[i]);
+                    this.favIds[i] = newid;
                }
           }
      }

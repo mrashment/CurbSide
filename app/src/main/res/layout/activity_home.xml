@@ -84,5 +84,14 @@
         app:layout_constraintStart_toStartOf="@+id/menuButton"
         app:layout_constraintTop_toBottomOf="@+id/menuButton" />
 
+    <Button
+        android:id="@+id/favoritesButton"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:background="@drawable/truck_favorite_pressed"
+        android:minWidth="48dip"
+        app:layout_constraintStart_toStartOf="@+id/locationButton"
+        app:layout_constraintTop_toBottomOf="@+id/locationButton" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
