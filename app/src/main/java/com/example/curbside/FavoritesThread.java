@@ -3,6 +3,9 @@ package com.example.curbside;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -13,23 +16,21 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class FavoritesThread extends AsyncTask<Integer[],Void, ArrayList<Truck>> {
+public class FavoritesThread extends AsyncTask<Integer[],Void, Boolean> {
     private static final String TAG = "FavoritesThread";
-
+    private ArrayList<Truck> trucks;
 
 
     @Override
-    protected ArrayList<Truck> doInBackground(Integer[]... integers) {
+    protected Boolean doInBackground(Integer[]... integers) {
         Integer[] ids = integers[0];
-
-        StringBuilder idBuilder = new StringBuilder();
-        for (int i = 0; i < ids.length; i++) {
-            if (i > 0) {
-                idBuilder.append("&");
-            }
-            idBuilder.append("ids[").append(i).append("]=").append(ids[i]);
+        JSONArray json = new JSONArray();
+        for (int i : ids) {
+            json.put(i);
         }
-        byte[] postData = idBuilder.toString().getBytes();
+        String stringData = "ids=" + json.toString();
+
+        byte[] postData = stringData.getBytes();
 
         StringBuilder sb;
 
@@ -50,16 +51,26 @@ public class FavoritesThread extends AsyncTask<Integer[],Void, ArrayList<Truck>>
             BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
             sb = new StringBuilder();
             String line;
-
             while ((line = reader.readLine()) != null) {
-                sb.append(line).append("\n");
+                if (line.trim().equals("Server error")) {
+                    return false;
+                }
+                Log.d(TAG, "doInBackground: " + line.trim());
+                JSONObject nextTruck = new JSONObject(line.trim());
+                Log.d(TAG, "doInBackground: created JSONObject");
+                Truck truck = new Truck(nextTruck.getString("name"),new Company(nextTruck.getString("cname")));
+                try {
+                    truck.setHours(nextTruck.getString("open_time") + "-" + nextTruck.getString("close_time"));
+                } catch (Exception e) {
+                    Log.d(TAG, "doInBackground: no open or close time");
+                }
+                truck.setBio(nextTruck.getString("bio"));
+                truck.setLat(nextTruck.getDouble("latitude"));
+                truck.setLng(nextTruck.getDouble("longitude"));
+                trucks.add(truck);
+                Log.d(TAG, "doInBackground: added Truck");
             }
             reader.close();
-
-
-            jsonString = sb.toString();
-
-
 
         } catch (MalformedURLException e) {
             System.err.println(TAG + "MalformedURLException : " + e.getMessage());
@@ -73,6 +84,6 @@ public class FavoritesThread extends AsyncTask<Integer[],Void, ArrayList<Truck>>
         Log.d(TAG, "doInBackground: jsonString = " + jsonString);
 
 
-
+        return true;
     }
 }
