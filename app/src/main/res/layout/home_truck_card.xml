@@ -5,9 +5,9 @@
     android:id="@+id/cardView"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:elevation="5dp"
     android:orientation="vertical"
-    android:padding="50dp"
-    android:elevation="5dp">
+    android:padding="50dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"

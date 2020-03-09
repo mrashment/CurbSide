@@ -118,7 +118,8 @@ public class HomeActivityJava extends AppCompatActivity implements OnMapReadyCal
         favoritesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(HomeActivityJava.this,FavoritesActivity.class);
+                startActivity(intent);
             }
         });
 
