@@ -1,8 +1,11 @@
 package com.example.curbside;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 
 public abstract class User {
+     private static final String TAG = "User";
      private String name;
      private String email;
      private int rewards;
@@ -19,7 +22,12 @@ public abstract class User {
           this.favIds = new Integer[stringIds.length];
           for (int i = 0; i < stringIds.length; i++) {
                if (!stringIds[i].equals("")) {
-                    int newid = Integer.parseInt(stringIds[i]);
+                    String raw = stringIds[i];
+                    Log.d(TAG, "setFavIds: " + raw);
+                    if (raw.charAt(0) == '"' && raw.charAt(raw.length() - 1) == '"') {
+                         raw= raw.substring(1, raw.length() - 1);
+                    }
+                    int newid = Integer.parseInt(raw);
                     this.favIds[i] = newid;
                }
           }

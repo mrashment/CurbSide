@@ -287,8 +287,7 @@ public class HomeActivityJava extends AppCompatActivity implements OnMapReadyCal
         @Override
         public void handleMessage(@NonNull Message msg) {
             // updates the times on items
-            int favs = msg.getData().getInt("Favs");
-            Toast.makeText(context, "User has " + favs + " favorites.",Toast.LENGTH_LONG).show();
+            Toast.makeText(context, "User has " + DbConnection.getInstance().getUser().getFavTrucks().toString() + " favorites.",Toast.LENGTH_LONG).show();
         }
     }
 }

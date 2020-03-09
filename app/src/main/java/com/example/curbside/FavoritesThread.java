@@ -33,11 +33,7 @@ public class FavoritesThread extends AsyncTask<Integer[],Void, Boolean> {
     protected void onPostExecute(Boolean aBoolean) {
         conn = DbConnection.getInstance();
         conn.getUser().setFavTrucks(trucks);
-        Bundle bundle = new Bundle();
-        bundle.putInt("Favs",conn.getUser().getFavTrucks().size());
-        Message message = HomeActivityJava.handler.obtainMessage();
-        message.setData(bundle);
-        HomeActivityJava.handler.sendMessage(message);
+        HomeActivityJava.handler.sendEmptyMessage(0);
 
     }
 
@@ -85,8 +81,10 @@ public class FavoritesThread extends AsyncTask<Integer[],Void, Boolean> {
                     Log.d(TAG, "doInBackground: no open or close time");
                 }
                 truck.setBio(nextTruck.getString("bio"));
-                truck.setLat(nextTruck.getDouble("latitude"));
-                truck.setLng(nextTruck.getDouble("longitude"));
+                try {
+                    truck.setLat(nextTruck.getDouble("latitude"));
+                    truck.setLng(nextTruck.getDouble("longitude"));
+                } catch (Exception e) {}
                 trucks.add(truck);
                 Log.d(TAG, "doInBackground: added Truck");
             }
