@@ -16,6 +16,7 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 
 class AddThread extends AsyncTask<GoogleSignInAccount,Void,String> {
     GoogleSignInAccount account;
@@ -39,6 +40,7 @@ class AddThread extends AsyncTask<GoogleSignInAccount,Void,String> {
                 try {
                     json = new JSONObject(response);
                     conn.setUser(json);
+                    conn.getUser().setFavTrucks(new ArrayList<Truck>());
                     Log.d(TAG, "onPostExecute: " + conn.printUserInfo());
                 } catch (JSONException e) {
                     e.printStackTrace();

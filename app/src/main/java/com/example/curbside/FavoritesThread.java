@@ -1,7 +1,10 @@
 package com.example.curbside;
 
 import android.os.AsyncTask;
+import android.os.Bundle;
+import android.os.Message;
 import android.util.Log;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -19,13 +22,30 @@ import java.util.ArrayList;
 public class FavoritesThread extends AsyncTask<Integer[],Void, Boolean> {
     private static final String TAG = "FavoritesThread";
     private ArrayList<Truck> trucks;
+    DbConnection conn;
 
+    public FavoritesThread() {
+        trucks = new ArrayList<>();
+
+    }
+
+    @Override
+    protected void onPostExecute(Boolean aBoolean) {
+        conn = DbConnection.getInstance();
+        conn.getUser().setFavTrucks(trucks);
+        Bundle bundle = new Bundle();
+        bundle.putInt("Favs",conn.getUser().getFavTrucks().size());
+        Message message = HomeActivityJava.handler.obtainMessage();
+        message.setData(bundle);
+        HomeActivityJava.handler.sendMessage(message);
+
+    }
 
     @Override
     protected Boolean doInBackground(Integer[]... integers) {
         Integer[] ids = integers[0];
         JSONArray json = new JSONArray();
-        for (int i : ids) {
+        for (Integer i : ids) {
             json.put(i);
         }
         String stringData = "ids=" + json.toString();
@@ -36,7 +56,7 @@ public class FavoritesThread extends AsyncTask<Integer[],Void, Boolean> {
 
         String jsonString = "Failed Connection";
         try {
-            URL url = new URL(DbConnection.USER_INFO);
+            URL url = new URL(DbConnection.FAVORITE_TRUCKS);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
             connection.setRequestMethod("POST");

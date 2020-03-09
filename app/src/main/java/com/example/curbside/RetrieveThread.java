@@ -47,6 +47,7 @@ class RetrieveThread extends AsyncTask<GoogleSignInAccount,Void,String> {
                 String toPost = "email=" + account.getEmail() + "&name=" + account.getDisplayName() + "&rewards=0";
                 AddThread thread = new AddThread();
                 thread.execute(account);
+                break;
 
             case "Server error":
                 Log.d(TAG, "onPostExecute: Response not json");
@@ -60,8 +61,13 @@ class RetrieveThread extends AsyncTask<GoogleSignInAccount,Void,String> {
                     conn.setUser(jsonUser);
                     String[] items = separate[1].replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("\\s", "").split(",");
                     conn.getUser().setFavIds(items);
+                    if (conn.getUser().getFavIds() != null) {
+                        FavoritesThread favoritesThread = new FavoritesThread();
+                        favoritesThread.execute(conn.getUser().getFavIds());
+                    }
                     Log.d(TAG, "onPostExecute: " + conn.printUserInfo());
-                    Log.d(TAG, "onPostExecute: " + conn.getUser().getFavIds().toString());
+                    Log.d(TAG, "onPostExecute: " + separate[1]);
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

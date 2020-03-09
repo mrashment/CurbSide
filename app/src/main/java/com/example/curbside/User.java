@@ -25,6 +25,14 @@ public abstract class User {
           }
      }
 
+     public ArrayList<Truck> getFavTrucks() {
+          return favTrucks;
+     }
+
+     public void setFavTrucks(ArrayList<Truck> favTrucks) {
+          this.favTrucks = favTrucks;
+     }
+
      public String getName() {
           return name;
      }

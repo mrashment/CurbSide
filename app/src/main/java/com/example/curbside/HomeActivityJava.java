@@ -2,6 +2,7 @@ package com.example.curbside;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.content.pm.PackageManager;
@@ -11,6 +12,8 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -60,6 +63,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+
+
 public class HomeActivityJava extends AppCompatActivity implements OnMapReadyCallback, PermissionListener {
     private static final String TAG = "HomeActivityJava";
     private static final int REQUEST_CHECK_SETTINGS = 43;
@@ -69,11 +74,14 @@ public class HomeActivityJava extends AppCompatActivity implements OnMapReadyCal
     private RecyclerView recyclerView;
     private HomePageCardAdapter cardAdapter;
     private Button locationButton,menuButton, vendorButton, favoritesButton;
+    static Handler handler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        handler = new HomeHandler(this);
 
         SupportMapFragment mapFragment = (SupportMapFragment)getSupportFragmentManager().findFragmentById(R.id.myMap);
         mapFragment.getMapAsync(this);
@@ -113,6 +121,7 @@ public class HomeActivityJava extends AppCompatActivity implements OnMapReadyCal
 
             }
         });
+
 
     }
 
@@ -265,5 +274,21 @@ public class HomeActivityJava extends AppCompatActivity implements OnMapReadyCal
             }
         }
         super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    static class HomeHandler extends Handler {
+        Context context;
+
+        public HomeHandler(Context context) {
+            this.context = context;
+        }
+
+
+        @Override
+        public void handleMessage(@NonNull Message msg) {
+            // updates the times on items
+            int favs = msg.getData().getInt("Favs");
+            Toast.makeText(context, "User has " + favs + " favorites.",Toast.LENGTH_LONG).show();
+        }
     }
 }
