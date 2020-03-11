@@ -124,7 +124,7 @@ public class HomeActivityJava extends AppCompatActivity implements OnMapReadyCal
             }
         });
 
-        String url = "https://www.google.com/maps/dir/?api=1&destination=Madrid,Spain&origin=mLastLocation.getLatitude(),mLastLocation.getLongitude()&waypoints=Zaragoza|Huesca&travelmode=driving&dir_action=navigate";
+        String url = "https://www.google.com/maps/dir/?api=1&destination&origin&dir_action=navigate";
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
         startActivity(intent);
 
