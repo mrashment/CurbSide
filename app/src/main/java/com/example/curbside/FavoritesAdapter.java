@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.MyViewHolder> {
 
-    ArrayList<Truck> favorites;
+    private ArrayList<Truck> favorites;
 
     public FavoritesAdapter(ArrayList<Truck> favorites) {
         this.favorites = favorites;
@@ -33,6 +33,7 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.MyVi
         holder.truckNameTextView.setText(favorites.get(position).getName());
         holder.companyNameTextView.setText(favorites.get(position).getCompany().getName());
         holder.hoursTextView.setText(favorites.get(position).getHours());
+        holder.distanceTextView.setText(Double.toString(favorites.get(position).getDistance()));
     }
 
     @Override
@@ -42,7 +43,7 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.MyVi
 
     class MyViewHolder extends RecyclerView.ViewHolder {
 
-        TextView truckNameTextView,companyNameTextView,hoursTextView;
+        TextView truckNameTextView,companyNameTextView,hoursTextView,distanceTextView;
 
         public MyViewHolder(View itemView){
             super(itemView);
@@ -50,6 +51,7 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.MyVi
             truckNameTextView = itemView.findViewById(R.id.truckNameTextView);
             companyNameTextView = itemView.findViewById(R.id.companyNameTextView);
             hoursTextView = itemView.findViewById(R.id.hoursTextView);
+            distanceTextView = itemView.findViewById(R.id.distanceTextView);
         }
     }
 }

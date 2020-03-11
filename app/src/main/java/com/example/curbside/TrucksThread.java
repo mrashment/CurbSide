@@ -66,7 +66,7 @@ public class TrucksThread extends AsyncTask<Double,Void, Boolean> {
                 Log.d(TAG, "doInBackground: " + line.trim());
                 JSONObject nextTruck = new JSONObject(line.trim());
                 Log.d(TAG, "doInBackground: created JSONObject");
-                Truck truck = new Truck(nextTruck.getString("name"),new Company(nextTruck.getString("cname")));
+                Truck truck = new Truck(nextTruck.getString("name"),new Company(nextTruck.getString("cname"),nextTruck.getInt("cid")));
                 try {
                     truck.setHours(nextTruck.getString("open_time") + "-" + nextTruck.getString("close_time"));
                 } catch (Exception e) {
@@ -75,6 +75,7 @@ public class TrucksThread extends AsyncTask<Double,Void, Boolean> {
                 truck.setBio(nextTruck.getString("bio"));
                 truck.setLat(nextTruck.getDouble("latitude"));
                 truck.setLng(nextTruck.getDouble("longitude"));
+                truck.setDistance(nextTruck.getDouble("distance"));
                 trucks.add(truck);
                 Log.d(TAG, "doInBackground: added Truck");
             }

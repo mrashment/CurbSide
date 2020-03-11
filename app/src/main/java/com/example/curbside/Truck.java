@@ -10,13 +10,21 @@ public class Truck implements Serializable {
     private Company company;
     private ArrayList<FoodMenu> menus;
     private String hours;
-    private double lat,lng;
+    private double lat,lng,distance;
 
 
     public Truck(String name, Company company) {
         this.name = name;
         this.company = company;
         this.hours = "9:00am-9:00pm";
+    }
+
+    public double getDistance() {
+        return distance;
+    }
+
+    public void setDistance(double distance) {
+        this.distance = distance;
     }
 
     public String getBio() {

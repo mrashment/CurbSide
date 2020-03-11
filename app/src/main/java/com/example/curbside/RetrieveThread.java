@@ -62,10 +62,6 @@ class RetrieveThread extends AsyncTask<GoogleSignInAccount,Void,String> {
                     conn.setUser(jsonUser);
                     String[] items = separate[1].replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("\\s", "").split(",");
                     conn.getUser().setFavIds(items);
-                    if (conn.getUser().getFavIds() != null) {
-                        FavoritesThread favoritesThread = new FavoritesThread();
-                        favoritesThread.execute(conn.getUser().getFavIds());
-                    }
                     Log.d(TAG, "onPostExecute: " + conn.printUserInfo());
                     Log.d(TAG, "onPostExecute: " + separate[1]);
 

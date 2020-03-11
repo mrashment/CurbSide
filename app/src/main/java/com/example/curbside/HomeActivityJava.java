@@ -189,10 +189,16 @@ public class HomeActivityJava extends AppCompatActivity implements OnMapReadyCal
     private Location mLastLocation;
 
     public Double getCurLat() {
+        if (mLastLocation == null) {
+            return null;
+        }
         return mLastLocation.getLatitude();
     }
 
     public Double getCurLng() {
+        if (mLastLocation == null) {
+            return null;
+        }
         return mLastLocation.getLongitude();
     }
 
@@ -226,6 +232,9 @@ public class HomeActivityJava extends AppCompatActivity implements OnMapReadyCal
                             googleMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
 
                             findNearbyTrucks();
+                            FavoritesThread favoritesThread = new FavoritesThread();
+                            favoritesThread.execute();
+
 
                         } else {
                             Toast.makeText(HomeActivityJava.this, "No current location found", Toast.LENGTH_LONG).show();
@@ -282,7 +291,6 @@ public class HomeActivityJava extends AppCompatActivity implements OnMapReadyCal
             this.context = ((HomeActivityJava)context);
         }
 
-
         @Override
         public void handleMessage(@NonNull Message msg) {
             Double lat = context.getCurLat();
@@ -290,19 +298,20 @@ public class HomeActivityJava extends AppCompatActivity implements OnMapReadyCal
             int trucksNearby = 0;
 
             for (Truck t : DbConnection.getInstance().getUser().getFavTrucks()) {
-                Double tlat = t.getLat();
-                Double tlng = t.getLng();
-                Double distance = 3959 * Math.acos(Math.cos(Math.toRadians(lat)) *
+                double tlat = t.getLat();
+                double tlng = t.getLng();
+                double distance = 3959 * Math.acos(Math.cos(Math.toRadians(lat)) *
                         Math.cos(Math.toRadians(tlat)) *
                         Math.cos(Math.toRadians(tlng) - Math.toRadians(lng)) +
                         Math.sin(Math.toRadians(lat)) *
                         Math.sin(Math.toRadians(tlat)));
+                t.setDistance(distance);
                 if (distance <= 2) {
                     trucksNearby++;
                 }
             }
 
-            Snackbar.make(context.findViewById(R.id.snackbarLayout),"You have " + trucksNearby + " favorites nearby!",Snackbar.LENGTH_LONG);
+            Snackbar.make(context.findViewById(R.id.snackbarLayout),"You have " + trucksNearby + " favorites nearby!",Snackbar.LENGTH_LONG).show();
 //            Toast.makeText(context, "User has " + DbConnection.getInstance().getUser().getFavTrucks().toString() + " favorites.",Toast.LENGTH_LONG).show();
         }
     }
