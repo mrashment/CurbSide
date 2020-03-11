@@ -16,7 +16,7 @@ import com.google.android.gms.common.api.Status;
 
 public class Profile extends AppCompatActivity {
 
-    private Button settingsButton, backToHomeButton, signOutButton;
+    private Button settingsButton, backToHomeButton, signOutButton,favoritesButton;
     GoogleApiClient mGoogleApiClient;
 
     @Override
@@ -37,6 +37,10 @@ public class Profile extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
 
         signOutButton = findViewById(R.id.signOutButton);
+        backToHomeButton = findViewById(R.id.backToHomeButton);
+        settingsButton = findViewById(R.id.settingsButton);
+        favoritesButton = findViewById(R.id.favoritesButton);
+
         signOutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -53,7 +57,6 @@ public class Profile extends AppCompatActivity {
             }
         });
 
-        backToHomeButton = findViewById(R.id.backToHomeButton);
 
         backToHomeButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,15 +64,20 @@ public class Profile extends AppCompatActivity {
                 finish();
             }
         });
-
-        settingsButton = findViewById(R.id.settingsButton);
         settingsButton.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Profile.this, Notifications.class);
                 startActivity(intent);
             }
         });
-
+        favoritesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Profile.this,FavoritesActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }

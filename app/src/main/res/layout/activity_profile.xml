@@ -34,13 +34,19 @@
             android:text="Settings" />
 
         <Button
-            android:id="@+id/companyInfoButton"
+            android:id="@+id/favoritesButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Favorites" />
+
+        <Button
+            android:id="@+id/accountButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Account" />
 
         <Button
-            android:id="@+id/addTruckButton"
+            android:id="@+id/privacyButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Privacy" />
