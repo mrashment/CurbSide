@@ -29,8 +29,7 @@ public class TruckMenuActivity extends AppCompatActivity {
         backToHomeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(TruckMenuActivity.this, HomeActivityJava.class);
-                startActivity(intent);
+                finish();
             }
         });
 

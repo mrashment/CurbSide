@@ -84,6 +84,13 @@ public class FavoritesThread extends AsyncTask<Integer[],Void, Boolean> {
                 try {
                     truck.setLat(nextTruck.getDouble("latitude"));
                     truck.setLng(nextTruck.getDouble("longitude"));
+                    double tlat = truck.getLat();
+                    double tlng = truck.getLng();
+                    double distance = 3959 * Math.acos(Math.cos(Math.toRadians(lat)) *
+                            Math.cos(Math.toRadians(tlat)) *
+                            Math.cos(Math.toRadians(tlng) - Math.toRadians(lng)) +
+                            Math.sin(Math.toRadians(lat)) *
+                                    Math.sin(Math.toRadians(tlat)));
                 } catch (Exception e) {}
                 trucks.add(truck);
                 Log.d(TAG, "doInBackground: added Truck");
