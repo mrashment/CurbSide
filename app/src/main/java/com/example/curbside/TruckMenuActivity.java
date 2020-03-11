@@ -8,12 +8,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.Toast;
+import android.widget.TextView;
 
 public class TruckMenuActivity extends AppCompatActivity {
 
     private Truck truck;
     private Button backToHomeButton;
+    private TextView truckNameText;
+    private TextView companyNameText;
+    private TextView hoursTruckText;
 
 
     @Override
@@ -22,6 +25,14 @@ public class TruckMenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_truck_menu);
         Intent intent = getIntent();
         truck = (Truck)intent.getSerializableExtra("com.example.curbside.truck");
+
+        truckNameText = findViewById(R.id.truckNameText);
+        companyNameText = findViewById(R.id.companyNameText);
+        hoursTruckText = findViewById(R.id.hoursTruckText);
+
+        truckNameText.setText(truck.getName());
+        companyNameText.setText(truck.getCompany().getName());
+        hoursTruckText.setText(truck.getHours());
 
         imageButton = findViewById(R.id.truckFavoriteButton);
         backToHomeButton = findViewById(R.id.backToHomeButton);
@@ -56,7 +67,5 @@ public class TruckMenuActivity extends AppCompatActivity {
     }
 
     private ImageButton imageButton;
-
-
 
 }
