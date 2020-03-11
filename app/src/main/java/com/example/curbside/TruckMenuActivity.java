@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class TruckMenuActivity extends AppCompatActivity {
@@ -32,8 +33,6 @@ public class TruckMenuActivity extends AppCompatActivity {
                 finish();
             }
         });
-
-//        Toast.makeText(this,"The current truck is " + truck.getName(),Toast.LENGTH_LONG).show();
 
         imageButton.setOnClickListener(new View.OnClickListener(){
             boolean isPressed = false;

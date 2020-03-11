@@ -284,6 +284,10 @@ public class HomeActivityJava extends AppCompatActivity implements OnMapReadyCal
         super.onActivityResult(requestCode, resultCode, data);
     }
 
+    public void signOut() {
+
+    }
+
     static class HomeHandler extends Handler {
         HomeActivityJava context;
 
