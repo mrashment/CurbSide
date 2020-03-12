@@ -17,14 +17,17 @@ public class FavoritesActivity extends AppCompatActivity {
     Button backToHomeButton;
     RecyclerView recyclerView;
     ArrayList<Truck> favorites;
+    DbConnection conn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favorites);
 
+        conn = DbConnection.getInstance();
         favorites = new ArrayList<>();
-        favorites = DbConnection.getInstance().getUser().getFavTrucks();
+
+        favorites = conn.getUser().getFavTrucks();
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             favorites.sort(new TruckDistanceAsc());

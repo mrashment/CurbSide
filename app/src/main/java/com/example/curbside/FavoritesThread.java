@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class FavoritesThread extends AsyncTask<Void,Void, Boolean> {
     private static final String TAG = "FavoritesThread";
     private ArrayList<Truck> trucks;
-    DbConnection conn;
+    private DbConnection conn;
 
     public FavoritesThread() {
         trucks = new ArrayList<>();
