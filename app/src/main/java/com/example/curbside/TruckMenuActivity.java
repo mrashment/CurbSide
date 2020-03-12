@@ -43,7 +43,7 @@ public class TruckMenuActivity extends AppCompatActivity {
         navigationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String url = "https://www.google.com/maps/dir/?api=1&destination&origin&dir_action=navigate";
+                String url = "https://www.google.com/maps/dir/?api=1&destination=" + truck.getLat() + "," + truck.getLng() + "&origin&dir_action=navigate";
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
                 startActivity(intent);
             }
