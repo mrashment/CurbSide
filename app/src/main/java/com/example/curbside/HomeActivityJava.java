@@ -8,6 +8,7 @@ import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -110,8 +111,32 @@ public class HomeActivityJava extends AppCompatActivity implements OnMapReadyCal
             }
         });
 
+        String url = "https://www.google.com/maps/dir/?api=1&destination&origin&dir_action=navigate";
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+        startActivity(intent);
 
-    }
+//        private void getDirections(){
+////        Location currentLocation = googleMap.getMyLocation();
+////        double latitudeCurr = currentLocation.getLatitude();
+////        double longitudeCurr = currentLocation.getLongitude();
+////
+////        final Intent intent = new Intent(Intent.ACTION_VIEW,
+////                Uri.parse("+http://maps.google.com/maps?""saddr="
+////                        + latitudeCurr + "," + longitudeCurr + "&daddr="
+////                        + latitude + "," + longitude));
+////        intent.setClassName("com.google.android.apps.maps",
+////                "com.google.android.maps.HomeActivityJava");
+////        startActivity(intent);
+//
+   }
+
+//   private void getDirections() {
+//        Double lat = mLastLocation.getLatitude();
+//        Double lng = mLastLocation.getLongitude();
+//
+//        String url = "https://www.google.com/maps/dir/?api=1&destination=Madrid,Spain&origin=" + lat + "&longitude=" + lng&waypoints=Zaragoza|Huesca&travelmode=driving&dir_action=navigate";
+//   }
+
 
     private void findNearbyTrucks() {
         TrucksThread trucksThread = new TrucksThread(this);
@@ -152,6 +177,8 @@ public class HomeActivityJava extends AppCompatActivity implements OnMapReadyCal
         }
 
     }
+
+
 
     private void getCurrentLocation() {
         LocationRequest locationRequest = new LocationRequest();

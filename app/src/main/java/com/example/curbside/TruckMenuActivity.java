@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,7 +15,7 @@ import android.widget.Toast;
 public class TruckMenuActivity extends AppCompatActivity {
 
     private Truck truck;
-    private Button backToHomeButton;
+    private Button backToHomeButton, navigationButton;
 
 
     @Override
@@ -25,6 +26,18 @@ public class TruckMenuActivity extends AppCompatActivity {
         truck = (Truck)intent.getSerializableExtra("com.example.curbside.truck");
 
         imageButton = findViewById(R.id.truckFavoriteButton);
+
+        navigationButton = findViewById(R.id.navigationButton);
+
+        navigationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String url = "https://www.google.com/maps/dir/?api=1&destination&origin&dir_action=navigate";
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                startActivity(intent);
+            }
+        });
+
         backToHomeButton = findViewById(R.id.backToHomeButton);
 
         backToHomeButton.setOnClickListener(new View.OnClickListener() {
