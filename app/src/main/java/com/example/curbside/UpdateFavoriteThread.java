@@ -30,7 +30,14 @@ public class UpdateFavoriteThread extends AsyncTask<Integer, Void, Boolean> {
     }
 
     @Override
+    protected void onPostExecute(Boolean aBoolean) {
+        Log.d(TAG, "onPostExecute: result = " + aBoolean);
+    }
+
+    @Override
     protected Boolean doInBackground(Integer... integers) {
+
+        Log.d(TAG, "doInBackground: userid = " + integers[0] + " companyid = " + integers[1]);
         String stringData = "userid=" + integers[0] + "&companyid=" + integers[1];
 
         byte[] postData = stringData.getBytes();
@@ -51,10 +58,14 @@ public class UpdateFavoriteThread extends AsyncTask<Integer, Void, Boolean> {
 
             BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
             String line;
+            String result = "";
             while ((line = reader.readLine()) != null) {
-
+                result += line;
             }
             reader.close();
+            if (!result.trim().equalsIgnoreCase("Success")) {
+                return false;
+            }
 
         } catch (MalformedURLException e) {
             System.err.println(TAG + "MalformedURLException : " + e.getMessage());

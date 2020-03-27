@@ -27,6 +27,7 @@ class RetrieveThread extends AsyncTask<GoogleSignInAccount,Void,String> {
     private static final String TAG = "RetrieveThread";
     private byte[] postData;
     GoogleSignInAccount account;
+    private DbConnection conn;
 
     public RetrieveThread() {
 
@@ -36,7 +37,7 @@ class RetrieveThread extends AsyncTask<GoogleSignInAccount,Void,String> {
     protected void onPostExecute(String response) {
         JSONObject jsonUser;
         JSONObject jsonFavorites;
-        DbConnection conn = DbConnection.getInstance();
+        conn = DbConnection.getInstance();
 
         switch(response.trim()) {
             case "Failed Connection":
@@ -58,7 +59,8 @@ class RetrieveThread extends AsyncTask<GoogleSignInAccount,Void,String> {
                     String[] separate = both.split("\n");
                     Log.d(TAG, "onPostExecute: " + both);
 
-                    jsonUser = new JSONObject(separate[0]);
+                    jsonUser = new JSONObject(separate[0].trim());
+                    Log.d(TAG, "onPostExecute: " + jsonUser);
                     conn.setUser(jsonUser);
                     String[] items = separate[1].replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("\\s", "").split(",");
                     conn.getUser().setFavIds(items);

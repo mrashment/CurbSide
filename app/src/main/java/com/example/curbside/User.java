@@ -5,7 +5,18 @@ import android.util.Log;
 import java.util.ArrayList;
 
 public abstract class User {
+
      private static final String TAG = "User";
+     private int id;
+
+     public int getId() {
+          return id;
+     }
+
+     public void setId(int id) {
+          this.id = id;
+     }
+
      private String name;
      private String email;
      private int rewards;
@@ -82,7 +93,8 @@ public abstract class User {
      @Override
      public String toString() {
           String result = "";
-          result += "Name: " + this.name;
+          result += "Id: " + this.id;
+          result += "\nName: " + this.name;
           result += "\nEmail: " + this.email;
           result += "\nRewards: " + this.rewards;
           result += "\nPermission Level: " + this.permissions;

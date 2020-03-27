@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -14,11 +15,13 @@ import android.widget.Toast;
 
 public class TruckMenuActivity extends AppCompatActivity {
 
+    private static final String TAG = "TruckMenuActivity";
     private Truck truck;
     private Button backToHomeButton, navigationButton;
     private TextView truckNameText;
     private TextView companyNameText;
     private TextView hoursTruckText;
+    private DbConnection conn;
 
 
     @Override
@@ -27,6 +30,8 @@ public class TruckMenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_truck_menu);
         Intent intent = getIntent();
         truck = (Truck)intent.getSerializableExtra("com.example.curbside.truck");
+
+        conn = DbConnection.getInstance();
 
         truckNameText = findViewById(R.id.truckNameText);
         companyNameText = findViewById(R.id.companyNameText);
@@ -62,16 +67,21 @@ public class TruckMenuActivity extends AppCompatActivity {
             boolean isPressed = false;
             public void onClick(View v){
 
-                if(isPressed==false){
+                if(isPressed==false){ // favoriting
 
                     imageButton.setBackgroundResource(R.drawable.truck_favorite_pressed);
                     isPressed=true;
+                    UpdateFavoriteThread thread = new UpdateFavoriteThread(UpdateFavoriteThread.OPERATION.Add);
+                    thread.execute(conn.getUser().getId(),truck.getCompany().getId());
+                    Log.d(TAG, "onClick: Favoriting with companyid = " + truck.getCompany().getId());
 
-                }else if(isPressed==true){
+                }else if(isPressed==true){ // unfavoriting
 
                     imageButton.setBackgroundResource(R.drawable.truck_favorite_unpressed);
                     isPressed=false;
-
+                    UpdateFavoriteThread thread = new UpdateFavoriteThread(UpdateFavoriteThread.OPERATION.Delete);
+                    thread.execute(conn.getUser().getId(),truck.getCompany().getId());
+                    Log.d(TAG, "onClick: Unfavoriting with companyid = " + truck.getCompany().getId());
                 }
             }
         });
