@@ -13,7 +13,7 @@ public class EditTrucks extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
+        setContentView(R.layout.activity_edit_trucks);
 
         backToOptions = findViewById(R.id.backToOptions);
         editMenus = findViewById(R.id.editMenus);
@@ -30,7 +30,7 @@ public class EditTrucks extends AppCompatActivity{
         editMenus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(EditTrucks.this, EditMenus.class);
+                Intent intent = new Intent(EditTrucks.this, EditMenuInterface.class);
                 startActivity(intent);
             }
         });
@@ -38,7 +38,7 @@ public class EditTrucks extends AppCompatActivity{
         editTruck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(EditTrucks.this, EditTruck.class);
+                Intent intent = new Intent(EditTrucks.this, EditTruckInterface.class);
                 startActivity(intent);
             }
         });
