@@ -24,23 +24,56 @@
         tools:layout_editor_absoluteX="159dp"
         tools:layout_editor_absoluteY="609dp" />
 
-    <EditText
-        android:id="@+id/editTruckName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Truck Name"
-        tools:layout_editor_absoluteX="56dp"
-        tools:layout_editor_absoluteY="134dp" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
 
-    <EditText
-        android:id="@+id/editTruckHours"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Truck Hours"
-        tools:layout_editor_absoluteX="56dp"
-        tools:layout_editor_absoluteY="260dp" />
+
+        <TextView
+            android:id="@+id/companyNameText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Company Name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.181"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/truckNameText" />
+
+        <TextView
+            android:id="@+id/hoursTruckText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="260dp"
+            android:layout_marginBottom="45dp"
+            android:text="Truck Hours"
+            app:layout_constraintBottom_toTopOf="@+id/editTruckName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.167"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/companyNameText" />
+
+        <EditText
+            android:id="@+id/editTruckName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Truck Name"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="343dp" />
+
+        <EditText
+            android:id="@+id/editTruckHours"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="27dp"
+            android:ems="10"
+            android:hint="Truck Hours"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTruckName" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
