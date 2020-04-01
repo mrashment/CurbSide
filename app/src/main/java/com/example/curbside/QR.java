@@ -19,3 +19,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         initViews();
     }
 
+    private void initViews() {
+        btnTakePicture = findViewById(R.id.btnTakePicture);
+        btnScanBarcode = findViewById(R.id.btnScanBarcode);
+        btnTakePicture.setOnClickListener(this);
+        btnScanBarcode.setOnClickListener(this);
+    }
+
