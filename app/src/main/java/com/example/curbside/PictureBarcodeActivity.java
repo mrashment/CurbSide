@@ -97,3 +97,85 @@ public class PictureBarcodeActivity extends AppCompatActivity implements View.On
                 }
         }
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == CAMERA_REQUEST && resultCode == RESULT_OK) {
+            launchMediaScanIntent();
+            try {
+
+
+                Bitmap bitmap = decodeBitmapUri(this, imageUri);
+                if (detector.isOperational() && bitmap != null) {
+                    Frame frame = new Frame.Builder().setBitmap(bitmap).build();
+                    SparseArray<Barcode> barcodes = detector.detect(frame);
+                    for (int index = 0; index < barcodes.size(); index++) {
+                        Barcode code = barcodes.valueAt(index);
+                        txtResultBody.setText(txtResultBody.getText() + "\n" + code.displayValue + "\n");
+
+                        int type = barcodes.valueAt(index).valueFormat;
+                        switch (type) {
+                            case Barcode.CONTACT_INFO:
+                                Log.i(TAG, code.contactInfo.title);
+                                break;
+                            case Barcode.EMAIL:
+                                Log.i(TAG, code.displayValue);
+                                break;
+                            case Barcode.ISBN:
+                                Log.i(TAG, code.rawValue);
+                                break;
+                            case Barcode.PHONE:
+                                Log.i(TAG, code.phone.number);
+                                break;
+                            case Barcode.PRODUCT:
+                                Log.i(TAG, code.rawValue);
+                                break;
+                            case Barcode.SMS:
+                                Log.i(TAG, code.sms.message);
+                                break;
+                            case Barcode.TEXT:
+                                Log.i(TAG, code.displayValue);
+                                break;
+                            case Barcode.URL:
+                                Log.i(TAG, "url: " + code.displayValue);
+                                break;
+                            case Barcode.WIFI:
+                                Log.i(TAG, code.wifi.ssid);
+                                break;
+                            case Barcode.GEO:
+                                Log.i(TAG, code.geoPoint.lat + ":" + code.geoPoint.lng);
+                                break;
+                            case Barcode.CALENDAR_EVENT:
+                                Log.i(TAG, code.calendarEvent.description);
+                                break;
+                            case Barcode.DRIVER_LICENSE:
+                                Log.i(TAG, code.driverLicense.licenseNumber);
+                                break;
+                            default:
+                                Log.i(TAG, code.rawValue);
+                                break;
+                        }
+                    }
+                    if (barcodes.size() == 0) {
+                        txtResultBody.setText("No barcode could be detected. Please try again.");
+                    }
+                } else {
+                    txtResultBody.setText("Detector initialisation failed");
+                }
+            } catch (Exception e) {
+                Toast.makeText(getApplicationContext(), "Failed to load Image", Toast.LENGTH_SHORT)
+                        .show();
+                Log.e(TAG, e.toString());
+            }
+        }
+    }
+
+    private void takeBarcodePicture() {
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        File photo = new File(Environment.getExternalStorageDirectory(), "pic.jpg");
+        imageUri = FileProvider.getUriForFile(PictureBarcodeActivity.this,
+                BuildConfig.APPLICATION_ID + ".provider", photo);
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+        startActivityForResult(intent, CAMERA_REQUEST);
+    }
