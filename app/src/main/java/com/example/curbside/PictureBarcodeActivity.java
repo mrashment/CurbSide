@@ -29,3 +29,29 @@ import com.google.android.gms.vision.barcode.BarcodeDetector;
 import java.io.File;
 import java.io.FileNotFoundException;
 
+public class PictureBarcodeActivity extends AppCompatActivity implements View.OnClickListener {
+
+    Button btnOpenCamera;
+    TextView txtResultBody;
+
+    private BarcodeDetector detector;
+    private Uri imageUri;
+    private static final int REQUEST_CAMERA_PERMISSION = 200;
+    private static final int CAMERA_REQUEST = 101;
+    private static final String TAG = "API123";
+    private static final String SAVED_INSTANCE_URI = "uri";
+    private static final String SAVED_INSTANCE_RESULT = "result";
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_barcode_picture);
+
+        initViews();
+
+        if (savedInstanceState != null) {
+            if (imageUri != null) {
+                imageUri = Uri.parse(savedInstanceState.getString(SAVED_INSTANCE_URI));
+                txtResultBody.setText(savedInstanceState.getString(SAVED_INSTANCE_RESULT));
+            }
+        }
