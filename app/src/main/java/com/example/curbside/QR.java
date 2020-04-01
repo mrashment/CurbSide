@@ -24,6 +24,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnScanBarcode = findViewById(R.id.btnScanBarcode);
         btnTakePicture.setOnClickListener(this);
         btnScanBarcode.setOnClickListener(this);
-
     }
 
+    @Override
+    public void onClick(View v) {
+
+        switch (v.getId()) {
+            case R.id.btnTakePicture:
+                startActivity(new Intent(MainActivity.this, PictureBarcodeActivity.class));
+                break;
+            case R.id.btnScanBarcode:
+                startActivity(new Intent(MainActivity.this, ScannedBarcodeActivity.class));
+                break;
+        }
+
+    }
+}
