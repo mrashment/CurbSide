@@ -8,7 +8,7 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class QR_home extends AppCompatActivity implements View.OnClickListener {
+class QR_home extends AppCompatActivity implements View.OnClickListener {
 
     Button btnTakePicture, btnScanBarcode;
 
