@@ -55,3 +55,32 @@ public class PictureBarcodeActivity extends AppCompatActivity implements View.On
                 txtResultBody.setText(savedInstanceState.getString(SAVED_INSTANCE_RESULT));
             }
         }
+
+        detector = new BarcodeDetector.Builder(getApplicationContext())
+                .setBarcodeFormats(Barcode.DATA_MATRIX | Barcode.QR_CODE)
+                .build();
+
+        if (!detector.isOperational()) {
+            txtResultBody.setText("Detector initialisation failed");
+            return;
+        }
+    }
+
+    private void initViews() {
+        txtResultBody = findViewById(R.id.txtResultsBody);
+        btnOpenCamera = findViewById(R.id.btnTakePicture);
+        txtResultBody = findViewById(R.id.txtResultsBody);
+        btnOpenCamera.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+
+        switch (v.getId()) {
+            case R.id.btnTakePicture:
+                ActivityCompat.requestPermissions(PictureBarcodeActivity.this, new
+                        String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA}, REQUEST_CAMERA_PERMISSION);
+                break;
+        }
+
+    }
