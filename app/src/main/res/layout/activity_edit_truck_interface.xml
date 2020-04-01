@@ -28,29 +28,29 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
 
+        <TextView
+            android:layout_width="151dp"
+            android:layout_height="26dp"
+            android:text="Current Truck Info"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/companyNameText"
+            tools:layout_editor_absoluteY="110dp" />
 
         <TextView
             android:id="@+id/companyNameText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Company Name"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.181"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/truckNameText" />
+            tools:layout_editor_absoluteX="99dp"
+            tools:layout_editor_absoluteY="146dp" />
 
         <TextView
             android:id="@+id/hoursTruckText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="260dp"
-            android:layout_marginBottom="45dp"
             android:text="Truck Hours"
-            app:layout_constraintBottom_toTopOf="@+id/editTruckName"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.167"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/companyNameText" />
+            tools:layout_editor_absoluteX="99dp"
+            tools:layout_editor_absoluteY="187dp" />
 
         <EditText
             android:id="@+id/editTruckName"
