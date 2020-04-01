@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ScannedBarcodeActivity"></activity>
+        <activity android:name=".PictureBarcodeActivity"></activity>
         <activity android:name=".QR" />
         <activity android:name=".FavoritesActivity" />
         <activity android:name=".VendorOptionsActivity" />

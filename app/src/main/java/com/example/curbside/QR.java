@@ -8,7 +8,7 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class QR_home extends AppCompatActivity implements View.OnClickListener {
 
     Button btnTakePicture, btnScanBarcode;
 
@@ -31,10 +31,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         switch (v.getId()) {
             case R.id.btnTakePicture:
-                startActivity(new Intent(MainActivity.this, PictureBarcodeActivity.class));
+                startActivity(new Intent(QR_home.this, PictureBarcodeActivity.class));
                 break;
             case R.id.btnScanBarcode:
-                startActivity(new Intent(MainActivity.this, ScannedBarcodeActivity.class));
+                startActivity(new Intent(QR_home.this, ScannedBarcodeActivity.class));
                 break;
         }
 
