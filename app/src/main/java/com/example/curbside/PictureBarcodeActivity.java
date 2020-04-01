@@ -188,3 +188,27 @@ public class PictureBarcodeActivity extends AppCompatActivity implements View.On
         }
         super.onSaveInstanceState(outState);
     }
+
+    private void launchMediaScanIntent() {
+        Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
+        mediaScanIntent.setData(imageUri);
+        this.sendBroadcast(mediaScanIntent);
+    }
+
+    private Bitmap decodeBitmapUri(Context ctx, Uri uri) throws FileNotFoundException {
+        int targetW = 600;
+        int targetH = 600;
+        BitmapFactory.Options bmOptions = new BitmapFactory.Options();
+        bmOptions.inJustDecodeBounds = true;
+        BitmapFactory.decodeStream(ctx.getContentResolver().openInputStream(uri), null, bmOptions);
+        int photoW = bmOptions.outWidth;
+        int photoH = bmOptions.outHeight;
+
+        int scaleFactor = Math.min(photoW / targetW, photoH / targetH);
+        bmOptions.inJustDecodeBounds = false;
+        bmOptions.inSampleSize = scaleFactor;
+
+        return BitmapFactory.decodeStream(ctx.getContentResolver()
+                .openInputStream(uri), null, bmOptions);
+    }
+}
