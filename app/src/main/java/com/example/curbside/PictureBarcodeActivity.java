@@ -179,3 +179,12 @@ public class PictureBarcodeActivity extends AppCompatActivity implements View.On
         intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
         startActivityForResult(intent, CAMERA_REQUEST);
     }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        if (imageUri != null) {
+            outState.putString(SAVED_INSTANCE_URI, imageUri.toString());
+            outState.putString(SAVED_INSTANCE_RESULT, txtResultBody.getText().toString());
+        }
+        super.onSaveInstanceState(outState);
+    }
