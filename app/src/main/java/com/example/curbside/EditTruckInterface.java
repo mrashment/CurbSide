@@ -19,8 +19,15 @@ import java.util.ArrayList;
 public class EditTruckInterface extends AppCompatActivity {
     private Button backToEditTrucks, applyTruckChange;
     private Truck truck;
+    ArrayList<Truck> trucks;
+    Context context;
     private View editTruckName, editTruckHours;
     private TextView companyNameText, hoursTruckText;
+
+    public EditTruckInterface(ArrayList<Truck> trucks, Context context) {
+        this.trucks = trucks;
+        this.context = context;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,9 +43,9 @@ public class EditTruckInterface extends AppCompatActivity {
         companyNameText = findViewById(R.id.companyNameText);
         hoursTruckText = findViewById(R.id.hoursTruckText);
 
-
-        companyNameText.setText(trucks.getName());
-        hoursTruckText.setText(trucks.getHours());
+//        grabs the current truck info from the Db
+        holder.companyNameText.setText(trucks.get(position).getName());
+        holder.hoursTruckText.setText(trucks.get(position).getHours());
 
         backToEditTrucks.setOnClickListener(new View.OnClickListener() {
             @Override
