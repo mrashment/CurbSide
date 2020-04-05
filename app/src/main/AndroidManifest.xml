@@ -14,7 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".FavoritesActivity"></activity>
+        <activity android:name=".SearchActivity"></activity>
+        <activity android:name=".FavoritesActivity" />
         <activity android:name=".VendorOptionsActivity" />
 
         <meta-data

@@ -45,7 +45,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="16dp"
-        android:background="@drawable/bg_round"
         android:iconifiedByDefault="false"
         android:queryHint="Which truck would you like?"
         app:layout_constraintEnd_toEndOf="parent"
