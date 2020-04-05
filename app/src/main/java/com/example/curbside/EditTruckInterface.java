@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -23,6 +24,7 @@ public class EditTruckInterface extends AppCompatActivity {
     Context context;
     private View editTruckName, editTruckHours;
     private TextView companyNameText, hoursTruckText;
+    private EditText editTruckHours, editTruckHours2;
 
     public EditTruckInterface(ArrayList<Truck> trucks, Context context) {
         this.trucks = trucks;
@@ -38,10 +40,14 @@ public class EditTruckInterface extends AppCompatActivity {
 
         backToEditTrucks = findViewById(R.id.backToEditTrucks);
         applyTruckChange = findViewById(R.id.applyTruckChange);
-        editTruckHours = findViewById(R.id.editTruckHours);
-        editTruckName = findViewById(R.id.editTruckName);
+
         companyNameText = findViewById(R.id.companyNameText);
         hoursTruckText = findViewById(R.id.hoursTruckText);
+
+        editTruckHours = findViewById(R.id.editTruckHours);
+        editTruckHours2 = findViewById(R.id.editTruckHours2);
+        editTruckName = findViewById(R.id.editTruckName);
+
 
 //        grabs the current truck info from the Db
         holder.companyNameText.setText(trucks.get(position).getName());
@@ -58,7 +64,18 @@ public class EditTruckInterface extends AppCompatActivity {
         applyTruckChange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                update truck database
+                EditText editTruckName = (EditText)findViewById(R.id.editTruckName);
+                String  stringEditTruckName = editTruckName.getText().toString().trim();
+
+                EditText editTruckHours = (EditText)findViewById(R.id.editTruckHours);
+                String  stringEditTruckHours = editTruckHours.getText().toString().trim();
+
+                EditText editTruckHours2 = (EditText)findViewById(R.id.editTruckHours2);
+                String  stringEditTruckHours2 = editTruckHours2.getText().toString().trim();
+
+                UPDATE Trucks
+                SET name = stringEditTruckName, open_time = stringEditTruckHours, close_time = stringEditTruckHours2
+                WHERE truck_id = ;
             }
         });
     }

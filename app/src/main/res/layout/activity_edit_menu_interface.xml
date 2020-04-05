@@ -42,4 +42,10 @@
         android:text="Add Item"
         tools:layout_editor_absoluteX="307dp"
         tools:layout_editor_absoluteY="8dp" />
+
+    <TableRow
+        android:layout_width="409dp"
+        android:layout_height="516dp"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="147dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

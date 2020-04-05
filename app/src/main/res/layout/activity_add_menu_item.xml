@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
 
     <EditText
-        android:id="@+id/editItemName"
+        android:id="@+id/newItemName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -17,7 +17,7 @@
         tools:layout_editor_absoluteY="199dp" />
 
     <EditText
-        android:id="@+id/editItemPrice"
+        android:id="@+id/newItemPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -27,7 +27,7 @@
         tools:layout_editor_absoluteY="286dp" />
 
     <EditText
-        android:id="@+id/editItemDescription"
+        android:id="@+id/newItemDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"

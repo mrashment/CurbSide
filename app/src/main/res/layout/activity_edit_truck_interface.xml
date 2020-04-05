@@ -67,7 +67,19 @@
             android:id="@+id/editTruckHours"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="27dp"
+            android:layout_marginTop="36dp"
+            android:ems="10"
+            android:hint="Truck Hours"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTruckName" />
+
+        <EditText
+            android:id="@+id/editTruckHours2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="104dp"
             android:ems="10"
             android:hint="Truck Hours"
             android:inputType="textPersonName"
