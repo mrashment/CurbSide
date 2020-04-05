@@ -26,7 +26,7 @@
         android:usesCleartextTraffic="true">
         <activity android:name=".ScannedBarcodeActivity"></activity>
         <activity android:name=".PictureBarcodeActivity" />
-        <activity android:name=".QR" />
+        <activity android:name=".QR_home" />
         <activity android:name=".FavoritesActivity" />
         <activity android:name=".VendorOptionsActivity" />
 
