@@ -172,12 +172,12 @@ public class PictureBarcodeActivity extends AppCompatActivity implements View.On
     }
 
     private void takeBarcodePicture() {
-        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        File photo = new File(Environment.getExternalStorageDirectory(), "pic.jpg");
-        imageUri = FileProvider.getUriForFile(PictureBarcodeActivity.this,
-                BuildConfig.APPLICATION_ID + ".provider", photo);
-        intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
-        startActivityForResult(intent, CAMERA_REQUEST);
+//        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+//        File photo = new File(Environment.getExternalStorageDirectory(), "pic.jpg");
+//        imageUri = FileProvider.getUriForFile(PictureBarcodeActivity.this,
+//                BuildConfig.APPLICATION_ID + ".provider", photo);
+//        intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+//        startActivityForResult(intent, CAMERA_REQUEST);
     }
 
     @Override
