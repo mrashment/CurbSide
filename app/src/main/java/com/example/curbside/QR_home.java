@@ -8,14 +8,14 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-class QR_home extends AppCompatActivity implements View.OnClickListener {
+public class QR_home extends AppCompatActivity implements View.OnClickListener {
 
     Button btnTakePicture, btnScanBarcode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_qr);
         initViews();
     }
 
