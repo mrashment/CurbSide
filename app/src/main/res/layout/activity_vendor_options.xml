@@ -52,12 +52,6 @@
             android:text="Settings" />
 
         <Button
-            android:id="@+id/addTruckButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Edit Trucks" />
-
-        <Button
             android:id="@+id/employeesButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
