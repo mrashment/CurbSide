@@ -15,6 +15,7 @@ import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -62,6 +63,7 @@ public class HomeActivityJava extends AppCompatActivity implements OnMapReadyCal
     private RecyclerView recyclerView;
     private HomePageCardAdapter cardAdapter;
     private Button locationButton,menuButton, vendorButton, favoritesButton;
+    private SearchView searchBar;
     static Handler handler;
 
     @Override
@@ -108,6 +110,13 @@ public class HomeActivityJava extends AppCompatActivity implements OnMapReadyCal
             public void onClick(View v) {
                 Intent intent = new Intent(HomeActivityJava.this,FavoritesActivity.class);
                 startActivity(intent);
+            }
+        });
+        searchBar = findViewById(R.id.sv_location);
+        searchBar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeActivityJava.this,SearchActivity.class));
             }
         });
 

@@ -16,7 +16,7 @@ import com.google.android.gms.common.api.Status;
 
 public class Profile extends AppCompatActivity {
 
-    private Button settingsButton, backToHomeButton, signOutButton,favoritesButton;
+    private Button settingsButton, backToHomeButton, signOutButton,favoritesButton,rewardsButton;
     GoogleApiClient mGoogleApiClient;
 
     @Override
@@ -40,6 +40,14 @@ public class Profile extends AppCompatActivity {
         backToHomeButton = findViewById(R.id.backToHomeButton);
         settingsButton = findViewById(R.id.settingsButton);
         favoritesButton = findViewById(R.id.favoritesButton);
+        rewardsButton = findViewById(R.id.rewardsButton);
+
+        rewardsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Profile.this,QR_home.class));
+            }
+        });
 
         signOutButton.setOnClickListener(new View.OnClickListener() {
             @Override
