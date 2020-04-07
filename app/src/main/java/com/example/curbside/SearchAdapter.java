@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -34,7 +35,10 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
 
     @Override
     public void onBindViewHolder(@NonNull SearchViewHolder holder, int position) {
-
+        holder.truckNameTextView.setText(searchResults.get(position).getName());
+        holder.companyNameTextView.setText(searchResults.get(position).getCompany().getName());
+        holder.hoursTextView.setText(searchResults.get(position).getHours());
+        holder.distanceTextView.setText(Double.toString(searchResults.get(position).getDistance()));
     }
 
     @Override
@@ -52,10 +56,15 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
 
     class SearchViewHolder extends RecyclerView.ViewHolder {
 
+        TextView truckNameTextView,companyNameTextView,hoursTextView,distanceTextView;
 
         public SearchViewHolder(View itemView) {
-
             super(itemView);
+
+            truckNameTextView = itemView.findViewById(R.id.truckNameTextView);
+            companyNameTextView = itemView.findViewById(R.id.companyNameTextView);
+            hoursTextView = itemView.findViewById(R.id.hoursTextView);
+            distanceTextView = itemView.findViewById(R.id.distanceTextView);
         }
     }
 
@@ -66,16 +75,16 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
 
             if (constraint != null && constraint.length() > 0) {
                 List<String> filterList = new ArrayList<>();
-                for (int i = 0; i < mStringFilterList.size(); i++) {
-                    if ((mStringFilterList.get(i).toUpperCase()).contains(constraint.toString().toUpperCase())) {
-                        filterList.add(mStringFilterList.get(i));
+                for (int i = 0; i < filterList.size(); i++) {
+                    if ((filterList.get(i).toUpperCase()).contains(constraint.toString().toUpperCase())) {
+                        filterList.add(filterList.get(i));
                     }
                 }
                 results.count = filterList.size();
                 results.values = filterList;
             } else {
-                results.count = mStringFilterList.size();
-                results.values = mStringFilterList;
+                results.count = filterList.size();
+                results.values = filterList;
             }
             return results;
         }
