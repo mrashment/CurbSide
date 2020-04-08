@@ -41,7 +41,7 @@ public class SeeTrucksActivity extends AppCompatActivity {
     }
 
     private void findCompanyTrucks() {
-        TrucksThread trucksThread = new TrucksThread(this);
+        TrucksThreadCompany trucksThread = new TrucksThreadCompany(this);
         Log.d(TAG, "findCompanyTrucks: companyID = " );
         trucksThread.execute();
     }
