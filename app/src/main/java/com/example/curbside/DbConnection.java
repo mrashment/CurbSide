@@ -21,6 +21,7 @@ public class DbConnection {
     public static final String USER_ADD = "https://cgi.sice.indiana.edu/~team59/useradd.php"; // adds user to db
     public static final String NEARBY_TRUCKS = "https://cgi.sice.indiana.edu/~team59/nearbytrucks.php";
     public static final String FAVORITE_TRUCKS = "https://cgi.sice.indiana.edu/~team59/favoritetrucks.php";
+    public static final String COMPANY_TRUCKS = "https://cgi.sice.indiana.edu/~team59/companytrucks.php";
 
     public static DbConnection getInstance() {
         return db;
