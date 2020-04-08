@@ -16,7 +16,7 @@ public class AddMenuItemActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_menu_item;
+        setContentView(R.layout.activity_add_menu_item);
 
         backToEditMenu = findViewById(R.id.backToEditMenuInterface);
         finalizeItem = findViewById(R.id.finalizeItem);
@@ -43,9 +43,9 @@ public class AddMenuItemActivity extends AppCompatActivity {
 
 
 //              send php code
-
-                Insert Into items ('name','description','price','favorite')
-                Values (stringNewItemName, stringNewItemDescription, stringNewItemPrice, );
+//
+//                Insert Into items ('name','description','price','favorite')
+//                Values (stringNewItemName, stringNewItemDescription, stringNewItemPrice, );
 
 //                async task, seperate thread to send tasks on
 

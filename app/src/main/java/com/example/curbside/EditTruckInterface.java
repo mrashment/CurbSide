@@ -22,9 +22,8 @@ public class EditTruckInterface extends AppCompatActivity {
     private Truck truck;
     ArrayList<Truck> trucks;
     Context context;
-    private View editTruckName, editTruckHours;
     private TextView companyNameText, hoursTruckText;
-    private EditText editTruckHours, editTruckHours2;
+    private EditText editTruckHours, editTruckHours2, editTruckName;
 
     public EditTruckInterface(ArrayList<Truck> trucks, Context context) {
         this.trucks = trucks;
@@ -49,9 +48,10 @@ public class EditTruckInterface extends AppCompatActivity {
         editTruckName = findViewById(R.id.editTruckName);
 
 
+
 //        grabs the current truck info from the Db
-        holder.companyNameText.setText(trucks.get(position).getName());
-        holder.hoursTruckText.setText(trucks.get(position).getHours());
+        companyNameText.setText(trucks.get(position).getName());
+        hoursTruckText.setText(trucks.get(position).getHours());
 
         backToEditTrucks.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,9 +73,9 @@ public class EditTruckInterface extends AppCompatActivity {
                 EditText editTruckHours2 = (EditText)findViewById(R.id.editTruckHours2);
                 String  stringEditTruckHours2 = editTruckHours2.getText().toString().trim();
 
-                UPDATE Trucks
-                SET name = stringEditTruckName, open_time = stringEditTruckHours, close_time = stringEditTruckHours2
-                WHERE truck_id = ;
+//                UPDATE Trucks
+//                SET name = stringEditTruckName, open_time = stringEditTruckHours, close_time = stringEditTruckHours2
+//                WHERE truck_id = ;
             }
         });
     }
