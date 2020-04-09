@@ -80,6 +80,8 @@ public class SeeTrucksCardAdapter extends RecyclerView.Adapter<SeeTrucksCardAdap
             intent.putExtra("com.example.curbside.truck", trucks.get(position));
             context.startActivity(intent);
         }
+
+
     }
 
 }

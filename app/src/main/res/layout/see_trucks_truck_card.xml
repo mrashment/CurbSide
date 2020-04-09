@@ -44,6 +44,7 @@
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.149"
             app:layout_constraintStart_toEndOf="@+id/imageView"
             app:layout_constraintTop_toTopOf="@+id/imageView"
             tools:text="Truck Name" />
@@ -57,13 +58,6 @@
             app:layout_constraintTop_toBottomOf="@+id/companyNameTextView"
             tools:text="8:00am-9:00pm" />
 
-        <Switch
-            android:id="@+id/broadcastSwitch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            app:layout_constraintStart_toEndOf="@+id/companyNameTextView"
-            app:layout_constraintTop_toTopOf="@id/companyNameTextView" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

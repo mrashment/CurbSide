@@ -16,13 +16,13 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class TrucksThreadCompany extends AsyncTask<Double,Void, Boolean> {
+public class TrucksEditTruckThread extends AsyncTask<Double,Void, Boolean> {
 
-    private static final String TAG = "TrucksThreadCompany";
+    private static final String TAG = "TrucksEditTruckThread";
     private ArrayList<Truck> trucks;
     private Context context;
 
-    public TrucksThreadCompany(Context context) {
+    public TrucksEditTruckThread(Context context) {
         this.context = context;
         this.trucks = new ArrayList<>();
     }
@@ -30,7 +30,7 @@ public class TrucksThreadCompany extends AsyncTask<Double,Void, Boolean> {
     @Override
     protected void onPostExecute(Boolean success) {
         if (success) {
-            ((SeeTrucksActivity)context).displayCompanyTrucks(trucks);
+            ((SeeTrucksActivity)context).applyChanges(trucks);
         }
     }
 
@@ -39,7 +39,7 @@ public class TrucksThreadCompany extends AsyncTask<Double,Void, Boolean> {
         StringBuilder sb;
 
         try {
-            URL url = new URL(DbConnection.COMPANY_TRUCKS);
+            URL url = new URL(DbConnection.EDIT_TRUCK);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
             connection.setRequestMethod("POST");
@@ -87,4 +87,3 @@ public class TrucksThreadCompany extends AsyncTask<Double,Void, Boolean> {
         return true;
     }
 }
-

@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
 
     <Button
-        android:id="@+id/backToEditTrucks2"
+        android:id="@+id/backToSeeTrucks"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginStart="8dp"
@@ -16,76 +16,71 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/applyTruckChange"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Apply Changes"
-        tools:layout_editor_absoluteX="159dp"
-        tools:layout_editor_absoluteY="609dp" />
-
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" >
-
-        <TextView
-            android:layout_width="151dp"
-            android:layout_height="26dp"
-            android:text="Current Truck Info"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@id/companyNameText"
-            tools:layout_editor_absoluteY="110dp" />
-
-        <TextView
-            android:id="@+id/companyNameText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Company Name"
-            tools:layout_editor_absoluteX="99dp"
-            tools:layout_editor_absoluteY="146dp" />
-
-        <TextView
-            android:id="@+id/hoursTruckText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Truck Hours"
-            tools:layout_editor_absoluteX="99dp"
-            tools:layout_editor_absoluteY="187dp" />
+        android:id="@+id/constraintLayout3"
+        android:layout_width="383dp"
+        android:layout_height="643dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/backToEditTrucks2">
 
         <EditText
             android:id="@+id/editTruckName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
             android:ems="10"
-            android:hint="Truck Name"
-            android:inputType="textPersonName"
+            android:inputType="text"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.482"
             app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="343dp" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/editTruckHours"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="36dp"
+            android:layout_marginTop="40dp"
             android:ems="10"
-            android:hint="Truck Hours"
-            android:inputType="textPersonName"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            android:inputType="time"
+            app:layout_constraintEnd_toEndOf="@+id/editTruckName"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/editTruckName"
             app:layout_constraintTop_toBottomOf="@+id/editTruckName" />
 
         <EditText
             android:id="@+id/editTruckHours2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="104dp"
+            android:layout_marginTop="24dp"
             android:ems="10"
-            android:hint="Truck Hours"
-            android:inputType="textPersonName"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTruckName" />
+            android:inputType="time"
+            app:layout_constraintEnd_toEndOf="@+id/editTruckHours"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/editTruckHours"
+            app:layout_constraintTop_toBottomOf="@+id/editTruckHours" />
+
+        <EditText
+            android:id="@+id/editTruckBio"
+            android:layout_width="212dp"
+            android:layout_height="37dp"
+            android:layout_marginTop="36dp"
+            android:inputType="text"
+            app:layout_constraintEnd_toEndOf="@+id/editTruckHours2"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/editTruckHours2"
+            app:layout_constraintTop_toBottomOf="@+id/editTruckHours2" />
+
+        <Button
+            android:id="@+id/applyTruckChange"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="160dp"
+            android:text="Apply Changes"
+            app:layout_constraintEnd_toEndOf="@+id/editTruckBio"
+            app:layout_constraintStart_toStartOf="@+id/editTruckBio"
+            app:layout_constraintTop_toBottomOf="@+id/editTruckBio" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

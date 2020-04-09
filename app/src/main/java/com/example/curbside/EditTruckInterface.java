@@ -18,12 +18,12 @@ import com.google.android.gms.maps.GoogleMap;
 import java.util.ArrayList;
 
 public class EditTruckInterface extends AppCompatActivity {
-    private Button backToEditTrucks, applyTruckChange;
+    private Button backToSeeTrucks, applyTruckChange;
     private Truck truck;
     ArrayList<Truck> trucks;
     Context context;
     private TextView companyNameText, hoursTruckText;
-    private EditText editTruckHours, editTruckHours2, editTruckName;
+    private EditText editTruckHours, editTruckHours2, editTruckName, editTruckBio;
 
     public EditTruckInterface(ArrayList<Truck> trucks, Context context) {
         this.trucks = trucks;
@@ -37,23 +37,27 @@ public class EditTruckInterface extends AppCompatActivity {
         Intent intent = getIntent();
         truck = (Truck)intent.getSerializableExtra("com.example.curbside.truck");
 
-        backToEditTrucks = findViewById(R.id.backToEditTrucks);
+        backToSeeTrucks = findViewById(R.id.backToSeeTrucks);
         applyTruckChange = findViewById(R.id.applyTruckChange);
 
         companyNameText = findViewById(R.id.companyNameText);
-        hoursTruckText = findViewById(R.id.hoursTruckText);
 
         editTruckHours = findViewById(R.id.editTruckHours);
         editTruckHours2 = findViewById(R.id.editTruckHours2);
         editTruckName = findViewById(R.id.editTruckName);
-
+        editTruckBio = findViewById(R.id.editTruckBio);
 
 
 //        grabs the current truck info from the Db
-        companyNameText.setText(trucks.get(position).getName());
-        hoursTruckText.setText(trucks.get(position).getHours());
+        companyNameText.setText(truck.get(position).getName());
+        hoursTruckText.setText(truck.get(position).getHours());
 
-        backToEditTrucks.setOnClickListener(new View.OnClickListener() {
+        editTruckName.setText(truck.getName());
+        editTruckHours.setText(truck.getHourOpen());
+        editTruckHours2.setText(truck.getHourClose());
+        editTruckBio.setText(truck.getBio());
+
+        backToSeeTrucks.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(EditTruckInterface.this, EditTrucks.class);
@@ -64,18 +68,8 @@ public class EditTruckInterface extends AppCompatActivity {
         applyTruckChange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText editTruckName = (EditText)findViewById(R.id.editTruckName);
-                String  stringEditTruckName = editTruckName.getText().toString().trim();
 
-                EditText editTruckHours = (EditText)findViewById(R.id.editTruckHours);
-                String  stringEditTruckHours = editTruckHours.getText().toString().trim();
 
-                EditText editTruckHours2 = (EditText)findViewById(R.id.editTruckHours2);
-                String  stringEditTruckHours2 = editTruckHours2.getText().toString().trim();
-
-//                UPDATE Trucks
-//                SET name = stringEditTruckName, open_time = stringEditTruckHours, close_time = stringEditTruckHours2
-//                WHERE truck_id = ;
             }
         });
     }

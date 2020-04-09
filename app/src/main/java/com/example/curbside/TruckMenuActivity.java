@@ -34,7 +34,6 @@ public class TruckMenuActivity extends AppCompatActivity {
             }
         });
 
-//        Toast.makeText(this,"The current truck is " + truck.getName(),Toast.LENGTH_LONG).show();
 
         imageButton.setOnClickListener(new View.OnClickListener(){
             boolean isPressed = false;
