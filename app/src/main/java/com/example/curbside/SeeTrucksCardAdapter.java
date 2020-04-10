@@ -8,7 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.content.Context;
@@ -57,6 +59,7 @@ public class SeeTrucksCardAdapter extends RecyclerView.Adapter<SeeTrucksCardAdap
 
         private TextView truckNameTextView,companyNameTextView,hoursTextView;
         private ImageView imageView;
+        private Switch broadcastSwitch;
 
         public ViewHolder(@NonNull View itemView, Context context) {
             super(itemView);
@@ -67,6 +70,19 @@ public class SeeTrucksCardAdapter extends RecyclerView.Adapter<SeeTrucksCardAdap
             this.hoursTextView = itemView.findViewById(R.id.hoursTextView);
             this.imageView = itemView.findViewById(R.id.imageView);
             this.context = context;
+
+//            should this be up in the "onCreate" section?
+            this.broadcastSwitch = itemView.findViewById(R.id.broadcastSwitch);
+
+            broadcastSwitch.setOnCheckedChangeListener(this);
+        }
+        @Override
+        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            if (isChecked) {
+                // broadcast
+            } else {
+                // don't broadcast
+            }
 
         }
 
