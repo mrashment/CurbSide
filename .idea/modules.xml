@@ -3,8 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/CurbSide.iml" filepath="$PROJECT_DIR$/CurbSide.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Curbside-CurbSide.iml" filepath="$PROJECT_DIR$/Curbside-CurbSide.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/Curbside-app.iml" filepath="$PROJECT_DIR$/app/Curbside-app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

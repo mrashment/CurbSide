@@ -113,13 +113,14 @@ public class HomeActivityJava extends AppCompatActivity implements OnMapReadyCal
             }
         });
         searchBar = findViewById(R.id.sv_location);
-        searchBar.setOnClickListener(new View.OnClickListener() {
+        searchBar.setOnSearchClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ((SearchView)v).setIconified(true);
                 startActivity(new Intent(HomeActivityJava.this,SearchActivity.class));
+
             }
         });
-
    }
 
 

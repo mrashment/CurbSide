@@ -46,6 +46,10 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
         return searchResults.size();
     }
 
+    public void updateResults(ArrayList<Truck> newResults) {
+        searchResults = newResults;
+    }
+
     @Override
     public Filter getFilter() {
         if (valueFilter == null) {
