@@ -13,7 +13,8 @@
         android:minWidth="48dp"
         android:text="="
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/searchRecyclerView"
+        app:layout_constraintBottom_toBottomOf="@+id/searchBar"
+        app:layout_constraintEnd_toStartOf="@+id/searchBar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/searchBar" />
 
