@@ -6,7 +6,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="20dp"
+    android:background="@drawable/curbside_gradient_background"
     tools:context=".MainActivity">
+
 
     <TextView
         android:id="@+id/tv_title"
@@ -15,6 +17,7 @@
         android:layout_marginBottom="8dp"
         android:text="@string/app_name"
         android:textSize="50sp"
+
         app:layout_constraintBottom_toTopOf="@+id/tv_subtitle"
         app:layout_constraintStart_toStartOf="@+id/tv_subtitle" />
 
@@ -26,6 +29,7 @@
         android:layout_marginBottom="8dp"
         android:text="@string/tag"
         android:textSize="17sp"
+
         app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="parent" />
 
