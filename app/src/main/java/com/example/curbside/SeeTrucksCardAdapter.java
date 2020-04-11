@@ -19,7 +19,6 @@ import android.content.Context;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.gms.maps.GoogleMap;
 
 import java.util.ArrayList;
 
