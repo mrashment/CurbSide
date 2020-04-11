@@ -26,24 +26,22 @@ public class SeeTrucksActivity extends AppCompatActivity {
     static Handler handler;
     private ArrayList<Truck> trucks;
     private RecyclerView recyclerView1;
-    private SeeTrucksActivity cardAdapter1;
-    private Button backToVendorOptions, newTruckButton;
+    private SeeTrucksCardAdapter cardAdapter1;
+    private Button backToVendorOptions;
 
-    public SeeTrucksActivity(ArrayList<Truck> trucks) {
-        this.trucks = trucks;
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_see_trucks);
 
-        backToVendorOptions = findViewById(R.id.backToVendorOptions);
-        newTruckButton = findViewById(R.id.newTruckButton);
 
         recyclerView1 = findViewById(R.id.recyclerView1);
         recyclerView1.setVisibility(RecyclerView.INVISIBLE);
 
+        new TrucksThreadCompany(this).execute(DbConnection.getInstance().getUser().getCompanyID());
+
+        backToVendorOptions = findViewById(R.id.backToVendorOptions);
         backToVendorOptions.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,19 +50,9 @@ public class SeeTrucksActivity extends AppCompatActivity {
             }
         });
 
-        newTruckButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(SeeTrucksActivity.this, EditTruckInterface.class);
-                startActivity(intent);
-            }
-        });
-
-
-
     }
 
-    public void displayNearbyTrucks(ArrayList<Truck> fromThread) {
+    public void displayCompanyTrucks(ArrayList<Truck> fromThread) {
         trucks = fromThread;
         if (trucks != null) {
             recyclerView1.setVisibility(RecyclerView.VISIBLE);
@@ -77,6 +65,7 @@ public class SeeTrucksActivity extends AppCompatActivity {
         } else {
             Toast.makeText(this,"No Company trucks",Toast.LENGTH_LONG).show();
         }
+        cardAdapter1.notifyDataSetChanged();
     }
 
 }

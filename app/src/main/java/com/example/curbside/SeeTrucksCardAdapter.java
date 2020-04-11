@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,12 +26,10 @@ import java.util.ArrayList;
 public class SeeTrucksCardAdapter extends RecyclerView.Adapter<SeeTrucksCardAdapter.ViewHolder>{
 
     ArrayList<Truck> trucks;
-    GoogleMap googleMap;
     Context context;
 
-    public SeeTrucksCardAdapter(ArrayList<Truck> trucks, GoogleMap googleMap, Context context) {
+    public SeeTrucksCardAdapter(ArrayList<Truck> trucks, Context context) {
         this.trucks = trucks;
-        this.googleMap = googleMap;
         this.context = context;
     }
 
@@ -38,6 +37,7 @@ public class SeeTrucksCardAdapter extends RecyclerView.Adapter<SeeTrucksCardAdap
     @Override
     public SeeTrucksCardAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.see_trucks_truck_card,parent,false);
+        v.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
 
         return new ViewHolder(v, this.context);
 
@@ -55,7 +55,7 @@ public class SeeTrucksCardAdapter extends RecyclerView.Adapter<SeeTrucksCardAdap
         return trucks.size();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, CompoundButton.OnCheckedChangeListener {
 
         private TextView truckNameTextView,companyNameTextView,hoursTextView;
         private ImageView imageView;
