@@ -50,6 +50,9 @@ public class HomePageCardAdapter extends RecyclerView.Adapter<HomePageCardAdapte
         holder.truckNameTextView.setText(trucks.get(position).getName());
         holder.companyNameTextView.setText(trucks.get(position).getCompany().getName());
         holder.hoursTextView.setText(trucks.get(position).getHours());
+        String dist = trucks.get(position).getDistance() + " miles away";
+        holder.distanceTextView.setText(dist);
+
         BitmapDescriptor icon = BitmapDescriptorFactory.fromBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.ic_pickup));
         googleMap.addMarker(new MarkerOptions()
                 .position(new LatLng(trucks.get(position).getLat(), trucks.get(position).getLng()))
@@ -64,7 +67,7 @@ public class HomePageCardAdapter extends RecyclerView.Adapter<HomePageCardAdapte
 
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        private TextView truckNameTextView,companyNameTextView,hoursTextView;
+        private TextView truckNameTextView,companyNameTextView,hoursTextView,distanceTextView;
         private ImageView imageView;
 
         public ViewHolder(@NonNull View itemView, Context context) {
@@ -75,6 +78,7 @@ public class HomePageCardAdapter extends RecyclerView.Adapter<HomePageCardAdapte
             this.companyNameTextView = itemView.findViewById(R.id.companyNameTextView);
             this.hoursTextView = itemView.findViewById(R.id.hoursTextView);
             this.imageView = itemView.findViewById(R.id.imageView);
+            this.distanceTextView = itemView.findViewById(R.id.distanceTextView);
             this.context = context;
 
         }

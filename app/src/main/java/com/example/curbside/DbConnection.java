@@ -21,19 +21,28 @@ public class DbConnection {
     public static final String USER_ADD = "https://cgi.sice.indiana.edu/~team59/useradd.php"; // adds user to db
     public static final String NEARBY_TRUCKS = "https://cgi.sice.indiana.edu/~team59/nearbytrucks.php";
     public static final String FAVORITE_TRUCKS = "https://cgi.sice.indiana.edu/~team59/favoritetrucks.php";
+    public static final String ADD_FAVORITE = "https://cgi.sice.indiana.edu/~team59/addfavorite.php";
+    public static final String DELETE_FAVORITE = "https://cgi.sice.indiana.edu/~team59/deletefavorite.php";
+    public static final String SEARCH_TRUCKS = "https://cgi.sice.indiana.edu/~team59/searchtrucks.php";
+
     public static final String COMPANY_TRUCKS = "https://cgi.sice.indiana.edu/~team59/companytrucks.php";
 
     public static DbConnection getInstance() {
         return db;
     }
+
     public void setUser(JSONObject json) {
         try {
             user = new DefaultUser();
+            user.setId(json.getInt("id"));
             user.setEmail(json.getString("email"));
             user.setName(json.getString("name"));
             user.setPermissions(json.getInt("permission_lev"));
+            Log.d(TAG, "setUser: permission = " + json.getInt("permission_lev"));
+
             user.setRewards(json.getInt("rewards"));
             user.setCompanyID(json.getInt("company_id"));
+            Log.d(TAG, "setUser: company_id = " + json.getInt("company_id"));
             Log.d(TAG, "setUser: User set in DbConnection");
             isNull = false;
 

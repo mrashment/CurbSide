@@ -4,23 +4,18 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentSender;
 import android.content.pm.PackageManager;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.Icon;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.RelativeLayout;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -31,26 +26,20 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.common.api.ResolvableApiException;
-import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.LocationSettingsRequest;
 import com.google.android.gms.location.LocationSettingsResponse;
-import com.google.android.gms.location.LocationSettingsStatusCodes;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptor;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionDeniedResponse;
@@ -74,6 +63,7 @@ public class HomeActivityJava extends AppCompatActivity implements OnMapReadyCal
     private RecyclerView recyclerView;
     private HomePageCardAdapter cardAdapter;
     private Button locationButton,menuButton, vendorButton, favoritesButton;
+    private SearchView searchBar;
     static Handler handler;
 
     @Override
@@ -125,14 +115,23 @@ public class HomeActivityJava extends AppCompatActivity implements OnMapReadyCal
                 startActivity(intent);
             }
         });
+        searchBar = findViewById(R.id.sv_location);
+        searchBar.setOnSearchClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((SearchView)v).setIconified(true);
+                startActivity(new Intent(HomeActivityJava.this,SearchActivity.class));
 
+            }
+        });
+   }
 
-    }
 
     private void findNearbyTrucks() {
         TrucksThread trucksThread = new TrucksThread(this);
         Log.d(TAG, "findNearbyTrucks: latitude = " + mLastLocation.getLatitude() + " longitude = " + mLastLocation.getLongitude() );
         trucksThread.execute(mLastLocation.getLatitude(),mLastLocation.getLongitude());
+
     }
 
 
@@ -174,6 +173,8 @@ public class HomeActivityJava extends AppCompatActivity implements OnMapReadyCal
 
     }
 
+
+
     private void getCurrentLocation() {
         LocationRequest locationRequest = new LocationRequest();
         locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
@@ -207,7 +208,21 @@ public class HomeActivityJava extends AppCompatActivity implements OnMapReadyCal
         });
     }
 
-    Location mLastLocation;
+    private Location mLastLocation;
+
+    public Double getCurLat() {
+        if (mLastLocation == null) {
+            return null;
+        }
+        return mLastLocation.getLatitude();
+    }
+
+    public Double getCurLng() {
+        if (mLastLocation == null) {
+            return null;
+        }
+        return mLastLocation.getLongitude();
+    }
 
     private void getLastLocation() {
         fusedLocationProviderClient.getLastLocation()
@@ -237,7 +252,12 @@ public class HomeActivityJava extends AppCompatActivity implements OnMapReadyCal
                                     .zoom(17f)
                                     .build();
                             googleMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+
                             findNearbyTrucks();
+                            FavoritesThread favoritesThread = new FavoritesThread();
+                            favoritesThread.execute();
+
+
                         } else {
                             Toast.makeText(HomeActivityJava.this, "No current location found", Toast.LENGTH_LONG).show();
                         }
@@ -286,18 +306,39 @@ public class HomeActivityJava extends AppCompatActivity implements OnMapReadyCal
         super.onActivityResult(requestCode, resultCode, data);
     }
 
+    public void signOut() {
+
+    }
+
     static class HomeHandler extends Handler {
-        Context context;
+        HomeActivityJava context;
 
         public HomeHandler(Context context) {
-            this.context = context;
+            this.context = ((HomeActivityJava)context);
         }
-
 
         @Override
         public void handleMessage(@NonNull Message msg) {
-            // updates the times on items
-            Toast.makeText(context, "User has " + DbConnection.getInstance().getUser().getFavTrucks().toString() + " favorites.",Toast.LENGTH_LONG).show();
+            Double lat = context.getCurLat();
+            Double lng = context.getCurLng();
+            int trucksNearby = 0;
+
+            for (Truck t : DbConnection.getInstance().getUser().getFavTrucks()) {
+                double tlat = t.getLat();
+                double tlng = t.getLng();
+                double distance = 3959 * Math.acos(Math.cos(Math.toRadians(lat)) *
+                        Math.cos(Math.toRadians(tlat)) *
+                        Math.cos(Math.toRadians(tlng) - Math.toRadians(lng)) +
+                        Math.sin(Math.toRadians(lat)) *
+                        Math.sin(Math.toRadians(tlat)));
+                t.setDistance(distance);
+                if (distance <= 2) {
+                    trucksNearby++;
+                }
+            }
+
+            Snackbar.make(context.findViewById(R.id.snackbarLayout),"You have " + trucksNearby + " favorites nearby!",Snackbar.LENGTH_LONG).show();
+//            Toast.makeText(context, "User has " + DbConnection.getInstance().getUser().getFavTrucks().toString() + " favorites.",Toast.LENGTH_LONG).show();
         }
     }
 }

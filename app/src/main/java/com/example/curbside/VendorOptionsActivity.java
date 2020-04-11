@@ -32,8 +32,7 @@ public class VendorOptionsActivity extends AppCompatActivity {
         backToHomeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(VendorOptionsActivity.this, HomeActivityJava.class);
-                startActivity(intent);
+                finish();
             }
         });
 
