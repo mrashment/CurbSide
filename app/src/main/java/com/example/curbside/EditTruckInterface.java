@@ -49,12 +49,15 @@ public class EditTruckInterface extends AppCompatActivity {
 
 
 //        grabs the current truck info from the Db
-        companyNameText.setText(truck.get(position).getName());
-        hoursTruckText.setText(truck.get(position).getHours());
+        companyNameText.setText(truck.getName());
+        hoursTruckText.setText(truck.getHours());
 
         editTruckName.setText(truck.getName());
-        editTruckHours.setText(truck.getHourOpen());
-        editTruckHours2.setText(truck.getHourClose());
+        String hours[] = truck.getHours().split("-");
+        String open = hours[0];
+        String close = hours[1];
+        editTruckHours.setText(open);
+        editTruckHours2.setText(close);
         editTruckBio.setText(truck.getBio());
 
         backToSeeTrucks.setOnClickListener(new View.OnClickListener() {

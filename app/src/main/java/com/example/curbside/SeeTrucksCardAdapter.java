@@ -25,12 +25,10 @@ import java.util.ArrayList;
 public class SeeTrucksCardAdapter extends RecyclerView.Adapter<SeeTrucksCardAdapter.ViewHolder>{
 
     ArrayList<Truck> trucks;
-    GoogleMap googleMap;
     Context context;
 
-    public SeeTrucksCardAdapter(ArrayList<Truck> trucks, GoogleMap googleMap, Context context) {
+    public SeeTrucksCardAdapter(ArrayList<Truck> trucks, Context context) {
         this.trucks = trucks;
-        this.googleMap = googleMap;
         this.context = context;
     }
 
@@ -55,7 +53,7 @@ public class SeeTrucksCardAdapter extends RecyclerView.Adapter<SeeTrucksCardAdap
         return trucks.size();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, CompoundButton.OnCheckedChangeListener {
 
         private TextView truckNameTextView,companyNameTextView,hoursTextView;
         private ImageView imageView;

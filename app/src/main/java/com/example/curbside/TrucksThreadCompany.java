@@ -16,11 +16,12 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class TrucksThreadCompany extends AsyncTask<Double,Void, Boolean> {
+public class TrucksThreadCompany extends AsyncTask<Integer,Void, Boolean> {
 
     private static final String TAG = "TrucksThreadCompany";
     private ArrayList<Truck> trucks;
     private Context context;
+    private byte[] postData;
 
     public TrucksThreadCompany(Context context) {
         this.context = context;
@@ -35,8 +36,11 @@ public class TrucksThreadCompany extends AsyncTask<Double,Void, Boolean> {
     }
 
     @Override
-    protected Boolean doInBackground(Double... doubles) {
+    protected Boolean doInBackground(Integer... values) {
         StringBuilder sb;
+
+        String postString = "company_id=" + values[0];
+        postData = postString.getBytes();
 
         try {
             URL url = new URL(DbConnection.COMPANY_TRUCKS);

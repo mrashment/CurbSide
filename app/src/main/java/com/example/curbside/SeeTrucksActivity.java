@@ -26,12 +26,9 @@ public class SeeTrucksActivity extends AppCompatActivity {
     static Handler handler;
     private ArrayList<Truck> trucks;
     private RecyclerView recyclerView1;
-    private SeeTrucksActivity cardAdapter1;
+    private SeeTrucksCardAdapter cardAdapter1;
     private Button backToVendorOptions;
 
-    public SeeTrucksActivity(ArrayList<Truck> trucks) {
-        this.trucks = trucks;
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +39,9 @@ public class SeeTrucksActivity extends AppCompatActivity {
         recyclerView1 = findViewById(R.id.recyclerView1);
         recyclerView1.setVisibility(RecyclerView.INVISIBLE);
 
+        new TrucksThreadCompany(this).execute(DbConnection.getInstance().getUser().getCompanyID());
+
+        backToVendorOptions = findViewById(R.id.backToVendorOptions);
         backToVendorOptions.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,7 +52,7 @@ public class SeeTrucksActivity extends AppCompatActivity {
 
     }
 
-    public void displayNearbyTrucks(ArrayList<Truck> fromThread) {
+    public void displayCompanyTrucks(ArrayList<Truck> fromThread) {
         trucks = fromThread;
         if (trucks != null) {
             recyclerView1.setVisibility(RecyclerView.VISIBLE);
@@ -65,6 +65,7 @@ public class SeeTrucksActivity extends AppCompatActivity {
         } else {
             Toast.makeText(this,"No Company trucks",Toast.LENGTH_LONG).show();
         }
+        cardAdapter1.notifyDataSetChanged();
     }
 
 }
