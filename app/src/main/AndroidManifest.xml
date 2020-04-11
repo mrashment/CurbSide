@@ -29,6 +29,9 @@
         <activity android:name=".ScannedBarcodeActivity" />
         <activity android:name=".PictureBarcodeActivity" />
         <activity android:name=".FavoritesActivity" />
+        <activity android:name=".EditTruckInterface"/>
+        <activity android:name=".EditMenuInterface"/>
+        <activity android:name=".SearchActivity"></activity>
         <activity android:name=".VendorOptionsActivity" />
 
         <meta-data
@@ -55,6 +58,7 @@
         <activity android:name=".ContactDevelopers" />
         <activity android:name=".TruckMenuActivity" />
         <activity android:name=".Profile" />
+        <activity android:name=".SeeTrucksActivity"/>
         <activity android:name=".Notifications" />
         <activity
             android:name=".HomeActivityJava"

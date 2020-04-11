@@ -15,6 +15,7 @@ import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -62,6 +63,7 @@ public class HomeActivityJava extends AppCompatActivity implements OnMapReadyCal
     private RecyclerView recyclerView;
     private HomePageCardAdapter cardAdapter;
     private Button locationButton,menuButton, vendorButton, favoritesButton;
+    private SearchView searchBar;
     static Handler handler;
 
     @Override
@@ -94,6 +96,9 @@ public class HomeActivityJava extends AppCompatActivity implements OnMapReadyCal
                 startActivity(intent);
             }
         });
+
+
+
         vendorButton = findViewById(R.id.vendorButton);
         vendorButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,32 +115,16 @@ public class HomeActivityJava extends AppCompatActivity implements OnMapReadyCal
                 startActivity(intent);
             }
         });
+        searchBar = findViewById(R.id.sv_location);
+        searchBar.setOnSearchClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((SearchView)v).setIconified(true);
+                startActivity(new Intent(HomeActivityJava.this,SearchActivity.class));
 
-//        String url = "https://www.google.com/maps/dir/?api=1&destination&origin&dir_action=navigate";
-//        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-//        startActivity(intent);
-
-//        private void getDirections(){
-////        Location currentLocation = googleMap.getMyLocation();
-////        double latitudeCurr = currentLocation.getLatitude();
-////        double longitudeCurr = currentLocation.getLongitude();
-////
-////        final Intent intent = new Intent(Intent.ACTION_VIEW,
-////                Uri.parse("+http://maps.google.com/maps?""saddr="
-////                        + latitudeCurr + "," + longitudeCurr + "&daddr="
-////                        + latitude + "," + longitude));
-////        intent.setClassName("com.google.android.apps.maps",
-////                "com.google.android.maps.HomeActivityJava");
-////        startActivity(intent);
-//
+            }
+        });
    }
-
-//   private void getDirections() {
-//        Double lat = mLastLocation.getLatitude();
-//        Double lng = mLastLocation.getLongitude();
-//
-//        String url = "https://www.google.com/maps/dir/?api=1&destination=Madrid,Spain&origin=" + lat + "&longitude=" + lng&waypoints=Zaragoza|Huesca&travelmode=driving&dir_action=navigate";
-//   }
 
 
     private void findNearbyTrucks() {
@@ -144,6 +133,9 @@ public class HomeActivityJava extends AppCompatActivity implements OnMapReadyCal
         trucksThread.execute(mLastLocation.getLatitude(),mLastLocation.getLongitude());
 
     }
+
+
+
 
     public void displayNearbyTrucks(ArrayList<Truck> fromThread) {
         trucks = fromThread;
@@ -159,6 +151,9 @@ public class HomeActivityJava extends AppCompatActivity implements OnMapReadyCal
             Toast.makeText(this,"No nearby trucks",Toast.LENGTH_LONG).show();
         }
     }
+
+
+
 
     @Override
     public void onMapReady(GoogleMap gMap) {

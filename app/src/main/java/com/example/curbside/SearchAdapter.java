@@ -1,11 +1,12 @@
 package com.example.curbside;
 
-import android.app.ActionBar;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -13,42 +14,50 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.MyViewHolder> {
+public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchViewHolder> {
 
-    private ArrayList<Truck> favorites;
+    private ArrayList<Truck> searchResults;
     private Context context;
-    public FavoritesAdapter(ArrayList<Truck> favorites, Context context) {
-        this.favorites = favorites;
+
+    public SearchAdapter(ArrayList<Truck> trucks, Context context) {
+        searchResults = trucks;
         this.context = context;
     }
 
     @NonNull
     @Override
-    public FavoritesAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public SearchViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.home_truck_card,parent,false);
         v.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-        return new MyViewHolder(v);
+        return new SearchViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull FavoritesAdapter.MyViewHolder holder, int position) {
-        holder.truckNameTextView.setText(favorites.get(position).getName());
-        holder.companyNameTextView.setText(favorites.get(position).getCompany().getName());
-        holder.hoursTextView.setText(favorites.get(position).getHours());
-        holder.distanceTextView.setText(Double.toString(favorites.get(position).getDistance()));
+    public void onBindViewHolder(@NonNull SearchViewHolder holder, int position) {
+        holder.truckNameTextView.setText(searchResults.get(position).getName());
+        holder.companyNameTextView.setText(searchResults.get(position).getCompany().getName());
+        holder.hoursTextView.setText(searchResults.get(position).getHours());
+        holder.distanceTextView.setText(Double.toString(searchResults.get(position).getDistance()));
     }
 
     @Override
     public int getItemCount() {
-        return favorites.size();
+        return searchResults.size();
     }
 
-    class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public void updateResults(ArrayList<Truck> newResults) {
+        searchResults = newResults;
+    }
+
+
+
+    class SearchViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView truckNameTextView,companyNameTextView,hoursTextView,distanceTextView;
 
-        public MyViewHolder(View itemView){
+        public SearchViewHolder(View itemView) {
             super(itemView);
 
             truckNameTextView = itemView.findViewById(R.id.truckNameTextView);
@@ -64,8 +73,11 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.MyVi
             int position = this.getLayoutPosition();
 
             Intent intent = new Intent((context), TruckMenuActivity.class);
-            intent.putExtra("com.example.curbside.truck", favorites.get(position));
+            intent.putExtra("com.example.curbside.truck", searchResults.get(position));
             context.startActivity(intent);
         }
     }
+
+
+
 }

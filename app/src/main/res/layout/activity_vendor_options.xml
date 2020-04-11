@@ -6,9 +6,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_alignParentLeft="true"
-    android:background="@color/graylight"
+    android:background="@drawable/curbside_gradient_background"
     android:orientation="vertical"
-    tools:context=".Profile">
+    tools:context=".Profile"
+    android:padding="20dp">
 
     <LinearLayout
         android:layout_width="0dp"
@@ -19,48 +20,54 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.73">
+        app:layout_constraintVertical_bias="0.549">
 
         <Button
             android:id="@+id/trucksButton"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/rounded_corner"
             android:text="Trucks" />
 
         <Button
             android:id="@+id/menusButton"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/rounded_corner"
             android:text="Menus" />
 
         <Button
             android:id="@+id/companyInfoButton"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/rounded_corner"
             android:text="Company Info" />
 
         <Button
             android:id="@+id/notificationsButton"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/rounded_corner"
             android:text="Notifications" />
 
         <Button
             android:id="@+id/settingsButton"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/rounded_corner"
             android:text="Settings" />
-
-        <Button
-            android:id="@+id/addTruckButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Add Truck" />
 
         <Button
             android:id="@+id/employeesButton"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/rounded_corner"
             android:text="Employees" />
 
         <Button
@@ -79,7 +86,8 @@
         android:layout_marginTop="8dp"
         android:text="="
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/back_button_raised"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

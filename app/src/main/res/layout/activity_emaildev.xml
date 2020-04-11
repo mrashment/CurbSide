@@ -5,51 +5,46 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Emaildev">
+    tools:context=".Emaildev"
+    android:background="@drawable/curbside_gradient_background"
+    android:padding="20dp">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="To:"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
-    <EditText
-        android:id="@+id/edit_text_to"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textEmailAddress" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Subject:"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+    <Button
+        android:id="@+id/backToEditMenuInterface2"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/back_button_raised"
+        android:text="="
+        android:layout_marginBottom="20dp"/>
 
     <EditText
         android:id="@+id/edit_text_subject"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textEmailSubject" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Message:"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+        android:inputType="textEmailSubject"
+        android:hint="Subject"
+        android:background="@drawable/rounded_corner"
+        android:layout_marginBottom="10dp"/>
 
     <EditText
         android:id="@+id/edit_text_message"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="start|top"
-        android:lines="10" />
+        android:lines="10"
+        android:layout_marginBottom="20dp"
+        android:hint="Message"
+        android:background="@drawable/rounded_corner"/>
 
     <Button
         android:id="@+id/button_send"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="send" />
-
+        android:background="@drawable/rounded_corner"
+        android:text="send to developers" />
 
 
 </LinearLayout>

@@ -65,6 +65,7 @@ class RetrieveThread extends AsyncTask<GoogleSignInAccount,Void,String> {
                     String[] items = separate[1].replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("\\s", "").split(",");
                     conn.getUser().setFavIds(items);
                     Log.d(TAG, "onPostExecute: " + conn.printUserInfo());
+                    Log.d(TAG, "onPostExecute: Company id: " + conn.getUser().getCompanyID());
                     Log.d(TAG, "onPostExecute: " + separate[1]);
 
                 } catch (JSONException e) {
