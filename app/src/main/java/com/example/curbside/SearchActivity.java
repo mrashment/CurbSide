@@ -2,6 +2,7 @@ package com.example.curbside;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -60,6 +61,8 @@ public class SearchActivity extends AppCompatActivity {
         results = new ArrayList<>();
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
+        recyclerView.addItemDecoration(new DividerItemDecoration(this,
+                DividerItemDecoration.VERTICAL));
         adapter = new SearchAdapter(results,this);
         recyclerView.setAdapter(adapter);
 
@@ -84,13 +87,6 @@ public class SearchActivity extends AppCompatActivity {
             }
         });
 
-    }
-
-    private ArrayList<Truck> searchFor(String constraint) {
-        ArrayList<Truck> searchResult = new ArrayList<>();
-
-
-        return searchResult;
     }
 
     class SearchThread extends AsyncTask<String, Void, ArrayList<Truck>> {
