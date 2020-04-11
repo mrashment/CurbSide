@@ -60,7 +60,7 @@ public class SearchActivity extends AppCompatActivity {
         results = new ArrayList<>();
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
-        adapter = new SearchAdapter(results);
+        adapter = new SearchAdapter(results,this);
         recyclerView.setAdapter(adapter);
 
         backButton.setOnClickListener(new View.OnClickListener() {

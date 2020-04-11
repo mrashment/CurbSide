@@ -44,7 +44,7 @@ public class FavoritesActivity extends AppCompatActivity {
         });
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
-        recyclerView.setAdapter(new FavoritesAdapter(favorites));
+        recyclerView.setAdapter(new FavoritesAdapter(favorites,this));
 
 
     }

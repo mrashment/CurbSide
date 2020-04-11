@@ -1,5 +1,7 @@
 package com.example.curbside;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,15 +16,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchViewHolder> implements Filterable {
+public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchViewHolder> {
 
     private ArrayList<Truck> searchResults;
-    private ArrayList<Truck> filterList;
-    private ValueFilter valueFilter;
+    private Context context;
 
-    public SearchAdapter(ArrayList<Truck> trucks) {
+    public SearchAdapter(ArrayList<Truck> trucks, Context context) {
         searchResults = trucks;
-        filterList = trucks;
+        this.context = context;
     }
 
     @NonNull
@@ -50,15 +51,9 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
         searchResults = newResults;
     }
 
-    @Override
-    public Filter getFilter() {
-        if (valueFilter == null) {
-            valueFilter = new ValueFilter();
-        }
-        return valueFilter;
-    }
 
-    class SearchViewHolder extends RecyclerView.ViewHolder {
+
+    class SearchViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView truckNameTextView,companyNameTextView,hoursTextView,distanceTextView;
 
@@ -69,33 +64,20 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
             companyNameTextView = itemView.findViewById(R.id.companyNameTextView);
             hoursTextView = itemView.findViewById(R.id.hoursTextView);
             distanceTextView = itemView.findViewById(R.id.distanceTextView);
-        }
-    }
-
-    class ValueFilter extends Filter {
-        @Override
-        protected FilterResults performFiltering(CharSequence constraint) {
-            FilterResults results = new FilterResults();
-
-            if (constraint != null && constraint.length() > 0) {
-                List<String> filterList = new ArrayList<>();
-                for (int i = 0; i < filterList.size(); i++) {
-                    if ((filterList.get(i).toUpperCase()).contains(constraint.toString().toUpperCase())) {
-                        filterList.add(filterList.get(i));
-                    }
-                }
-                results.count = filterList.size();
-                results.values = filterList;
-            } else {
-                results.count = filterList.size();
-                results.values = filterList;
-            }
-            return results;
+            itemView.setOnClickListener(this);
         }
 
         @Override
-        protected void publishResults(CharSequence constraint, FilterResults results) {
+        public void onClick(View v) {
 
+            int position = this.getLayoutPosition();
+
+            Intent intent = new Intent((context), TruckMenuActivity.class);
+            intent.putExtra("com.example.curbside.truck", searchResults.get(position));
+            context.startActivity(intent);
         }
     }
+
+
+
 }

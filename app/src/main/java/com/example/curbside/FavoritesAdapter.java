@@ -1,6 +1,8 @@
 package com.example.curbside;
 
 import android.app.ActionBar;
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,9 +17,10 @@ import java.util.ArrayList;
 public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.MyViewHolder> {
 
     private ArrayList<Truck> favorites;
-
-    public FavoritesAdapter(ArrayList<Truck> favorites) {
+    private Context context;
+    public FavoritesAdapter(ArrayList<Truck> favorites, Context context) {
         this.favorites = favorites;
+        this.context = context;
     }
 
     @NonNull
@@ -41,7 +44,7 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.MyVi
         return favorites.size();
     }
 
-    class MyViewHolder extends RecyclerView.ViewHolder {
+    class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView truckNameTextView,companyNameTextView,hoursTextView,distanceTextView;
 
@@ -52,6 +55,17 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.MyVi
             companyNameTextView = itemView.findViewById(R.id.companyNameTextView);
             hoursTextView = itemView.findViewById(R.id.hoursTextView);
             distanceTextView = itemView.findViewById(R.id.distanceTextView);
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+
+            int position = this.getLayoutPosition();
+
+            Intent intent = new Intent((context), TruckMenuActivity.class);
+            intent.putExtra("com.example.curbside.truck", favorites.get(position));
+            context.startActivity(intent);
         }
     }
 }
