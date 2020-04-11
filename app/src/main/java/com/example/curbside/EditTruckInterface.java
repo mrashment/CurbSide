@@ -22,7 +22,6 @@ public class EditTruckInterface extends AppCompatActivity {
     private Truck truck;
     ArrayList<Truck> trucks;
     Context context;
-    private TextView companyNameText, hoursTruckText;
     private EditText editTruckHours, editTruckHours2, editTruckName, editTruckBio;
 
     @Override
