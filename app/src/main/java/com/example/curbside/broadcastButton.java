@@ -18,7 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 
-public class MainActivity extends AppCompatActivity {
+public class BroadcastActivity extends AppCompatActivity {
 
     private static  final int REQUEST_LOCATION=1;
 

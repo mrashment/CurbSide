@@ -20,7 +20,6 @@ public class Emaildev extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_emaildev);
 
-        mEditTextTo = findViewById(R.id.edit_text_to);
         mEditTextSubject = findViewById(R.id.edit_text_subject);
         mEditTextMessage = findViewById(R.id.edit_text_message);
 
