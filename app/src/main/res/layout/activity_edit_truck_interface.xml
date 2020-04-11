@@ -70,17 +70,6 @@
             android:background="@drawable/rounded_corner"/>
 
     <Button
-        android:id="@+id/editMenuButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Edit Menu"
-        app:layout_constraintBottom_toBottomOf="@+id/backToSeeTrucks"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/backToSeeTrucks"
-        android:background="@drawable/rounded_corner"/>
-
-    <Button
         android:id="@+id/backToSeeTrucks"
         android:layout_width="48dp"
         android:layout_height="48dp"
@@ -88,5 +77,45 @@
         android:text="="
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/nameHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Truck Name"
+        app:layout_constraintBottom_toTopOf="@+id/editTruckName"
+        app:layout_constraintStart_toStartOf="@+id/editTruckName" />
+
+    <TextView
+        android:id="@+id/hourHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Open Hours"
+        app:layout_constraintBottom_toTopOf="@+id/editTruckHours"
+        app:layout_constraintStart_toStartOf="@+id/editTruckHours" />
+
+    <TextView
+        android:id="@+id/hourHeader2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Close Hours"
+        app:layout_constraintBottom_toTopOf="@+id/editTruckHours2"
+        app:layout_constraintStart_toStartOf="@+id/editTruckHours2" />
+
+    <TextView
+        android:id="@+id/bioHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Truck Biography"
+        app:layout_constraintBottom_toTopOf="@+id/editTruckBio"
+        app:layout_constraintStart_toStartOf="@+id/editTruckBio" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
