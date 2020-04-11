@@ -70,6 +70,12 @@
             android:background="@drawable/rounded_corner"
             android:text="Employees" />
 
+        <Button
+            android:id="@+id/retqr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Retrieve QR Code" />
+
     </LinearLayout>
 
     <Button
