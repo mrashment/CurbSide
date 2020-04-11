@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/graylight"
-    android:paddingStart="10dp"
-    android:paddingEnd="10dp"
+    android:background="@drawable/curbside_gradient_background"
+    android:padding="20dp"
+
     tools:context=".TruckMenuActivity">
 
     <Button
@@ -16,13 +16,13 @@
         android:text="Navigate"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
+        android:background="@drawable/rounded_corner"/>
 
     <LinearLayout
         android:id="@+id/linearTruckMenus"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/graylight"
         android:elevation="10dp"
         android:gravity="center"
         android:orientation="vertical"
@@ -38,24 +38,32 @@
             android:id="@+id/selectTruckPhotos"
             android:layout_width="396dp"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/rounded_corner"
             android:text="Photos" />
 
         <Button
             android:id="@+id/selectTruckMenu"
             android:layout_width="396dp"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/rounded_corner"
             android:text="Menu" />
 
         <Button
             android:id="@+id/selectTruckReviews"
             android:layout_width="396dp"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/rounded_corner"
             android:text="Reviews" />
 
         <Button
             android:id="@+id/selectTruckContactVendor"
             android:layout_width="396dp"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/rounded_corner"
             android:text="Contact Vendor" />
 
     </LinearLayout>
@@ -80,7 +88,8 @@
             android:layout_marginTop="5dp"
             android:text="="
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@drawable/back_button_raised"/>
 
         <TextView
             android:id="@+id/truckNameText"

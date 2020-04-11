@@ -9,7 +9,7 @@ import android.widget.Button;
 
 public class VendorOptionsActivity extends AppCompatActivity {
 
-    Button backToHomeButton;
+    Button backToHomeButton, trucksButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,10 +27,20 @@ public class VendorOptionsActivity extends AppCompatActivity {
 //        }
 
         backToHomeButton = findViewById(R.id.backToHomeButton);
+        trucksButton = findViewById(R.id.trucksButton);
+
         backToHomeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
+            }
+        });
+
+        trucksButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(VendorOptionsActivity.this, SeeTrucksActivity.class);
+                startActivity(intent);
             }
         });
 

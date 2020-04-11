@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/topRelativeLayout"
+    android:id="@+id/relativeLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".HomeActivityJava">
@@ -21,7 +21,6 @@
     </androidx.fragment.app.FragmentContainerView>
 
     <FrameLayout
-        android:id="@+id/frameLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="30dp"
@@ -34,9 +33,7 @@
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-        </androidx.recyclerview.widget.RecyclerView>
+            android:orientation="horizontal" />
     </FrameLayout>
 
     <SearchView
@@ -45,8 +42,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="16dp"
-        android:iconifiedByDefault="true"
-        android:queryHint="Which truck would you like?"
+        android:background="@drawable/rounded_corner"
+        android:iconifiedByDefault="false"
+        android:queryHint="Search"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -63,7 +61,8 @@
         app:layout_constraintBottom_toBottomOf="@+id/sv_location"
         app:layout_constraintEnd_toStartOf="@+id/sv_location"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/sv_location" />
+        app:layout_constraintTop_toTopOf="@+id/sv_location"
+        android:background="@drawable/back_button_raised"/>
 
     <Button
         android:id="@+id/locationButton"
@@ -75,7 +74,8 @@
         app:layout_constraintBottom_toBottomOf="@+id/sv_location"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/sv_location"
-        app:layout_constraintTop_toTopOf="@+id/sv_location" />
+        app:layout_constraintTop_toTopOf="@+id/sv_location"
+        android:background="@drawable/back_button_raised"/>
 
     <Button
         android:id="@+id/vendorButton"
@@ -84,7 +84,8 @@
         android:minWidth="48dp"
         android:text="V"
         app:layout_constraintStart_toStartOf="@+id/menuButton"
-        app:layout_constraintTop_toBottomOf="@+id/menuButton" />
+        app:layout_constraintTop_toBottomOf="@+id/menuButton"
+        android:background="@drawable/back_button_raised"/>
 
     <Button
         android:id="@+id/favoritesButton"
@@ -94,15 +95,6 @@
         android:minWidth="48dip"
         app:layout_constraintStart_toStartOf="@+id/locationButton"
         app:layout_constraintTop_toBottomOf="@+id/locationButton" />
-
-    <LinearLayout
-        android:id="@+id/snackbarLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/frameLayout"></LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
