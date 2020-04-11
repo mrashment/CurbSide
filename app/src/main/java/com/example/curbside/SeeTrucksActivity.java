@@ -27,7 +27,7 @@ public class SeeTrucksActivity extends AppCompatActivity {
     private ArrayList<Truck> trucks;
     private RecyclerView recyclerView1;
     private SeeTrucksActivity cardAdapter1;
-    private Button backToVendorOptions;
+    private Button backToVendorOptions, newTruckButton;
 
     public SeeTrucksActivity(ArrayList<Truck> trucks) {
         this.trucks = trucks;
@@ -38,6 +38,8 @@ public class SeeTrucksActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_see_trucks);
 
+        backToVendorOptions = findViewById(R.id.backToVendorOptions);
+        newTruckButton = findViewById(R.id.newTruckButton);
 
         recyclerView1 = findViewById(R.id.recyclerView1);
         recyclerView1.setVisibility(RecyclerView.INVISIBLE);
@@ -49,6 +51,16 @@ public class SeeTrucksActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        newTruckButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SeeTrucksActivity.this, EditTruckInterface.class);
+                startActivity(intent);
+            }
+        });
+
+
 
     }
 
