@@ -114,7 +114,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Truck Biography"
+        android:text="Truck Description"
         app:layout_constraintBottom_toTopOf="@+id/editTruckBio"
         app:layout_constraintStart_toStartOf="@+id/editTruckBio" />
 
