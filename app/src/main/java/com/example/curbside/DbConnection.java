@@ -24,6 +24,7 @@ public class DbConnection {
     public static final String ADD_FAVORITE = "https://cgi.sice.indiana.edu/~team59/addfavorite.php";
     public static final String DELETE_FAVORITE = "https://cgi.sice.indiana.edu/~team59/deletefavorite.php";
     public static final String SEARCH_TRUCKS = "https://cgi.sice.indiana.edu/~team59/searchtrucks.php";
+    public static final String ADD_REWARDS = "https://cgi.sice.indiana.edu/~team59/searchtrucks.php";
 
 
     public static DbConnection getInstance() {
