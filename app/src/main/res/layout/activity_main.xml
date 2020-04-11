@@ -41,7 +41,8 @@
         android:text="Sign In with Google"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline" />
+        app:layout_constraintTop_toTopOf="@+id/guideline"
+        android:background="@drawable/rounded_corner"/>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"

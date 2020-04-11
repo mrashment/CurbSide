@@ -13,7 +13,8 @@
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center_horizontal|fill|center_vertical">
+        android:layout_gravity="center_horizontal|fill|center_vertical"
+        android:background="@drawable/rounded_corner">
 
         <ImageView
             android:id="@+id/imageView"

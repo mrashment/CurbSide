@@ -11,7 +11,7 @@
     <EditText
         android:id="@+id/editTruckName"
         android:layout_width="0dp"
-        android:layout_height="43dp"
+        android:layout_height="40dp"
         android:layout_marginTop="132dp"
         android:background="@drawable/rounded_corner"
         android:inputType="text"
@@ -48,7 +48,7 @@
     <EditText
         android:id="@+id/editTruckBio"
         android:layout_width="0dp"
-        android:layout_height="176dp"
+        android:layout_height="200dp"
         android:layout_marginTop="40dp"
         android:background="@drawable/rounded_corner"
         android:inputType="text"
@@ -66,7 +66,8 @@
             app:layout_constraintEnd_toEndOf="@+id/editTruckBio"
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="@+id/editTruckBio"
-            app:layout_constraintTop_toBottomOf="@+id/editTruckBio" />
+            app:layout_constraintTop_toBottomOf="@+id/editTruckBio"
+            android:background="@drawable/rounded_corner"/>
 
     <Button
         android:id="@+id/editMenuButton"

@@ -4,36 +4,42 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/curbside_gradient_background"
+    android:padding="20dp">
 
     <EditText
         android:id="@+id/newItemName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="308dp"
+        android:layout_height="40dp"
+        android:background="@drawable/rounded_corner"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Item Name"
-        tools:layout_editor_absoluteX="99dp"
-        tools:layout_editor_absoluteY="199dp" />
+        tools:layout_editor_absoluteX="24dp"
+        tools:layout_editor_absoluteY="206dp" />
 
     <EditText
         android:id="@+id/newItemPrice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:background="@drawable/rounded_corner"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Item Price"
-        tools:layout_editor_absoluteX="99dp"
+        app:layout_constraintEnd_toEndOf="@+id/newItemName"
+        app:layout_constraintStart_toStartOf="@+id/newItemName"
         tools:layout_editor_absoluteY="286dp" />
 
     <EditText
         android:id="@+id/newItemDescription"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
+        android:background="@drawable/rounded_corner"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Item Description"
-        tools:layout_editor_absoluteX="99dp"
+        app:layout_constraintEnd_toEndOf="@+id/newItemPrice"
+        app:layout_constraintStart_toStartOf="@+id/newItemPrice"
         tools:layout_editor_absoluteY="383dp" />
 
     <Button
@@ -44,13 +50,17 @@
         android:layout_marginTop="8dp"
         android:text="="
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/back_button_raised"
+        />
 
     <Button
         android:id="@+id/finalizeItem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/rounded_corner"
         android:text="Finalize Item"
-        tools:layout_editor_absoluteX="146dp"
+        app:layout_constraintEnd_toEndOf="@+id/newItemDescription"
+        app:layout_constraintStart_toStartOf="@+id/newItemDescription"
         tools:layout_editor_absoluteY="529dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

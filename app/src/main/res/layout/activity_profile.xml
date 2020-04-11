@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_alignParentLeft="true"
-    android:background="@color/graylight"
+    android:background="@drawable/curbside_gradient_background"
     android:orientation="vertical"
     tools:context=".Profile">
 
@@ -25,24 +25,32 @@
             android:id="@+id/notificationsButton"
             android:layout_width="match_parent"
             android:layout_height="60dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/rounded_corner"
             android:text="Notifications" />
 
         <Button
             android:id="@+id/settingsButton"
             android:layout_width="match_parent"
             android:layout_height="60dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/rounded_corner"
             android:text="Settings" />
 
         <Button
             android:id="@+id/companyInfoButton"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/rounded_corner"
             android:text="Account" />
 
         <Button
             android:id="@+id/addTruckButton"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/rounded_corner"
             android:text="Privacy" />
 
     </LinearLayout>
@@ -53,6 +61,7 @@
         android:layout_height="48dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:background="@drawable/back_button_raised"
         android:text="="
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
