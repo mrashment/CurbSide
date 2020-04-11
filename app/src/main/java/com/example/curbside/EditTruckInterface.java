@@ -25,11 +25,6 @@ public class EditTruckInterface extends AppCompatActivity {
     private TextView companyNameText, hoursTruckText;
     private EditText editTruckHours, editTruckHours2, editTruckName, editTruckBio;
 
-    public EditTruckInterface(ArrayList<Truck> trucks, Context context) {
-        this.trucks = trucks;
-        this.context = context;
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,17 +35,10 @@ public class EditTruckInterface extends AppCompatActivity {
         backToSeeTrucks = findViewById(R.id.backToSeeTrucks);
         applyTruckChange = findViewById(R.id.applyTruckChange);
 
-        companyNameText = findViewById(R.id.companyNameText);
-
         editTruckHours = findViewById(R.id.editTruckHours);
         editTruckHours2 = findViewById(R.id.editTruckHours2);
         editTruckName = findViewById(R.id.editTruckName);
         editTruckBio = findViewById(R.id.editTruckBio);
-
-
-//        grabs the current truck info from the Db
-        companyNameText.setText(truck.getName());
-        hoursTruckText.setText(truck.getHours());
 
         editTruckName.setText(truck.getName());
         String hours[] = truck.getHours().split("-");

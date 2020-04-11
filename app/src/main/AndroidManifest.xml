@@ -29,6 +29,8 @@
         <activity android:name=".ScannedBarcodeActivity" />
         <activity android:name=".PictureBarcodeActivity" />
         <activity android:name=".FavoritesActivity" />
+        <activity android:name=".EditTruckInterface"/>
+        <activity android:name=".EditMenuInterface"/>
         <activity android:name=".SearchActivity"></activity>
         <activity android:name=".VendorOptionsActivity" />
 
