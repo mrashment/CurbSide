@@ -21,6 +21,7 @@
     </androidx.fragment.app.FragmentContainerView>
 
     <FrameLayout
+        android:id="@+id/frameLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="30dp"
@@ -34,14 +35,25 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal" />
+
     </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/snackbarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/frameLayout"></LinearLayout>
 
     <LinearLayout
         android:layout_width="405dp"
         android:layout_height="72dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <Button
             android:id="@+id/vendorButton"
@@ -85,6 +97,8 @@
             android:background="@drawable/truck_favorite_pressed"
             android:minWidth="48dp" />
     </LinearLayout>
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -55,7 +55,6 @@
 <!--        </provider>-->
 
 
-        <activity android:name=".ContactDevelopers" />
         <activity android:name=".TruckMenuActivity" />
         <activity android:name=".Profile" />
         <activity android:name=".SeeTrucksActivity"/>

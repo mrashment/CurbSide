@@ -51,8 +51,7 @@ public class EditTruckInterface extends AppCompatActivity {
         backToSeeTrucks.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(EditTruckInterface.this, EditTrucks.class);
-                startActivity(intent);
+                finish();
             }
         });
 

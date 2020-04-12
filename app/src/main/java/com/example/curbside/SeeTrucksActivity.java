@@ -29,6 +29,11 @@ public class SeeTrucksActivity extends AppCompatActivity {
     private SeeTrucksCardAdapter cardAdapter1;
     private Button backToVendorOptions;
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        new TrucksThreadCompany(this).execute(DbConnection.getInstance().getUser().getCompanyID());
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
