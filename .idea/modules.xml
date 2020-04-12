@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/CurbSide.iml" filepath="$PROJECT_DIR$/CurbSide.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/team-59-CurbSide.iml" filepath="$PROJECT_DIR$/team-59-CurbSide.iml" group="CurbSide" />
-      <module fileurl="file://$PROJECT_DIR$/app/team-59-app.iml" filepath="$PROJECT_DIR$/app/team-59-app.iml" group="CurbSide/app" />
+      <module fileurl="file://$PROJECT_DIR$/CurbSide.iml" filepath="$PROJECT_DIR$/CurbSide.iml" group="CurbSide" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="CurbSide/app" />
     </modules>
   </component>
 </project>

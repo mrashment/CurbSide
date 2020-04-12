@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,7 +28,7 @@ public class EditTruckInterface extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_menu_interface);
+        setContentView(R.layout.activity_edit_truck_interface);
         Intent intent = getIntent();
         truck = (Truck)intent.getSerializableExtra("com.example.curbside.truck");
 
@@ -58,7 +59,18 @@ public class EditTruckInterface extends AppCompatActivity {
         applyTruckChange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String desiredName = editTruckName.getText().toString();
+                String desiredOpen = editTruckHours.getText().toString();
+                String desiredClose = editTruckHours2.getText().toString();
+                String desiredBio = editTruckBio.getText().toString();
+                Truck editted = new Truck(desiredName,truck.getCompany());
+                editted.setHours(desiredOpen + "-" + desiredClose);
+                editted.setBio(desiredBio);
 
+                TrucksEditTruckThread thread = new TrucksEditTruckThread();
+                thread.execute(truck,editted);
+
+                Toast.makeText(EditTruckInterface.this,desiredName + " " + desiredBio,Toast.LENGTH_LONG).show();
 
             }
         });
