@@ -83,8 +83,13 @@ public class TruckMenuActivity extends AppCompatActivity {
 
                     imageButton.setBackgroundResource(R.drawable.truck_favorite_pressed);
                     isPressed=true;
+                    Integer[] curFavs = conn.getUser().getFavIds();
+                    Integer[] newFavs = Arrays.copyOf(curFavs,curFavs.length + 1);
+                    newFavs[newFavs.length-1] = truck.getCompany().getId();
+                    conn.getUser().setFavIds(newFavs);
                     UpdateFavoriteThread thread = new UpdateFavoriteThread(UpdateFavoriteThread.OPERATION.Add);
                     thread.execute(conn.getUser().getId(),truck.getCompany().getId());
+                    new FavoritesThread().execute();
                     Log.d(TAG, "onClick: Favoriting with companyid = " + truck.getCompany().getId());
 
                 }else if(isPressed==true){ // unfavoriting
@@ -93,6 +98,16 @@ public class TruckMenuActivity extends AppCompatActivity {
                     isPressed=false;
                     UpdateFavoriteThread thread = new UpdateFavoriteThread(UpdateFavoriteThread.OPERATION.Delete);
                     thread.execute(conn.getUser().getId(),truck.getCompany().getId());
+                    Integer[] curFavs = conn.getUser().getFavIds();
+                    Integer[] newFavs = new Integer[curFavs.length - 1];
+                    int place = 0;
+                    for (Integer i : curFavs) {
+                        if (i != truck.getCompany().getId()) {
+                            newFavs[place++] = i;
+                        }
+                    }
+                    conn.getUser().setFavIds(newFavs);
+                    new FavoritesThread().execute();
                     Log.d(TAG, "onClick: Unfavoriting with companyid = " + truck.getCompany().getId());
                 }
             }

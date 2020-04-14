@@ -43,8 +43,8 @@ public abstract class Vendor extends User {
     }
 
     @Override
-    public void setFavIds(String[] stringIds) {
-        user.setFavIds(stringIds);
+    public void setFavIds(Integer[] ids) {
+        user.setFavIds(ids);
     }
 
     @Override

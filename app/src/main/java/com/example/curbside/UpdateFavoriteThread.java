@@ -32,6 +32,7 @@ public class UpdateFavoriteThread extends AsyncTask<Integer, Void, Boolean> {
     @Override
     protected void onPostExecute(Boolean aBoolean) {
         Log.d(TAG, "onPostExecute: result = " + aBoolean);
+
     }
 
     @Override

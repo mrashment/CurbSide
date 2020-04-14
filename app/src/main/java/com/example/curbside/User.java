@@ -29,19 +29,8 @@ public abstract class User {
           return favIds;
      }
 
-     public void setFavIds(String[] stringIds) {
-          this.favIds = new Integer[stringIds.length];
-          for (int i = 0; i < stringIds.length; i++) {
-               if (!stringIds[i].equals("")) {
-                    String raw = stringIds[i];
-                    Log.d(TAG, "setFavIds: " + raw);
-                    if (raw.charAt(0) == '"' && raw.charAt(raw.length() - 1) == '"') {
-                         raw= raw.substring(1, raw.length() - 1);
-                    }
-                    int newid = Integer.parseInt(raw);
-                    this.favIds[i] = newid;
-               }
-          }
+     public void setFavIds(Integer[] favIds) {
+          this.favIds = favIds;
      }
 
      public ArrayList<Truck> getFavTrucks() {

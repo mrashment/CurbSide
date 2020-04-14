@@ -21,18 +21,46 @@ public class FavoritesActivity extends AppCompatActivity {
     DbConnection conn;
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        new Thread() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        favorites = conn.getUser().getFavTrucks();
+                        sort();
+                        recyclerView.setAdapter(new FavoritesAdapter(favorites,FavoritesActivity.this));
+                    }
+                });
+            }
+        }.start();
+
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favorites);
 
         conn = DbConnection.getInstance();
+        while (conn.userIsNull()) {
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
         favorites = new ArrayList<>();
 
         favorites = conn.getUser().getFavTrucks();
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            favorites.sort(new TruckDistanceAsc());
-        }
+        sort();
 
         backToHomeButton = findViewById(R.id.backToHomeButton);
         recyclerView = findViewById(R.id.favRecyclerView);
@@ -51,4 +79,11 @@ public class FavoritesActivity extends AppCompatActivity {
 
 
     }
+
+    public void sort() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            favorites.sort(new TruckDistanceAsc());
+        }
+    }
+
 }

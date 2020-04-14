@@ -63,7 +63,19 @@ class RetrieveThread extends AsyncTask<GoogleSignInAccount,Void,String> {
                     Log.d(TAG, "onPostExecute: " + jsonUser);
                     conn.setUser(jsonUser);
                     String[] items = separate[1].replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("\\s", "").split(",");
-                    conn.getUser().setFavIds(items);
+                    Integer[] favInts = new Integer[items.length];
+                    for (int i = 0; i < items.length; i++) {
+                        if (!items[i].equals("")) {
+                            String raw = items[i];
+                            Log.d(TAG, "setFavIds: " + raw);
+                            if (raw.charAt(0) == '"' && raw.charAt(raw.length() - 1) == '"') {
+                                raw= raw.substring(1, raw.length() - 1);
+                            }
+                            int newid = Integer.parseInt(raw);
+                            favInts[i] = newid;
+                        }
+                    }
+                    conn.getUser().setFavIds(favInts);
                     Log.d(TAG, "onPostExecute: " + conn.printUserInfo());
                     Log.d(TAG, "onPostExecute: Company id: " + conn.getUser().getCompanyID());
                     Log.d(TAG, "onPostExecute: " + separate[1]);
