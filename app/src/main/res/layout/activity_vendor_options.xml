@@ -74,7 +74,8 @@
             android:id="@+id/retqr"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Retrieve QR Code" />
+            android:text="Retrieve QR Code"
+            android:background="@drawable/rounded_corner"/>
 
     </LinearLayout>
 
