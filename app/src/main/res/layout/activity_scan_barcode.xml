@@ -37,6 +37,7 @@
         android:id="@+id/btnAction"
         android:text="Scan Code"
         android:textAllCaps="false"
+        android:textColor="#ffa500"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

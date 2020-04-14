@@ -35,6 +35,7 @@
         android:layout_marginTop="20dp"
         android:background="@drawable/rounded_corner"
         android:text="+ truck"
+        android:textColor="#ffa500"
         app:layout_constraintBottom_toBottomOf="@+id/backToVendorOptions"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.94"
