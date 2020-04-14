@@ -62,6 +62,7 @@
         android:layout_marginTop="40dp"
         android:background="@drawable/rounded_corner"
         android:text="Apply Changes"
+        android:textColor="#ffa500"
         app:layout_constraintEnd_toEndOf="@+id/editTruckBio"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="@+id/editTruckBio"

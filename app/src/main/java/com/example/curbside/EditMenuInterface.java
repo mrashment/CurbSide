@@ -22,8 +22,7 @@ public class EditMenuInterface extends AppCompatActivity {
         backToVendorOptions.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(EditMenuInterface.this, VendorOptionsActivity.class);
-                startActivity(intent);
+                finish();
             }
         });
 
