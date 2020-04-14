@@ -49,12 +49,19 @@ public class SeeTrucksCardAdapter extends RecyclerView.Adapter<SeeTrucksCardAdap
         holder.hoursTextView.setText(trucks.get(position).getHours());
         final double lng = ((SeeTrucksActivity)context).getLng();
         final double lat = ((SeeTrucksActivity)context).getLat();
-        holder.broadcastSwitch.setOnClickListener(new View.OnClickListener() {
+        holder.broadcastSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onClick(View v) {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    // broadcast
+                } else {
+                    // don't broadcast
+                }
                 Toast.makeText(context, "Longitude = " + lng + " Latitude = " + lat,Toast.LENGTH_LONG).show();
+
             }
         });
+
     }
 
     @Override
