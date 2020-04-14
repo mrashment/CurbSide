@@ -70,7 +70,7 @@ public class TruckMenuActivity extends AppCompatActivity {
 
                 if(isPressed==false){ // favoriting
 
-                    imageButton.setBackgroundResource(R.drawable.truck_favorite_pressed);
+                    imageButton.setBackgroundResource(R.drawable.ic_nonfavorite);
                     isPressed=true;
                     UpdateFavoriteThread thread = new UpdateFavoriteThread(UpdateFavoriteThread.OPERATION.Add);
                     thread.execute(conn.getUser().getId(),truck.getCompany().getId());
@@ -78,7 +78,7 @@ public class TruckMenuActivity extends AppCompatActivity {
 
                 }else if(isPressed==true){ // unfavoriting
 
-                    imageButton.setBackgroundResource(R.drawable.truck_favorite_unpressed);
+                    imageButton.setBackgroundResource(R.drawable.ic_favorite);
                     isPressed=false;
                     UpdateFavoriteThread thread = new UpdateFavoriteThread(UpdateFavoriteThread.OPERATION.Delete);
                     thread.execute(conn.getUser().getId(),truck.getCompany().getId());
