@@ -44,7 +44,7 @@
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/frameLayout"></LinearLayout>
+        app:layout_constraintBottom_toTopOf="@id/frameLayout"></LinearLayout>
 
 
     <LinearLayout
@@ -65,9 +65,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="14dp"
             android:layout_marginRight="14dp"
-            android:background="@drawable/back_button_raised"
+            android:background="@drawable/ic_menu"
             android:minWidth="48dp"
-            android:text="="
             android:textSize="24sp" />
 
         <Button
@@ -76,20 +75,18 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="14dp"
             android:layout_marginRight="14dp"
-            android:background="@drawable/back_button_raised"
-            android:minWidth="48dp"
-            android:text="V" />
+            android:background="@drawable/ic_vendor"
+            android:minWidth="48dp" />
 
         <SearchView
             android:id="@+id/sv_location"
             android:layout_width="48dp"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginLeft="14dp"
             android:layout_marginRight="14dp"
-            android:background="@drawable/rounded_corner"
-            android:iconifiedByDefault="false"
-            android:queryHint="Search" />
+            android:background="@drawable/ic_search"
+            android:iconifiedByDefault="false"/>
 
         <Button
             android:id="@+id/favoritesButton"
@@ -97,16 +94,16 @@
             android:layout_height="48dp"
             android:layout_marginLeft="14dp"
             android:layout_marginRight="14dp"
-            android:background="@drawable/ic_passion"
+            android:background="@drawable/ic_favorite"
             android:minWidth="48dp" />
 
         <Button
             android:id="@+id/locationButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_marginLeft="14dp"
             android:layout_marginRight="14dp"
-            android:background="@drawable/back_button_raised"
+            android:background="@drawable/ic_my_location"
             android:minWidth="48dip"
             android:textSize="24sp" />
 
