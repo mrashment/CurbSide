@@ -8,16 +8,16 @@
     tools:context=".HomeActivityJava">
 
 
-<!--    <androidx.fragment.app.FragmentContainerView-->
-<!--        android:id="@+id/myMap"-->
-<!--        android:name="com.google.android.gms.maps.SupportMapFragment"-->
-<!--        class="com.google.android.gms.maps.SupportMapFragment"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent">-->
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/myMap"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        class="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-<!--    </androidx.fragment.app.FragmentContainerView>-->
+    </androidx.fragment.app.FragmentContainerView>
 
     <FrameLayout
         android:id="@+id/frameLayout"
