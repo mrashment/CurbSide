@@ -72,7 +72,7 @@ public class TruckMenuActivity extends AppCompatActivity {
 
         List<Integer> favList = Arrays.asList(favs);
         if (favList.contains(truck.getCompany().getId())) {
-            imageButton.setBackgroundResource(R.drawable.truck_favorite_pressed);
+            imageButton.setBackgroundResource(R.drawable.ic_nonfavorite);
             isPressed = true;
         }
 

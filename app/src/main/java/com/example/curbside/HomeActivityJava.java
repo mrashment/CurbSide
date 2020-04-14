@@ -64,8 +64,7 @@ public class HomeActivityJava extends AppCompatActivity implements OnMapReadyCal
     private ArrayList<Truck> trucks;
     private RecyclerView recyclerView;
     private HomePageCardAdapter cardAdapter;
-    private Button locationButton,menuButton, vendorButton, favoritesButton;
-    private SearchView searchBar;
+    private Button locationButton,menuButton, vendorButton, favoritesButton, searchBar;
     static Handler handler;
 
     @Override
@@ -120,10 +119,9 @@ public class HomeActivityJava extends AppCompatActivity implements OnMapReadyCal
             }
         });
         searchBar = findViewById(R.id.sv_location);
-        searchBar.setOnSearchClickListener(new View.OnClickListener() {
+        searchBar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((SearchView)v).setIconified(true);
                 startActivity(new Intent(HomeActivityJava.this,SearchActivity.class));
 
             }

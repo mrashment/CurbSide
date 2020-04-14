@@ -33,7 +33,8 @@
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal" />
+            android:orientation="horizontal"
+            android:elevation="10dp"/>
 
     </FrameLayout>
 
@@ -48,6 +49,7 @@
 
 
     <LinearLayout
+        android:id="@+id/homeBanner"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:elevation="10dp"
@@ -79,15 +81,14 @@
             android:background="@drawable/ic_vendor"
             android:minWidth="48dp" />
 
-        <SearchView
+        <Button
             android:id="@+id/sv_location"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginLeft="14dp"
             android:layout_marginRight="14dp"
-            android:background="@drawable/ic_search"
-            android:iconifiedByDefault="true"/>
+            android:background="@drawable/ic_search"/>
 
         <Button
             android:id="@+id/favoritesButton"
@@ -107,6 +108,19 @@
             android:background="@drawable/ic_my_location"
             android:minWidth="48dip"
             android:textSize="24sp" />
-
     </LinearLayout>
+
+    <TextView
+        android:layout_width="109dp"
+        android:layout_height="31dp"
+        android:background="@drawable/half_rounded"
+        android:gravity="center"
+        android:text="CurbSide"
+        android:elevation="10dp"
+        android:textColor="#ffa500"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/homeBanner"
+        app:layout_constraintStart_toStartOf="@+id/homeBanner"
+        app:layout_constraintTop_toBottomOf="@id/homeBanner" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
