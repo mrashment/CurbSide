@@ -28,7 +28,10 @@
             android:layout_height="50dp"
             android:layout_marginBottom="20dp"
             android:background="@drawable/rounded_corner"
-            android:text="Trucks" />
+            android:text="Trucks"
+            android:textAllCaps="false"
+            android:textColor="#ffa500"
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/menusButton"
@@ -36,7 +39,10 @@
             android:layout_height="50dp"
             android:layout_marginBottom="20dp"
             android:background="@drawable/rounded_corner"
-            android:text="Menus" />
+            android:text="Menus"
+            android:textAllCaps="false"
+            android:textColor="#ffa500"
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/companyInfoButton"
@@ -44,7 +50,10 @@
             android:layout_height="50dp"
             android:layout_marginBottom="20dp"
             android:background="@drawable/rounded_corner"
-            android:text="Company Info" />
+            android:text="Company Info"
+            android:textAllCaps="false"
+            android:textColor="#ffa500"
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/notificationsButton"
@@ -52,7 +61,10 @@
             android:layout_height="50dp"
             android:layout_marginBottom="20dp"
             android:background="@drawable/rounded_corner"
-            android:text="Notifications" />
+            android:text="Notifications"
+            android:textAllCaps="false"
+            android:textColor="#ffa500"
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/settingsButton"
@@ -60,7 +72,10 @@
             android:layout_height="50dp"
             android:layout_marginBottom="20dp"
             android:background="@drawable/rounded_corner"
-            android:text="Settings" />
+            android:text="Settings"
+            android:textAllCaps="false"
+            android:textColor="#ffa500"
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/employeesButton"
@@ -68,13 +83,20 @@
             android:layout_height="50dp"
             android:layout_marginBottom="20dp"
             android:background="@drawable/rounded_corner"
-            android:text="Employees" />
+            android:text="Employees"
+            android:textAllCaps="false"
+            android:textColor="#ffa500"
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/retqr"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Retrieve QR Code" />
+            android:background="@drawable/rounded_corner"
+            android:text="Retrieve QR Code"
+            android:textAllCaps="false"
+            android:textColor="#ffa500"
+            android:textSize="16sp" />
 
     </LinearLayout>
 
@@ -84,10 +106,9 @@
         android:layout_height="48dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="="
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:background="@drawable/back_button_raised"/>
+        android:background="@drawable/ic_arrow_back"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

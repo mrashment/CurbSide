@@ -8,22 +8,21 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class EditMenuInterface extends AppCompatActivity {
-    private Button backToEditTrucks, applyMenuChange, addItemButton;
+    private Button backToVendorOptions, applyMenuChange, addItemButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_menu_interface);
 
-        backToEditTrucks = findViewById(R.id.backToEditTrucks);
+        backToVendorOptions = findViewById(R.id.backToVendorOptions);
         applyMenuChange = findViewById(R.id.applyMenuChange);
         addItemButton = findViewById(R.id.addItemButton);
 
-        backToEditTrucks.setOnClickListener(new View.OnClickListener() {
+        backToVendorOptions.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(EditMenuInterface.this, EditTrucks.class);
-                startActivity(intent);
+                finish();
             }
         });
 

@@ -7,6 +7,7 @@
 
     <SurfaceView
         android:id="@+id/surfaceView"
+        android:layout_marginTop="60dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/btnAction"
@@ -14,21 +15,42 @@
         android:layout_alignParentStart="true"
         android:layout_centerVertical="true" />
 
+
     <TextView
         android:id="@+id/txtBarcodeValue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="37dp"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:text="No Barcode Detected"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="111dp"
+        android:layout_marginTop="23dp"
+        android:layout_marginEnd="104dp"
+        android:gravity="center"
+        android:lines="1"
+        android:text="No Barcode"
         android:textColor="@android:color/white"
         android:textSize="20sp" />
 
-
     <Button
+        android:layout_marginTop="5dp"
         android:id="@+id/btnAction"
+        android:text="Scan Code"
+        android:textAllCaps="false"
+        android:textColor="#ffa500"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="@drawable/rounded_corner"/>
+
+    <Button
+        android:id="@+id/backToMenu"
+        android:layout_width="46dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/ic_arrow_back" />
 
 </RelativeLayout>

@@ -45,7 +45,7 @@ public class Profile extends AppCompatActivity {
         rewardsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Profile.this,QR_home.class));
+                startActivity(new Intent(Profile.this,ScannedBarcodeActivity.class));
             }
         });
 

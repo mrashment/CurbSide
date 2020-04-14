@@ -50,8 +50,7 @@ public class SeeTrucksActivity extends AppCompatActivity {
         backToVendorOptions.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(SeeTrucksActivity.this, VendorOptionsActivity.class);
-                startActivity(intent);
+                finish();
             }
         });
 

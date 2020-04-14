@@ -30,7 +30,7 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
     private BarcodeDetector barcodeDetector;
     private CameraSource cameraSource;
     private static final int REQUEST_CAMERA_PERMISSION = 201;
-    Button btnAction;
+    Button btnAction, backToMenu;
     String intentData = "";
     boolean isEmail = false;
 
@@ -47,7 +47,14 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
         txtBarcodeValue = findViewById(R.id.txtBarcodeValue);
         surfaceView = findViewById(R.id.surfaceView);
         btnAction = findViewById(R.id.btnAction);
+        backToMenu = findViewById(R.id.backToMenu);
 
+        backToMenu.setOnClickListener((new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        }));
 
         btnAction.setOnClickListener(new View.OnClickListener() {
             @Override

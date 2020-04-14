@@ -24,8 +24,7 @@ public class AddMenuItemActivity extends AppCompatActivity {
         backToEditMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AddMenuItemActivity.this, EditMenuInterface.class);
-                startActivity(intent);
+                finish();
             }
         });
 
@@ -50,8 +49,7 @@ public class AddMenuItemActivity extends AppCompatActivity {
 //                async task, seperate thread to send tasks on
 
 
-                Intent intent = new Intent(AddMenuItemActivity.this, EditMenuInterface.class);
-                startActivity(intent);
+                finish();
             }
         });
     }
