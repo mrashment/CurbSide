@@ -57,7 +57,7 @@ public class HomePageCardAdapter extends RecyclerView.Adapter<HomePageCardAdapte
         googleMap.addMarker(new MarkerOptions()
                 .position(new LatLng(trucks.get(position).getLat(), trucks.get(position).getLng()))
                 .title(trucks.get(position).getName())
-                .icon(BitmapDescriptorFactory.fromResource(R.mipmap.truck_icon_foreground)));
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE)));
     }
 
     @Override

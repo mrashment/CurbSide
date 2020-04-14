@@ -148,6 +148,7 @@ public class HomeActivityJava extends AppCompatActivity implements OnMapReadyCal
             recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
             cardAdapter = new HomePageCardAdapter(trucks, googleMap, this);
             recyclerView.setAdapter(cardAdapter);
+
             recyclerView.addItemDecoration(new DividerItemDecoration(this,
                     DividerItemDecoration.HORIZONTAL));
 
@@ -179,7 +180,7 @@ public class HomeActivityJava extends AppCompatActivity implements OnMapReadyCal
             // Customise map styling via JSON file
             boolean success = googleMap.setMapStyle(
                     MapStyleOptions.loadRawResourceStyle(
-                            this, R.raw.maps_style));
+                            this, R.raw.maps_style1));
 
             if (!success) {
                 Log.e(TAG, "Style parsing failed.");

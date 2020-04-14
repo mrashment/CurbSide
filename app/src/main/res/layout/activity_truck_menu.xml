@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/curbside_gradient_background"
-    android:padding="20dp"
 
     tools:context=".TruckMenuActivity">
 
@@ -14,6 +13,8 @@
         android:layout_width="419dp"
         android:layout_height="55dp"
         android:text="Navigate"
+        android:textColor="#ffa500"
+        android:textAllCaps="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
@@ -26,7 +27,7 @@
         android:elevation="10dp"
         android:gravity="center"
         android:orientation="vertical"
-        android:padding="10dp"
+        android:layout_margin="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -36,32 +37,40 @@
 
         <Button
             android:id="@+id/selectTruckPhotos"
-            android:layout_width="396dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
+            android:textAllCaps="false"
+            android:textColor="#ffa500"
             android:background="@drawable/rounded_corner"
             android:text="Photos" />
 
         <Button
             android:id="@+id/selectTruckMenu"
-            android:layout_width="396dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:textColor="#ffa500"
             android:layout_marginBottom="10dp"
             android:background="@drawable/rounded_corner"
             android:text="Menu" />
 
         <Button
             android:id="@+id/selectTruckReviews"
-            android:layout_width="396dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:textColor="#ffa500"
             android:layout_marginBottom="10dp"
             android:background="@drawable/rounded_corner"
             android:text="Reviews" />
 
         <Button
             android:id="@+id/selectTruckContactVendor"
-            android:layout_width="396dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:textColor="#ffa500"
             android:layout_marginBottom="10dp"
             android:background="@drawable/rounded_corner"
             android:text="Contact Vendor" />
@@ -94,9 +103,12 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="Truck Name"
+            android:textSize="40sp"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/truckImage" />
+            app:layout_constraintTop_toBottomOf="@+id/backToHomeButton" />
 
         <ImageButton
             android:id="@+id/truckFavoriteButton"
@@ -125,15 +137,20 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/companyNameText" />
 
-        <ImageView
-            android:id="@+id/truckImage"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/backToHomeButton"
-            app:srcCompat="@drawable/cublogo" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/truckImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:alpha="0.4"
+        android:padding="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/navigationButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/cublogo" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
