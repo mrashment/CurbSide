@@ -25,7 +25,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".QR_home"/>
         <activity android:name=".ScannedBarcodeActivity" />
         <activity android:name=".PictureBarcodeActivity" />
         <activity android:name=".FavoritesActivity" />

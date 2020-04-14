@@ -71,8 +71,7 @@
         android:id="@+id/backToSeeTrucks"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:background="@drawable/back_button_raised"
-        android:text="="
+        android:background="@drawable/ic_arrow_back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
