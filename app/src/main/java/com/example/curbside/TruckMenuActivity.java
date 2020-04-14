@@ -13,6 +13,10 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class TruckMenuActivity extends AppCompatActivity {
 
     private static final String TAG = "TruckMenuActivity";
@@ -22,6 +26,8 @@ public class TruckMenuActivity extends AppCompatActivity {
     private TextView companyNameText;
     private TextView hoursTruckText;
     private DbConnection conn;
+    private Integer[] favs;
+    private boolean isPressed = false;
 
 
     @Override
@@ -32,6 +38,7 @@ public class TruckMenuActivity extends AppCompatActivity {
         truck = (Truck)intent.getSerializableExtra("com.example.curbside.truck");
 
         conn = DbConnection.getInstance();
+        favs = conn.getUser().getFavIds();
 
         truckNameText = findViewById(R.id.truckNameText);
         companyNameText = findViewById(R.id.companyNameText);
@@ -63,9 +70,13 @@ public class TruckMenuActivity extends AppCompatActivity {
             }
         });
 
+        List<Integer> favList = Arrays.asList(favs);
+        if (favList.contains(truck.getCompany().getId())) {
+            imageButton.setBackgroundResource(R.drawable.truck_favorite_pressed);
+            isPressed = true;
+        }
 
         imageButton.setOnClickListener(new View.OnClickListener(){
-            boolean isPressed = false;
             public void onClick(View v){
 
                 if(isPressed==false){ // favoriting
