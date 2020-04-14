@@ -9,7 +9,8 @@ import android.widget.Button;
 
 public class VendorOptionsActivity extends AppCompatActivity {
 
-    Button backToHomeButton, trucksButton, menusButton;
+    private Button backToHomeButton, trucksButton, menusButton;
+    private double lat, lng;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +27,8 @@ public class VendorOptionsActivity extends AppCompatActivity {
             setContentView(R.layout.activity_vendor_options);
 //        }
 
+        lat = getIntent().getDoubleExtra("lat",0);
+        lng = getIntent().getDoubleExtra("lng",0);
         backToHomeButton = findViewById(R.id.backToHomeButton);
         trucksButton = findViewById(R.id.trucksButton);
         menusButton = findViewById(R.id.menusButton);
@@ -41,6 +44,8 @@ public class VendorOptionsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(VendorOptionsActivity.this, SeeTrucksActivity.class);
+                intent.putExtra("lat",lat);
+                intent.putExtra("lng",lng);
                 startActivity(intent);
             }
         });

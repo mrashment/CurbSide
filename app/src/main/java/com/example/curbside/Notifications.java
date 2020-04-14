@@ -21,8 +21,7 @@ public class Notifications extends AppCompatActivity {
         backToMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Notifications.this, Profile.class);
-                startActivity(intent);
+                finish();
             }
         });
     }

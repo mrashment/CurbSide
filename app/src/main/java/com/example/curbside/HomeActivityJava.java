@@ -106,6 +106,8 @@ public class HomeActivityJava extends AppCompatActivity implements OnMapReadyCal
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(HomeActivityJava.this, VendorOptionsActivity.class);
+                intent.putExtra("lat",getCurLat());
+                intent.putExtra("lng",getCurLng());
                 startActivity(intent);
             }
         });

@@ -47,6 +47,14 @@ public class SeeTrucksCardAdapter extends RecyclerView.Adapter<SeeTrucksCardAdap
         holder.truckNameTextView.setText(trucks.get(position).getName());
         holder.companyNameTextView.setText(trucks.get(position).getCompany().getName());
         holder.hoursTextView.setText(trucks.get(position).getHours());
+        final double lng = ((SeeTrucksActivity)context).getLng();
+        final double lat = ((SeeTrucksActivity)context).getLat();
+        holder.broadcastSwitch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context, "Longitude = " + lng + " Latitude = " + lat,Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     @Override

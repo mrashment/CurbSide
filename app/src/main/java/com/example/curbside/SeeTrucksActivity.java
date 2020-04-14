@@ -28,6 +28,7 @@ public class SeeTrucksActivity extends AppCompatActivity {
     private RecyclerView recyclerView1;
     private SeeTrucksCardAdapter cardAdapter1;
     private Button backToVendorOptions;
+    private double lat,lng;
 
     @Override
     protected void onResume() {
@@ -40,6 +41,8 @@ public class SeeTrucksActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_see_trucks);
 
+        lat = getIntent().getDoubleExtra("lat",0);
+        lng = getIntent().getDoubleExtra("lng",0);
 
         recyclerView1 = findViewById(R.id.recyclerView1);
         recyclerView1.setVisibility(RecyclerView.INVISIBLE);
@@ -54,6 +57,14 @@ public class SeeTrucksActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    public double getLat() {
+        return lat;
+    }
+
+    public double getLng() {
+        return lng;
     }
 
     public void displayCompanyTrucks(ArrayList<Truck> fromThread) {
