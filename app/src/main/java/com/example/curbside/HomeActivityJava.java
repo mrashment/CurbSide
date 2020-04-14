@@ -146,6 +146,7 @@ public class HomeActivityJava extends AppCompatActivity implements OnMapReadyCal
             recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
             cardAdapter = new HomePageCardAdapter(trucks, googleMap, this);
             recyclerView.setAdapter(cardAdapter);
+
             recyclerView.addItemDecoration(new DividerItemDecoration(this,
                     DividerItemDecoration.HORIZONTAL));
 
