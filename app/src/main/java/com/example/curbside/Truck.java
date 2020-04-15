@@ -7,6 +7,9 @@ import java.util.ArrayList;
 public class Truck implements Serializable {
 
     private String name;
+    private int id;
+
+
     private String bio;
     private Company company;
     private ArrayList<FoodMenu> menus;
@@ -18,6 +21,14 @@ public class Truck implements Serializable {
         this.name = name;
         this.company = company;
         this.hours = "9:00am-9:00pm";
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Double getDistance() {
