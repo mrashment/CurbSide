@@ -1,16 +1,20 @@
 package com.example.curbside;
 
 import java.io.Serializable;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class Truck implements Serializable {
 
     private String name;
+    private int id;
+
+
     private String bio;
     private Company company;
     private ArrayList<FoodMenu> menus;
     private String hours;
-    private double lat,lng,distance;
+    private Double lat,lng,distance;
 
 
     public Truck(String name, Company company) {
@@ -19,11 +23,25 @@ public class Truck implements Serializable {
         this.hours = "9:00am-9:00pm";
     }
 
-    public double getDistance() {
-        return distance;
+    public int getId() {
+        return id;
     }
 
-    public void setDistance(double distance) {
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Double getDistance() {
+        if (distance != null) {
+            DecimalFormat formatted = new DecimalFormat("####0.0");
+            Double result = Double.valueOf(formatted.format(distance));
+            return result;
+        } else {
+            return -1.0;
+        }
+    }
+
+    public void setDistance(Double distance) {
         this.distance = distance;
     }
 
@@ -35,18 +53,18 @@ public class Truck implements Serializable {
         this.bio = bio;
     }
 
-    public double getLat() {
+    public Double getLat() {
         return lat;
     }
 
-    public void setLat(double lat) {
+    public void setLat(Double lat) {
         this.lat = lat;
     }
-    public double getLng() {
+    public Double getLng() {
         return lng;
     }
 
-    public void setLng(double lng) {
+    public void setLng(Double lng) {
         this.lng = lng;
     }
 

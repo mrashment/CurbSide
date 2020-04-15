@@ -11,7 +11,7 @@
 
 
     <Button
-        android:id="@+id/backToEditMenuInterface2"
+        android:id="@+id/backButton"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginStart="8dp"

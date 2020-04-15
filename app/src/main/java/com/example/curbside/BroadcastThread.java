@@ -1,10 +1,6 @@
 package com.example.curbside;
 
 import android.os.AsyncTask;
-import android.util.Log;
-import android.widget.Toast;
-
-import org.json.JSONObject;
 
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
@@ -15,37 +11,36 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-/**
- * Execute with user id first, then company id
- */
-public class UpdateFavoriteThread extends AsyncTask<Integer, Void, Boolean> {
+public class BroadcastThread extends AsyncTask<Double,Void,Boolean> {
+    private static final String TAG = "BroadcastThread";
 
-    private static final String TAG = "UpdateFavoriteThread";
-    enum Operation {ADD,DELETE}
-
+    enum Operation {START,STOP}
     private Operation op;
+    private int truckId;
 
-    public UpdateFavoriteThread(Operation operation) {
-        this.op = operation;
+    public BroadcastThread(Operation op, int truckId) {
+        this.op = op;
+        this.truckId = truckId;
     }
 
     @Override
     protected void onPostExecute(Boolean aBoolean) {
-        Log.d(TAG, "onPostExecute: result = " + aBoolean);
-
+        super.onPostExecute(aBoolean);
     }
 
     @Override
-    protected Boolean doInBackground(Integer... integers) {
+    protected Boolean doInBackground(Double... doubles) {
+        String stringData = "truckid=" + truckId + "&lat=";
+        stringData += op == Operation.START ? doubles[0] : "";
+        stringData += "&lng=";
+        stringData += op == Operation.START ? doubles[1] : "";
 
-        Log.d(TAG, "doInBackground: userid = " + integers[0] + " companyid = " + integers[1]);
-        String stringData = "userid=" + integers[0] + "&companyid=" + integers[1];
 
         byte[] postData = stringData.getBytes();
 
         try {
             // determine which script to call
-            URL url = op == Operation.ADD ? new URL(DbConnection.ADD_FAVORITE) : new URL(DbConnection.DELETE_FAVORITE);
+            URL url = new URL(DbConnection.BROADCAST);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
             connection.setRequestMethod("POST");

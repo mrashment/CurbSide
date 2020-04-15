@@ -72,11 +72,13 @@ public class TrucksThreadCompany extends AsyncTask<Integer,Void, Boolean> {
                     Log.d(TAG, "doInBackground: no open or close time");
                 }
                 truck.setBio(nextTruck.getString("bio"));
+                truck.setId(nextTruck.getInt("id"));
                 try {
                     truck.setLat(nextTruck.getDouble("latitude"));
                     truck.setLng(nextTruck.getDouble("longitude"));
                 } catch (Exception e) {
-                    // truck location is null
+                    truck.setLat(null);
+                    truck.setLng(null);
                 }
                 trucks.add(truck);
                 Log.d(TAG, "doInBackground: added Truck");

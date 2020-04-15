@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.text.Layout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,14 +23,21 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class SeeTrucksCardAdapter extends RecyclerView.Adapter<SeeTrucksCardAdapter.ViewHolder>{
+public class SeeTrucksCardAdapter extends RecyclerView.Adapter<SeeTrucksCardAdapter.ViewHolder> {
+    private static final String TAG = "SeeTrucksCardAdapter";
 
     ArrayList<Truck> trucks;
     Context context;
+    DbConnection conn;
+    private double lng;
+    private double lat;
 
     public SeeTrucksCardAdapter(ArrayList<Truck> trucks, Context context) {
         this.trucks = trucks;
         this.context = context;
+        conn = DbConnection.getInstance();
+        lat = ((SeeTrucksActivity)context).getLat();
+        lng = ((SeeTrucksActivity)context).getLng();
     }
 
     @NonNull
@@ -47,20 +55,11 @@ public class SeeTrucksCardAdapter extends RecyclerView.Adapter<SeeTrucksCardAdap
         holder.truckNameTextView.setText(trucks.get(position).getName());
         holder.companyNameTextView.setText(trucks.get(position).getCompany().getName());
         holder.hoursTextView.setText(trucks.get(position).getHours());
-        final double lng = ((SeeTrucksActivity)context).getLng();
-        final double lat = ((SeeTrucksActivity)context).getLat();
-        holder.broadcastSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    // broadcast
-                } else {
-                    // don't broadcast
-                }
-                Toast.makeText(context, "Longitude = " + lng + " Latitude = " + lat,Toast.LENGTH_LONG).show();
-
-            }
-        });
+        if (trucks.get(position).getLat() == null) {
+            holder.broadcastSwitch.setChecked(false);
+        } else {
+            holder.broadcastSwitch.setChecked(true);
+        }
 
     }
 
@@ -69,7 +68,8 @@ public class SeeTrucksCardAdapter extends RecyclerView.Adapter<SeeTrucksCardAdap
         return trucks.size();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, CompoundButton.OnCheckedChangeListener {
+
+    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         private TextView truckNameTextView,companyNameTextView,hoursTextView;
         private ImageView imageView;
@@ -87,28 +87,35 @@ public class SeeTrucksCardAdapter extends RecyclerView.Adapter<SeeTrucksCardAdap
 
 //            should this be up in the "onCreate" section?
             this.broadcastSwitch = itemView.findViewById(R.id.broadcastSwitch);
-
-            broadcastSwitch.setOnCheckedChangeListener(this);
+            broadcastSwitch.setOnClickListener(this);
         }
-        @Override
-        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-            if (isChecked) {
-                // broadcast
-            } else {
-                // don't broadcast
-            }
 
-        }
 
         private Context context;
         @Override
         public void onClick(View v) {
+            if (v instanceof Switch) {
+                boolean isChecked = ((Switch) v).isChecked();
+                int pos = this.getLayoutPosition();
+                if (isChecked) {
+                    BroadcastThread thread = new BroadcastThread(BroadcastThread.Operation.START,trucks.get(pos).getId());
+                    thread.execute(lat,lng);
+                    Log.d(TAG, "onCheckedChanged: truck_id = " + trucks.get(pos).getId());
+                } else {
+                    BroadcastThread thread = new BroadcastThread(BroadcastThread.Operation.STOP,trucks.get(pos).getId());
+                    thread.execute();
+                    Log.d(TAG, "onCheckedChanged: truck_id = " + trucks.get(pos).getId());
 
-            int position = this.getLayoutPosition();
+                }
+                Toast.makeText(context, "Longitude = " + lng + " Latitude = " + lat,Toast.LENGTH_LONG).show();
+            } else {
 
-            Intent intent = new Intent((context), EditTruckInterface.class);
-            intent.putExtra("com.example.curbside.truck", trucks.get(position));
-            context.startActivity(intent);
+                int position = this.getLayoutPosition();
+
+                Intent intent = new Intent((context), EditTruckInterface.class);
+                intent.putExtra("com.example.curbside.truck", trucks.get(position));
+                context.startActivity(intent);
+            }
         }
 
 

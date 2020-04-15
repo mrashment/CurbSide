@@ -66,6 +66,18 @@ public class HomeActivityJava extends AppCompatActivity implements OnMapReadyCal
     private HomePageCardAdapter cardAdapter;
     private Button locationButton,menuButton, vendorButton, favoritesButton, searchBar;
     static Handler handler;
+    private boolean returning;
+    private DbConnection conn;
+
+    @Override
+    protected void onResume() { // called on creation and when the user comes back from another activity
+        super.onResume();
+        if (returning) {
+            findNearbyTrucks();
+        } else {
+            returning = true;
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +85,7 @@ public class HomeActivityJava extends AppCompatActivity implements OnMapReadyCal
         setContentView(R.layout.activity_home);
 
         handler = new HomeHandler(this);
+        conn = DbConnection.getInstance();
 
         SupportMapFragment mapFragment = (SupportMapFragment)getSupportFragmentManager().findFragmentById(R.id.myMap);
         mapFragment.getMapAsync(this);
@@ -104,9 +117,14 @@ public class HomeActivityJava extends AppCompatActivity implements OnMapReadyCal
         vendorButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HomeActivityJava.this, VendorOptionsActivity.class);
-                intent.putExtra("lat",getCurLat());
-                intent.putExtra("lng",getCurLng());
+                Intent intent;
+                if (conn.getUser().getPermissions() == 1) {
+                    intent = new Intent(HomeActivityJava.this,VendorInviteActivity.class);
+                } else {
+                    intent = new Intent(HomeActivityJava.this, VendorOptionsActivity.class);
+                    intent.putExtra("lat",getCurLat());
+                    intent.putExtra("lng",getCurLng());
+                }
                 startActivity(intent);
             }
         });
@@ -126,10 +144,12 @@ public class HomeActivityJava extends AppCompatActivity implements OnMapReadyCal
 
             }
         });
+        returning = false;
    }
 
 
     private void findNearbyTrucks() {
+        googleMap.clear();
         TrucksThread trucksThread = new TrucksThread(this);
         Log.d(TAG, "findNearbyTrucks: latitude = " + mLastLocation.getLatitude() + " longitude = " + mLastLocation.getLongitude() );
         trucksThread.execute(mLastLocation.getLatitude(),mLastLocation.getLongitude());
@@ -322,10 +342,6 @@ public class HomeActivityJava extends AppCompatActivity implements OnMapReadyCal
         super.onActivityResult(requestCode, resultCode, data);
     }
 
-    public void signOut() {
-
-    }
-
     static class HomeHandler extends Handler {
         HomeActivityJava context;
 
@@ -340,21 +356,23 @@ public class HomeActivityJava extends AppCompatActivity implements OnMapReadyCal
             int trucksNearby = 0;
 
             for (Truck t : DbConnection.getInstance().getUser().getFavTrucks()) {
-                double tlat = t.getLat();
-                double tlng = t.getLng();
-                double distance = 3959 * Math.acos(Math.cos(Math.toRadians(lat)) *
-                        Math.cos(Math.toRadians(tlat)) *
-                        Math.cos(Math.toRadians(tlng) - Math.toRadians(lng)) +
-                        Math.sin(Math.toRadians(lat)) *
-                        Math.sin(Math.toRadians(tlat)));
-                t.setDistance(distance);
-                if (distance <= 2) {
-                    trucksNearby++;
+                Double tlat = t.getLat();
+                Double tlng = t.getLng();
+                if (tlat != null && tlng != null) {
+                    Double distance = 3959 * Math.acos(Math.cos(Math.toRadians(lat)) *
+                            Math.cos(Math.toRadians(tlat)) *
+                            Math.cos(Math.toRadians(tlng) - Math.toRadians(lng)) +
+                            Math.sin(Math.toRadians(lat)) *
+                                    Math.sin(Math.toRadians(tlat)));
+                    t.setDistance(distance);
+
+                    if (distance <= 2) {
+                        trucksNearby++;
+                    }
                 }
             }
 
             Snackbar.make(context.findViewById(R.id.snackbarLayout),"You have " + trucksNearby + " favorites nearby!",Snackbar.LENGTH_LONG).show();
-//            Toast.makeText(context, "User has " + DbConnection.getInstance().getUser().getFavTrucks().toString() + " favorites.",Toast.LENGTH_LONG).show();
         }
     }
 }

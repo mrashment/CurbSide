@@ -25,12 +25,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".VendorInviteActivity"></activity>
         <activity android:name=".ScannedBarcodeActivity" />
         <activity android:name=".FavoritesActivity" />
         <activity android:name=".EditTruckInterface"/>
         <activity android:name=".EditMenuInterface"/>
         <activity android:name=".SearchActivity"/>
         <activity android:name=".VendorOptionsActivity" />
+        <activity android:name=".Emaildev"/>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -55,7 +57,7 @@
 
         <activity android:name=".TruckMenuActivity" />
         <activity android:name=".Profile" />
-        <activity android:name=".SeeTrucksActivity"/>
+        <activity android:name=".SeeTrucksActivity" />
         <activity android:name=".Notifications" />
         <activity
             android:name=".HomeActivityJava"

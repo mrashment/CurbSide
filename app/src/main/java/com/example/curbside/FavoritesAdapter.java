@@ -36,7 +36,8 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.MyVi
         holder.truckNameTextView.setText(favorites.get(position).getName());
         holder.companyNameTextView.setText(favorites.get(position).getCompany().getName());
         holder.hoursTextView.setText(favorites.get(position).getHours());
-        holder.distanceTextView.setText(Double.toString(favorites.get(position).getDistance()));
+        String sdistance = favorites.get(position).getDistance() == -1.0 ? "" : favorites.get(position).getDistance().toString() + " miles away";
+        holder.distanceTextView.setText(sdistance);
     }
 
     @Override
