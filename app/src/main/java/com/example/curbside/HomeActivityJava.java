@@ -341,16 +341,19 @@ public class HomeActivityJava extends AppCompatActivity implements OnMapReadyCal
             int trucksNearby = 0;
 
             for (Truck t : DbConnection.getInstance().getUser().getFavTrucks()) {
-                double tlat = t.getLat();
-                double tlng = t.getLng();
-                double distance = 3959 * Math.acos(Math.cos(Math.toRadians(lat)) *
-                        Math.cos(Math.toRadians(tlat)) *
-                        Math.cos(Math.toRadians(tlng) - Math.toRadians(lng)) +
-                        Math.sin(Math.toRadians(lat)) *
-                        Math.sin(Math.toRadians(tlat)));
-                t.setDistance(distance);
-                if (distance <= 2) {
-                    trucksNearby++;
+                Double tlat = t.getLat();
+                Double tlng = t.getLng();
+                if (tlat != null && tlng != null) {
+                    Double distance = 3959 * Math.acos(Math.cos(Math.toRadians(lat)) *
+                            Math.cos(Math.toRadians(tlat)) *
+                            Math.cos(Math.toRadians(tlng) - Math.toRadians(lng)) +
+                            Math.sin(Math.toRadians(lat)) *
+                                    Math.sin(Math.toRadians(tlat)));
+                    t.setDistance(distance);
+
+                    if (distance <= 2) {
+                        trucksNearby++;
+                    }
                 }
             }
 

@@ -87,7 +87,7 @@ public class TruckMenuActivity extends AppCompatActivity {
                     Integer[] newFavs = Arrays.copyOf(curFavs,curFavs.length + 1);
                     newFavs[newFavs.length-1] = truck.getCompany().getId();
                     conn.getUser().setFavIds(newFavs);
-                    UpdateFavoriteThread thread = new UpdateFavoriteThread(UpdateFavoriteThread.OPERATION.Add);
+                    UpdateFavoriteThread thread = new UpdateFavoriteThread(UpdateFavoriteThread.Operation.ADD);
                     thread.execute(conn.getUser().getId(),truck.getCompany().getId());
                     new FavoritesThread().execute();
                     Log.d(TAG, "onClick: Favoriting with companyid = " + truck.getCompany().getId());
@@ -96,7 +96,7 @@ public class TruckMenuActivity extends AppCompatActivity {
 
                     imageButton.setBackgroundResource(R.drawable.truck_favorite_unpressed);
                     isPressed=false;
-                    UpdateFavoriteThread thread = new UpdateFavoriteThread(UpdateFavoriteThread.OPERATION.Delete);
+                    UpdateFavoriteThread thread = new UpdateFavoriteThread(UpdateFavoriteThread.Operation.DELETE);
                     thread.execute(conn.getUser().getId(),truck.getCompany().getId());
                     Integer[] curFavs = conn.getUser().getFavIds();
                     Integer[] newFavs = new Integer[curFavs.length - 1];

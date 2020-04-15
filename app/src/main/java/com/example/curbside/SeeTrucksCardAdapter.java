@@ -26,10 +26,12 @@ public class SeeTrucksCardAdapter extends RecyclerView.Adapter<SeeTrucksCardAdap
 
     ArrayList<Truck> trucks;
     Context context;
+    DbConnection conn;
 
     public SeeTrucksCardAdapter(ArrayList<Truck> trucks, Context context) {
         this.trucks = trucks;
         this.context = context;
+        conn = DbConnection.getInstance();
     }
 
     @NonNull
@@ -49,13 +51,21 @@ public class SeeTrucksCardAdapter extends RecyclerView.Adapter<SeeTrucksCardAdap
         holder.hoursTextView.setText(trucks.get(position).getHours());
         final double lng = ((SeeTrucksActivity)context).getLng();
         final double lat = ((SeeTrucksActivity)context).getLat();
+        final int pos = holder.getAdapterPosition();
+        if (trucks.get(position).getLat() == null) {
+            holder.broadcastSwitch.setChecked(false);
+        } else {
+            holder.broadcastSwitch.setChecked(true);
+        }
         holder.broadcastSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-                    // broadcast
+                    BroadcastThread thread = new BroadcastThread(BroadcastThread.Operation.START,trucks.get(pos).getCompany().getId());
+                    thread.execute(lat,lng);
                 } else {
-                    // don't broadcast
+                    BroadcastThread thread = new BroadcastThread(BroadcastThread.Operation.STOP,trucks.get(pos).getCompany().getId());
+                    thread.execute();
                 }
                 Toast.makeText(context, "Longitude = " + lng + " Latitude = " + lat,Toast.LENGTH_LONG).show();
 
