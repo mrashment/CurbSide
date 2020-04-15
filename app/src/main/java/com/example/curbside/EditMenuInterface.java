@@ -37,6 +37,7 @@ public class EditMenuInterface extends AppCompatActivity {
         applyMenuChange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                finish();
                 }
         });
     }

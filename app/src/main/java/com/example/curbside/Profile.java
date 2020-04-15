@@ -16,7 +16,7 @@ import com.google.android.gms.common.api.Status;
 
 public class Profile extends AppCompatActivity {
 
-    private Button settingsButton, backToHomeButton, signOutButton,favoritesButton,rewardsButton;
+    private Button settingsButton, backToHomeButton, signOutButton,favoritesButton,rewardsButton, notificationsButton;
     GoogleApiClient mGoogleApiClient;
 
     @Override
@@ -37,6 +37,7 @@ public class Profile extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
 
         signOutButton = findViewById(R.id.signOutButton);
+        notificationsButton = findViewById(R.id.notificationsButton);
         backToHomeButton = findViewById(R.id.backToHomeButton);
         settingsButton = findViewById(R.id.settingsButton);
         favoritesButton = findViewById(R.id.favoritesButton);
@@ -46,6 +47,13 @@ public class Profile extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Profile.this,ScannedBarcodeActivity.class));
+            }
+        });
+
+        notificationsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Profile.this,Notifications.class));
             }
         });
 

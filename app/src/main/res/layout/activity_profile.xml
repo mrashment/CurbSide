@@ -12,9 +12,10 @@
     tools:context=".Profile">
 
     <LinearLayout
-        android:layout_marginTop="30dp"
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="608dp"
+        android:layout_marginTop="30dp"
         android:orientation="vertical"
         android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -30,63 +31,63 @@
             android:layout_marginBottom="20dp"
             android:background="@drawable/rounded_corner"
             android:text="Notifications"
-            android:textColor="#ffce73" />
+            android:textColor="#ffa500" />
 
         <Button
             android:id="@+id/settingsButton"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginBottom="20dp"
-            android:textColor="#ffa500"
             android:background="@drawable/rounded_corner"
-            android:text="Settings" />
+            android:text="Settings"
+            android:textColor="#ffa500" />
 
         <Button
             android:id="@+id/favoritesButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="#ffa500"
             android:layout_marginBottom="20dp"
             android:height="60dp"
             android:background="@drawable/rounded_corner"
-            android:text="Favorites" />
+            android:text="Favorites"
+            android:textColor="#ffa500" />
 
         <Button
             android:id="@+id/rewardsButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="#ffa500"
             android:layout_marginBottom="20dp"
             android:height="60dp"
             android:background="@drawable/rounded_corner"
-            android:text="Rewards" />
+            android:text="Rewards"
+            android:textColor="#ffa500" />
 
         <Button
             android:id="@+id/accountButton"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginBottom="20dp"
-            android:textColor="#ffa500"
             android:background="@drawable/rounded_corner"
-            android:text="Account" />
+            android:text="Account"
+            android:textColor="#ffa500" />
 
         <Button
             android:id="@+id/privacyButton"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginBottom="20dp"
-            android:textColor="#ffa500"
             android:background="@drawable/rounded_corner"
-            android:text="Privacy" />
+            android:text="Privacy"
+            android:textColor="#ffa500" />
 
         <Button
             android:id="@+id/signOutButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:height="60dp"
-            android:textColor="#ffa500"
             android:background="@drawable/rounded_corner"
-            android:text="Sign Out" />
+            android:text="Sign Out"
+            android:textColor="#ffa500" />
 
     </LinearLayout>
 
@@ -96,6 +97,7 @@
         android:layout_height="48dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/ic_arrow_back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

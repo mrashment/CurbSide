@@ -23,7 +23,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/rounded_corner"
+        android:textAllCaps="false"
         android:text="Apply Changes"
+        android:textColor="#ffa500"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/headerText"
         app:layout_constraintStart_toStartOf="@+id/headerText" />
@@ -32,33 +34,35 @@
         android:id="@+id/headerText"
         android:layout_width="207dp"
         android:layout_height="34dp"
-        android:layout_marginTop="24dp"
         android:inputType="textPersonName"
         android:text="Select an item to edit"
         android:textSize="20dp"
+        android:textColor="#fff6e5"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/backToEditTrucks" />
+        app:layout_constraintTop_toBottomOf="@+id/backToVendorOptions" />
 
     <Button
         android:id="@+id/addItemButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/rounded_corner"
-        android:text="Add Item"
-        app:layout_constraintBottom_toBottomOf="@+id/backToEditTrucks"
+        android:text="+ Item"
+        android:textAllCaps="false"
+        android:textColor="#ffa500"
+        app:layout_constraintBottom_toBottomOf="@+id/backToVendorOptions"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.94"
-        app:layout_constraintStart_toEndOf="@+id/backToEditTrucks"
+        app:layout_constraintStart_toEndOf="@+id/backToVendorOptions"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TableRow
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/tableRow"
         android:layout_width="372dp"
         android:layout_height="548dp"
-        android:layout_marginTop="19dp"
+        android:layout_marginTop="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
