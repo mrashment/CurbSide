@@ -13,6 +13,7 @@ public class Emaildev extends AppCompatActivity {
     private EditText mEditTextTo;
     private EditText mEditTextSubject;
     private EditText mEditTextMessage;
+    private Button backButton, buttonSend;
 
 
     @Override
@@ -22,8 +23,15 @@ public class Emaildev extends AppCompatActivity {
 
         mEditTextSubject = findViewById(R.id.edit_text_subject);
         mEditTextMessage = findViewById(R.id.edit_text_message);
+        backButton = findViewById(R.id.backButton);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
-        Button buttonSend = findViewById(R.id.button_send);
+        buttonSend = findViewById(R.id.button_send);
         buttonSend.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -34,7 +42,7 @@ public class Emaildev extends AppCompatActivity {
     }
 
     private void sendMail() {
-        String recipientList = mEditTextTo.getText().toString();
+        String recipientList = "info.curbside@gmail.com";
         String[] recipients = recipientList.split(",");
 
         String subject = mEditTextSubject.getText().toString();

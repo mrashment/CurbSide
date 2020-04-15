@@ -85,7 +85,6 @@ public class MainActivity extends AppCompatActivity {
         if (account != null) {
             Log.w(TAG, "onStart: account found" );
             retrieveUserInfo(account);
-            Log.d(TAG, "onStart: isNull = " + conn.userIsNull());
 
             startActivity(new Intent(MainActivity.this,HomeActivityJava.class));
         }

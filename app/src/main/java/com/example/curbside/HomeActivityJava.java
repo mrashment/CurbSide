@@ -68,6 +68,7 @@ public class HomeActivityJava extends AppCompatActivity implements OnMapReadyCal
     private SearchView searchBar;
     static Handler handler;
     private boolean returning;
+    private DbConnection conn;
 
     @Override
     protected void onResume() { // called on creation and when the user comes back from another activity
@@ -85,6 +86,7 @@ public class HomeActivityJava extends AppCompatActivity implements OnMapReadyCal
         setContentView(R.layout.activity_home);
 
         handler = new HomeHandler(this);
+        conn = DbConnection.getInstance();
 
         SupportMapFragment mapFragment = (SupportMapFragment)getSupportFragmentManager().findFragmentById(R.id.myMap);
         mapFragment.getMapAsync(this);
@@ -116,9 +118,14 @@ public class HomeActivityJava extends AppCompatActivity implements OnMapReadyCal
         vendorButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HomeActivityJava.this, VendorOptionsActivity.class);
-                intent.putExtra("lat",getCurLat());
-                intent.putExtra("lng",getCurLng());
+                Intent intent;
+                if (conn.getUser().getPermissions() == 1) {
+                    intent = new Intent(HomeActivityJava.this,VendorInviteActivity.class);
+                } else {
+                    intent = new Intent(HomeActivityJava.this, VendorOptionsActivity.class);
+                    intent.putExtra("lat",getCurLat());
+                    intent.putExtra("lng",getCurLng());
+                }
                 startActivity(intent);
             }
         });

@@ -25,12 +25,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".VendorInviteActivity"></activity>
         <activity android:name=".ScannedBarcodeActivity" />
         <activity android:name=".FavoritesActivity" />
-        <activity android:name=".EditTruckInterface"/>
-        <activity android:name=".EditMenuInterface"/>
-        <activity android:name=".SearchActivity"></activity>
+        <activity android:name=".EditTruckInterface" />
+        <activity android:name=".EditMenuInterface" />
+        <activity android:name=".SearchActivity" />
         <activity android:name=".VendorOptionsActivity" />
+        <activity android:name=".Emaildev"/>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -40,22 +42,18 @@
             android:value="@integer/google_play_services_version" />
         <meta-data
             android:name="com.google.android.gms.vision.DEPENDENCIES"
-            android:value="barcode" />
-
-<!--        <provider-->
-<!--            android:authorities="${applicationId}.provider"-->
-<!--            android:name="android.support.v4.content.FileProvider"-->
-<!--            android:exported="false"-->
-<!--            android:grantUriPermissions="true">-->
-<!--            <meta-data-->
-<!--                android:name="android.support.FILE_PROVIDER_PATHS"-->
-<!--                android:resource="@xml/provider_paths"/>-->
-<!--        </provider>-->
-
-
+            android:value="barcode" /> <!-- <provider -->
+        <!-- android:authorities="${applicationId}.provider" -->
+        <!-- android:name="android.support.v4.content.FileProvider" -->
+        <!-- android:exported="false" -->
+        <!-- android:grantUriPermissions="true"> -->
+        <!-- <meta-data -->
+        <!-- android:name="android.support.FILE_PROVIDER_PATHS" -->
+        <!-- android:resource="@xml/provider_paths"/> -->
+        <!-- </provider> -->
         <activity android:name=".TruckMenuActivity" />
         <activity android:name=".Profile" />
-        <activity android:name=".SeeTrucksActivity"/>
+        <activity android:name=".SeeTrucksActivity" />
         <activity android:name=".Notifications" />
         <activity
             android:name=".HomeActivityJava"
