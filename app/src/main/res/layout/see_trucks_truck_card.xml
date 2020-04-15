@@ -5,29 +5,32 @@
     android:id="@+id/seeCardView"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:elevation="5dp"
-    android:orientation="vertical"
-    android:padding="50dp">
+    android:elevation="10dp"
+    android:orientation="horizontal"
+    android:padding="5dp"
+    app:cardCornerRadius="15dp"
+    android:layout_marginBottom="10dp"
+    >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
-        android:layout_width="347dp"
-        android:layout_height="match_parent"
+        android:layout_width="382dp"
+        android:layout_height="102dp"
         android:layout_gravity="center_horizontal|fill|center_vertical"
-        android:background="@drawable/rounded_corner">
+        android:layout_margin="5dp">
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
+            android:background="@drawable/ic_logo_truck"
             android:contentDescription="Truck Logo"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@mipmap/ic_launcher_round" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/companyNameTextView"
