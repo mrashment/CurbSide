@@ -67,6 +67,17 @@ public class HomeActivityJava extends AppCompatActivity implements OnMapReadyCal
     private Button locationButton,menuButton, vendorButton, favoritesButton;
     private SearchView searchBar;
     static Handler handler;
+    private boolean returning;
+
+    @Override
+    protected void onResume() { // called on creation and when the user comes back from another activity
+        super.onResume();
+        if (returning) {
+            findNearbyTrucks();
+        } else {
+            returning = true;
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -128,10 +139,12 @@ public class HomeActivityJava extends AppCompatActivity implements OnMapReadyCal
 
             }
         });
+        returning = false;
    }
 
 
     private void findNearbyTrucks() {
+        googleMap.clear();
         TrucksThread trucksThread = new TrucksThread(this);
         Log.d(TAG, "findNearbyTrucks: latitude = " + mLastLocation.getLatitude() + " longitude = " + mLastLocation.getLongitude() );
         trucksThread.execute(mLastLocation.getLatitude(),mLastLocation.getLongitude());
@@ -323,10 +336,6 @@ public class HomeActivityJava extends AppCompatActivity implements OnMapReadyCal
         super.onActivityResult(requestCode, resultCode, data);
     }
 
-    public void signOut() {
-
-    }
-
     static class HomeHandler extends Handler {
         HomeActivityJava context;
 
@@ -358,7 +367,6 @@ public class HomeActivityJava extends AppCompatActivity implements OnMapReadyCal
             }
 
             Snackbar.make(context.findViewById(R.id.snackbarLayout),"You have " + trucksNearby + " favorites nearby!",Snackbar.LENGTH_LONG).show();
-//            Toast.makeText(context, "User has " + DbConnection.getInstance().getUser().getFavTrucks().toString() + " favorites.",Toast.LENGTH_LONG).show();
         }
     }
 }
