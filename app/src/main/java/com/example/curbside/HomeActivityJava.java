@@ -198,7 +198,7 @@ public class HomeActivityJava extends AppCompatActivity implements OnMapReadyCal
             // Customise map styling via JSON file
             boolean success = googleMap.setMapStyle(
                     MapStyleOptions.loadRawResourceStyle(
-                            this, R.raw.maps_style1));
+                            this, R.raw.maps_style2));
 
             if (!success) {
                 Log.e(TAG, "Style parsing failed.");
