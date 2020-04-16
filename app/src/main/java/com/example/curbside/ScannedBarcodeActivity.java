@@ -60,9 +60,9 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (intentData.length() > 0) {
-                    
-//                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(intentData)));
 
+                    new RewardsThread().execute();
+                    finish();
                 }
             }
 
@@ -136,9 +136,9 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
                                 btnAction.setText("ADD CONTENT TO THE MAIL");
                             } else {
                                 isEmail = false;
-                                btnAction.setText("LAUNCH URL");
+                                btnAction.setText("GET REWARDS!");
                                 intentData = barcodes.valueAt(0).displayValue;
-                                txtBarcodeValue.setText(intentData);
+                                txtBarcodeValue.setText("Barcode Captured!");
 
                             }
                         }
