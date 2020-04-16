@@ -31,8 +31,10 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
     private CameraSource cameraSource;
     private static final int REQUEST_CAMERA_PERMISSION = 201;
     Button btnAction, backToMenu;
+    TextView counterTextView;
     String intentData = "";
     boolean isEmail = false;
+    private DbConnection conn;
 
 
     @Override
@@ -40,6 +42,7 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scan_barcode);
 
+        conn = DbConnection.getInstance();
         initViews();
     }
 
@@ -48,6 +51,8 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
         surfaceView = findViewById(R.id.surfaceView);
         btnAction = findViewById(R.id.btnAction);
         backToMenu = findViewById(R.id.backToMenu);
+        counterTextView = findViewById(R.id.counterTextView);
+        counterTextView.setText(conn.getUser().getRewards());
 
         backToMenu.setOnClickListener((new View.OnClickListener() {
             @Override
@@ -61,12 +66,16 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (intentData.length() > 0) {
 
-                    new RewardsThread().execute();
+                    new RewardsThread(ScannedBarcodeActivity.this).execute();
                     finish();
                 }
             }
 
         });
+    }
+
+    public void updateCounter() {
+        counterTextView.setText(conn.getUser().getRewards());
     }
 
     private void initialiseDetectorsAndSources() {

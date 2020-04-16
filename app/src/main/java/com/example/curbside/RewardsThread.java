@@ -1,5 +1,6 @@
 package com.example.curbside;
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -20,14 +21,19 @@ public class RewardsThread extends AsyncTask<Void,Void,Integer> {
     private static final String TAG = "RewardsThread";
 
     private DbConnection conn;
+    private Context context;
 
-    public RewardsThread() {
+    public RewardsThread(Context context) {
+        this.context = context;
         conn = DbConnection.getInstance();
     }
 
     @Override
     protected void onPostExecute(Integer integer) {
-        conn.getUser().setRewards(integer);
+        if (integer != 0) {
+            conn.getUser().setRewards(integer);
+
+        }
     }
 
     @Override
@@ -39,9 +45,8 @@ public class RewardsThread extends AsyncTask<Void,Void,Integer> {
                 e.printStackTrace();
             }
         }
-        String email = conn.getUser().getEmail();
 
-        String stringData = "email=" + email;
+        String stringData = "user_id=" + conn.getUser().getId();
 
         byte[] postData = stringData.getBytes();
 

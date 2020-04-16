@@ -53,4 +53,24 @@
         android:layout_marginTop="10dp"
         android:background="@drawable/ic_arrow_back" />
 
+    <TextView
+        android:id="@+id/counterTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:padding="10dp"
+        android:text="0"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@id/counterTextView"
+        android:paddingTop="10dp"
+        android:text="Rewards:"
+        android:textSize="18sp" />
+
 </RelativeLayout>
