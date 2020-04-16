@@ -59,13 +59,49 @@
         android:id="@+id/finalizeItem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="96dp"
+        android:layout_marginTop="184dp"
         android:background="@drawable/rounded_corner"
         android:text="Finalize Item"
         android:textColor="#ffa500"
         app:layout_constraintEnd_toEndOf="@+id/newItemDescription"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="@+id/newItemDescription"
         app:layout_constraintTop_toBottomOf="@+id/newItemDescription" />
+
+    <RadioGroup
+        android:background="@drawable/rounded_corner"
+        android:layout_width="99dp"
+        android:layout_height="152dp"
+        android:layout_marginTop="66dp"
+        app:layout_constraintBottom_toTopOf="@+id/finalizeItem"
+        app:layout_constraintEnd_toEndOf="@+id/newItemDescription"
+        app:layout_constraintTop_toBottomOf="@+id/newItemDescription"
+        app:layout_constraintVertical_bias="1.0">
+
+        <RadioButton
+            android:textColor="#ffa500"
+            android:id="@+id/typeEntree"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="entree" />
+
+        <RadioButton
+            android:textColor="#ffa500"
+
+            android:id="@+id/typeSide"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="side" />
+
+        <RadioButton
+            android:textColor="#ffa500"
+
+            android:id="@+id/typeDrink"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="drink" />
+
+    </RadioGroup>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline4"

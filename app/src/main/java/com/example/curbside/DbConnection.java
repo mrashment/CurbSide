@@ -27,6 +27,7 @@ public class DbConnection {
     public static final String EDIT_TRUCK = "https://cgi.sice.indiana.edu/~team59/edittruck.php";
     public static final String COMPANY_TRUCKS = "https://cgi.sice.indiana.edu/~team59/companytrucks.php";
     public static final String BROADCAST = "https://cgi.sice.indiana.edu/~team59/broadcast.php";
+    public static final String SEE_ITEMS = "https://cgi.sice.indiana.edu/~team59/getitems.php";
 
     public static DbConnection getInstance() {
         return db;
