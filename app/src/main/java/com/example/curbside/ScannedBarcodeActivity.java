@@ -59,10 +59,9 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
         btnAction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 if (intentData.length() > 0) {
-
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(intentData)));
+                    
+//                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(intentData)));
 
                 }
             }
