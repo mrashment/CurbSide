@@ -9,29 +9,20 @@ import android.widget.Button;
 
 public class VendorOptionsActivity extends AppCompatActivity {
 
-    private Button backToHomeButton, trucksButton, menusButton;
+    private Button backToHomeButton, trucksButton, menusButton,retrieveQRButton;
     private double lat, lng;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        User user = DbConnection.getInstance().getUser();
-
-        // TODO create layout for non-vendors
-
-//        if (user.getPermissions() == 1) {
-////            setContentView(R.layout.activity_vendor_invite);
-////        }
-//        else {
-            setContentView(R.layout.activity_vendor_options);
-//        }
+        setContentView(R.layout.activity_vendor_options);
 
         lat = getIntent().getDoubleExtra("lat",0);
         lng = getIntent().getDoubleExtra("lng",0);
         backToHomeButton = findViewById(R.id.backToHomeButton);
         trucksButton = findViewById(R.id.trucksButton);
         menusButton = findViewById(R.id.menusButton);
+        retrieveQRButton = findViewById(R.id.retqr);
 
         backToHomeButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,6 +48,15 @@ public class VendorOptionsActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        retrieveQRButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(VendorOptionsActivity.this, RetrieveQRActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
     }
 }

@@ -24,15 +24,17 @@
         android:roundIcon="@drawable/ic_logo_truck"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:usesCleartextTraffic="true">
-        <activity android:name=".VendorInviteActivity"></activity>
+        android:usesCleartextTraffic="true"
+        android:requestLegacyExternalStorage="true">
+        <activity android:name=".RetrieveQRActivity"/>
+        <activity android:name=".VendorInviteActivity" />
         <activity android:name=".ScannedBarcodeActivity" />
         <activity android:name=".FavoritesActivity" />
-        <activity android:name=".EditTruckInterface"/>
-        <activity android:name=".EditMenuInterface"/>
-        <activity android:name=".SearchActivity"/>
+        <activity android:name=".EditTruckInterface" />
+        <activity android:name=".EditMenuInterface" />
+        <activity android:name=".SearchActivity" />
         <activity android:name=".VendorOptionsActivity" />
-        <activity android:name=".Emaildev"/>
+        <activity android:name=".Emaildev" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -43,17 +45,6 @@
         <meta-data
             android:name="com.google.android.gms.vision.DEPENDENCIES"
             android:value="barcode" />
-
-<!--        <provider-->
-<!--            android:authorities="${applicationId}.provider"-->
-<!--            android:name="android.support.v4.content.FileProvider"-->
-<!--            android:exported="false"-->
-<!--            android:grantUriPermissions="true">-->
-<!--            <meta-data-->
-<!--                android:name="android.support.FILE_PROVIDER_PATHS"-->
-<!--                android:resource="@xml/provider_paths"/>-->
-<!--        </provider>-->
-
 
         <activity android:name=".TruckMenuActivity" />
         <activity android:name=".Profile" />

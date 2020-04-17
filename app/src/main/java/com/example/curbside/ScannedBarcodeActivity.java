@@ -31,8 +31,10 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
     private CameraSource cameraSource;
     private static final int REQUEST_CAMERA_PERMISSION = 201;
     Button btnAction, backToMenu;
+    TextView counterTextView;
     String intentData = "";
     boolean isEmail = false;
+    private DbConnection conn;
 
 
     @Override
@@ -40,7 +42,9 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scan_barcode);
 
+        conn = DbConnection.getInstance();
         initViews();
+        counterTextView.setText(Integer.toString(conn.getUser().getRewards()));
     }
 
     private void initViews() {
@@ -48,6 +52,7 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
         surfaceView = findViewById(R.id.surfaceView);
         btnAction = findViewById(R.id.btnAction);
         backToMenu = findViewById(R.id.backToMenu);
+        counterTextView = findViewById(R.id.counterTextView);
 
         backToMenu.setOnClickListener((new View.OnClickListener() {
             @Override
@@ -59,15 +64,17 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
         btnAction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (intentData.length() > 0 && intentData.equals("CurbSide")) {
 
-                if (intentData.length() > 0) {
-
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(intentData)));
-
+                    new RewardsThread(ScannedBarcodeActivity.this).execute();
                 }
             }
 
         });
+    }
+
+    public void updateCounter() {
+        counterTextView.setText(Integer.toString(conn.getUser().getRewards()));
     }
 
     private void initialiseDetectorsAndSources() {
@@ -114,9 +121,7 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
 
         barcodeDetector.setProcessor(new Detector.Processor<Barcode>() {
             @Override
-            public void release() {
-                Toast.makeText(getApplicationContext(), "To prevent memory leaks barcode scanner has been stopped", Toast.LENGTH_SHORT).show();
-            }
+            public void release() { }
 
             @Override
             public void receiveDetections(Detector.Detections<Barcode> detections) {
@@ -137,9 +142,9 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
                                 btnAction.setText("ADD CONTENT TO THE MAIL");
                             } else {
                                 isEmail = false;
-                                btnAction.setText("LAUNCH URL");
+                                btnAction.setText("GET REWARDS!");
                                 intentData = barcodes.valueAt(0).displayValue;
-                                txtBarcodeValue.setText(intentData);
+                                txtBarcodeValue.setText("Barcode Captured!");
 
                             }
                         }
