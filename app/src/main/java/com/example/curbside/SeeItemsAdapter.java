@@ -24,6 +24,12 @@ public class SeeItemsAdapter extends RecyclerView.Adapter<SeeItemsAdapter.ViewHo
     Context context;
     DbConnection conn;
 
+    public SeeItemsAdapter(ArrayList<FoodItem> items, Context context) {
+        this.items = items;
+        this.context = context;
+    }
+
+
     @NonNull
     @Override
     public SeeItemsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -36,7 +42,7 @@ public class SeeItemsAdapter extends RecyclerView.Adapter<SeeItemsAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull SeeItemsAdapter.ViewHolder holder, int position) {
         holder.itemNameTextView.setText(items.get(position).getName());
-        holder.itemPriceTextView.setText(items.get(position).getPrice());
+        holder.itemPriceTextView.setText(Double.toString(items.get(position).getPrice()));
         holder.itemDescriptionTextView.setText(items.get(position).getDescription());
         holder.itemTypeTextView.setText(items.get(position).getItem_type());
 
@@ -62,14 +68,10 @@ public class SeeItemsAdapter extends RecyclerView.Adapter<SeeItemsAdapter.ViewHo
             this.itemDescriptionTextView = itemView.findViewById(R.id.itemDescriptionTextView);
             this.itemTypeTextView = itemView.findViewById(R.id.itemTypeTextView);
             this.imageView = itemView.findViewById(R.id.imageView);
-            this.context = context;
 
         }
 
-    }
-
-    private Context context;
-    @Override
+        @Override
     public void onClick(View v) {
 
             int position = this.getLayoutPosition();

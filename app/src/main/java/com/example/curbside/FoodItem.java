@@ -8,16 +8,18 @@ public class FoodItem implements Serializable {
     private int id;
     private String name;
     private String description;
-    private ArrayList<FoodItem> items;
     private double price;
+    private ArrayList<FoodItem> items;
     private String item_type;
+    private Boolean favorite;
 
-    public FoodItem(int id, String name, String description, double price, String item_type) {
+    public FoodItem(int id, String name, String description, double price, String item_type, Boolean favorite) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;
         this.item_type = item_type;
+        this.favorite = favorite;
     }
 
     public int getId() {
@@ -58,5 +60,13 @@ public class FoodItem implements Serializable {
 
     public void setItem_type(String item_type) {
         this.item_type = item_type;
+    }
+
+    public Boolean getFavorite() {
+        return favorite;
+    }
+
+    public void setFavorite(Boolean favorite) {
+        this.favorite = favorite;
     }
 }

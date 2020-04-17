@@ -7,7 +7,17 @@ import java.util.ArrayList;
 public class Company implements Serializable {
 
     private String name;
+
+    public ArrayList<FoodItem> getItems() {
+        return items;
+    }
+
+    public void setItems(ArrayList<FoodItem> items) {
+        this.items = items;
+    }
+
     private int id;
+    private ArrayList<FoodItem> items;
 
     public Company(String name, int id) {
         this.name = name;

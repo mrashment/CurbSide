@@ -16,7 +16,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class SeeItemsThread extends AsyncTask<Double, Void, Boolean> {
+public class SeeItemsThread extends AsyncTask<Integer, Void, Boolean> {
     private static final String TAG = "SeeItemsThread";
     private ArrayList<FoodItem> items;
     private Context context;
@@ -29,13 +29,14 @@ public class SeeItemsThread extends AsyncTask<Double, Void, Boolean> {
     @Override
     protected void onPostExecute(Boolean success) {
         if (success) {
-            ((SeeTrucksActivity)context).displayItems(items);
+            ((EditMenuInterface)context).displayItems(items);
         }
     }
 
     @Override
-    protected Boolean doInBackground(Double... doubles) {
-        StringBuilder sb;
+    protected Boolean doInBackground(Integer... integers) {
+        String toPost = "company_id=" + DbConnection.getInstance().getUser().getCompanyID();
+        byte[] postData = toPost.getBytes();
 
         try {
             URL url = new URL(DbConnection.SEE_ITEMS);
@@ -60,12 +61,12 @@ public class SeeItemsThread extends AsyncTask<Double, Void, Boolean> {
                 Log.d(TAG, "doInBackground: " + line.trim());
                 JSONObject nextItem = new JSONObject(line.trim());
                 Log.d(TAG, "doInBackground: created JSONObject");
-                FoodItem item = new FoodItem(nextItem.getString("name"));
-
-                item.setName(nextItem.getString("name"));
-                item.setPrice(nextItem.getDouble("price"));
-                item.setDescription(nextItem.getString("description"));
-                item.setItem_type(nextItem.getString("item_type"));
+                FoodItem item = new FoodItem(nextItem.getInt("id")
+                        ,nextItem.getString("name")
+                        ,nextItem.getString("description")
+                        ,nextItem.getDouble("price")
+                        ,nextItem.getString("item_type")
+                        ,nextItem.getBoolean("favorite"));
                 items.add(item);
                 Log.d(TAG, "doInBackground: added Truck");
             }

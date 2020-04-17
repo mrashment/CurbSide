@@ -36,7 +36,6 @@ public class EditMenuInterface extends AppCompatActivity {
         backToVendorOptions = findViewById(R.id.backToVendorOptions);
         applyMenuChange = findViewById(R.id.applyMenuChange);
         addItemButton = findViewById(R.id.addItemButton);
-
         backToVendorOptions.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,6 +58,7 @@ public class EditMenuInterface extends AppCompatActivity {
                 }
         });
     }
+
 
     public void displayItems(ArrayList<FoodItem> fromThread) {
         items = fromThread;
