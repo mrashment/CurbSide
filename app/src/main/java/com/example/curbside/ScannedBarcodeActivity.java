@@ -64,10 +64,10 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
         btnAction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                if (intentData.length() > 0) {
+                if (intentData.length() > 0 && intentData.equals("CurbSide")) {
 
                     new RewardsThread(ScannedBarcodeActivity.this).execute();
-//                }
+                }
             }
 
         });
