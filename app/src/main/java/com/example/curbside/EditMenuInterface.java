@@ -47,6 +47,7 @@ public class EditMenuInterface extends AppCompatActivity {
         addItemButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //TODO need to pass company id to add an item to the right company/vendor
                 Intent intent = new Intent(EditMenuInterface.this, AddMenuItemActivity.class);
                 startActivity(intent);
             }

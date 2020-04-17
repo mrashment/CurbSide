@@ -76,9 +76,12 @@ public class SeeItemsAdapter extends RecyclerView.Adapter<SeeItemsAdapter.ViewHo
 
             int position = this.getLayoutPosition();
 
+            //TODO need to pass item ID so that we can populate the "AddMenuItemActivity". Need item ID to pass for "deleteitem.php"
+
             Intent intent = new Intent((context), AddMenuItemActivity.class);
             intent.putExtra("com.example.curbside.truck", items.get(position));
             context.startActivity(intent);
+
         }
     }
 }
