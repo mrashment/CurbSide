@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Switch;
@@ -57,7 +58,7 @@ public class SeeItemsAdapter extends RecyclerView.Adapter<SeeItemsAdapter.ViewHo
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private TextView itemNameTextView, itemPriceTextView, itemDescriptionTextView, itemTypeTextView;
-        private ImageView imageView;
+        private Button deleteButton;
 
         public ViewHolder(@NonNull View itemView, Context context) {
             super(itemView);
@@ -67,7 +68,12 @@ public class SeeItemsAdapter extends RecyclerView.Adapter<SeeItemsAdapter.ViewHo
             this.itemPriceTextView = itemView.findViewById(R.id.itemPriceTextView);
             this.itemDescriptionTextView = itemView.findViewById(R.id.itemDescriptionTextView);
             this.itemTypeTextView = itemView.findViewById(R.id.itemTypeTextView);
-            this.imageView = itemView.findViewById(R.id.imageView);
+
+            //TODO Need item ID to pass for "dropitem.php". Do we need another thread?
+
+            this.deleteButton = itemView.findViewById(R.id.deleteButton);
+            deleteButton.setOnClickListener(this);
+
 
         }
 
@@ -76,8 +82,7 @@ public class SeeItemsAdapter extends RecyclerView.Adapter<SeeItemsAdapter.ViewHo
 
             int position = this.getLayoutPosition();
 
-            //TODO need to pass item ID so that we can populate the "AddMenuItemActivity". Need item ID to pass for "deleteitem.php"
-
+            //TODO need to pass item ID so that we can populate the "AddMenuItemActivity".
             Intent intent = new Intent((context), AddMenuItemActivity.class);
             intent.putExtra("com.example.curbside.truck", items.get(position));
             context.startActivity(intent);

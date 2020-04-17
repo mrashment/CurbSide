@@ -1,4 +1,8 @@
 package com.example.curbside;
 
-public class DropItemThread {
+import android.os.AsyncTask;
+
+public class DropItemThread extends AsyncTask<> {
+    private static final String TAG = "DropItemThread";
+
 }
