@@ -11,9 +11,9 @@ public class FoodItem implements Serializable {
     private double price;
     private ArrayList<FoodItem> items;
     private String item_type;
-    private Boolean favorite;
+    private int favorite;
 
-    public FoodItem(int id, String name, String description, double price, String item_type, Boolean favorite) {
+    public FoodItem(int id, String name, String description, double price, String item_type, int favorite) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -62,11 +62,11 @@ public class FoodItem implements Serializable {
         this.item_type = item_type;
     }
 
-    public Boolean getFavorite() {
+    public int getFavorite() {
         return favorite;
     }
 
-    public void setFavorite(Boolean favorite) {
+    public void setFavorite(int favorite) {
         this.favorite = favorite;
     }
 }

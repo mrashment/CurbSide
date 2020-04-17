@@ -35,7 +35,7 @@ public class SeeItemsThread extends AsyncTask<Integer, Void, Boolean> {
 
     @Override
     protected Boolean doInBackground(Integer... integers) {
-        String toPost = "company_id=" + DbConnection.getInstance().getUser().getCompanyID();
+        String toPost = "company_id=" + integers[0];
         byte[] postData = toPost.getBytes();
 
         try {
@@ -61,22 +61,21 @@ public class SeeItemsThread extends AsyncTask<Integer, Void, Boolean> {
                 Log.d(TAG, "doInBackground: " + line.trim());
                 JSONObject nextItem = new JSONObject(line.trim());
                 Log.d(TAG, "doInBackground: created JSONObject");
-                FoodItem item = new FoodItem(nextItem.getInt("id")
+                FoodItem item = new FoodItem(nextItem.getInt("item_id")
                         ,nextItem.getString("name")
                         ,nextItem.getString("description")
                         ,nextItem.getDouble("price")
                         ,nextItem.getString("item_type")
-                        ,nextItem.getBoolean("favorite"));
+                        ,nextItem.getInt("favorite"));
                 items.add(item);
-                Log.d(TAG, "doInBackground: added Truck");
+                Log.d(TAG, "doInBackground: added Item");
             }
             reader.close();
 
         } catch (MalformedURLException e) {
-            System.err.println(TAG + "MalformedURLException : " + e.getMessage());
+            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-            System.err.println(TAG + "IOException : " + e.getMessage());
         }catch(Exception e) {
             e.printStackTrace();
         }

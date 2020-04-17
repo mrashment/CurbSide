@@ -42,6 +42,7 @@ public class EditMenuInterface extends AppCompatActivity {
                 finish();
             }
         });
+        recyclerView2 = findViewById(R.id.recyclerView2);
 
         addItemButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,6 +74,6 @@ public class EditMenuInterface extends AppCompatActivity {
         } else {
             Toast.makeText(this,"No Company Items",Toast.LENGTH_LONG).show();
         }
-        cardAdapter2.notifyDataSetChanged();
+//        cardAdapter2.notifyDataSetChanged();
     }
 }
