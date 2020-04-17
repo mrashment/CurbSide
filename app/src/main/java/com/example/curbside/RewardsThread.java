@@ -32,6 +32,7 @@ public class RewardsThread extends AsyncTask<Void,Void,Integer> {
     protected void onPostExecute(Integer integer) {
         if (integer != 0) {
             conn.getUser().setRewards(integer);
+            ((ScannedBarcodeActivity)context).updateCounter();
 
         }
     }
@@ -73,9 +74,14 @@ public class RewardsThread extends AsyncTask<Void,Void,Integer> {
             }
             reader.close();
 
-            if (response.equalsIgnoreCase("Server Error")) {return 0;}
+            if (response.trim().equalsIgnoreCase("Server Error")) {return 0;}
             else {
-                intResponse = Integer.parseInt(response);
+                try {
+                    Log.d(TAG, "doInBackground: " + response);
+                    intResponse = Integer.parseInt(response.trim());
+                } catch (Exception e) {
+                    return 0;
+                }
             }
 
         } catch (MalformedURLException e) {

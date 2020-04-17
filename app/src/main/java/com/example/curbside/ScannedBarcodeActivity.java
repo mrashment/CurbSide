@@ -44,6 +44,7 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
 
         conn = DbConnection.getInstance();
         initViews();
+        counterTextView.setText(Integer.toString(conn.getUser().getRewards()));
     }
 
     private void initViews() {
@@ -52,7 +53,6 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
         btnAction = findViewById(R.id.btnAction);
         backToMenu = findViewById(R.id.backToMenu);
         counterTextView = findViewById(R.id.counterTextView);
-        counterTextView.setText(conn.getUser().getRewards());
 
         backToMenu.setOnClickListener((new View.OnClickListener() {
             @Override
@@ -64,18 +64,17 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
         btnAction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (intentData.length() > 0) {
+//                if (intentData.length() > 0) {
 
                     new RewardsThread(ScannedBarcodeActivity.this).execute();
-                    finish();
-                }
+//                }
             }
 
         });
     }
 
     public void updateCounter() {
-        counterTextView.setText(conn.getUser().getRewards());
+        counterTextView.setText(Integer.toString(conn.getUser().getRewards()));
     }
 
     private void initialiseDetectorsAndSources() {
@@ -122,9 +121,7 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
 
         barcodeDetector.setProcessor(new Detector.Processor<Barcode>() {
             @Override
-            public void release() {
-                Toast.makeText(getApplicationContext(), "To prevent memory leaks barcode scanner has been stopped", Toast.LENGTH_SHORT).show();
-            }
+            public void release() { }
 
             @Override
             public void receiveDetections(Detector.Detections<Barcode> detections) {
