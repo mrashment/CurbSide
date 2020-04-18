@@ -1,6 +1,7 @@
 package com.example.curbside;
 
 import android.content.Context;
+import android.icu.util.Calendar;
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -15,6 +16,7 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Date;
 
 public class RewardsThread extends AsyncTask<Void,Void,Integer> {
 
@@ -47,7 +49,8 @@ public class RewardsThread extends AsyncTask<Void,Void,Integer> {
             }
         }
 
-        String stringData = "user_id=" + conn.getUser().getId();
+        long time = new Date().getTime();
+        String stringData = "user_id=" + conn.getUser().getId() + "&time=" + time;
 
         byte[] postData = stringData.getBytes();
 
