@@ -1,11 +1,6 @@
 package com.example.curbside;
 
-import android.content.Context;
 import android.os.AsyncTask;
-import android.util.Log;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
@@ -15,44 +10,42 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 
-public class TrucksEditTruckThread extends AsyncTask<FoodItem,Void, Boolean> {
+public class AddItemThread extends AsyncTask<Integer, Void, Boolean> {
+    private static final String TAG = "DropItemThread";
 
-    private static final String TAG = "TrucksEditTruckThread";
-    private ArrayList<Truck> trucks;
-    private byte[] postData;
+    private int id;
+    private String name;
+    private String description;
+    private double price;
+    private ArrayList<FoodItem> items;
+    private String item_type;
+    private int favorite;
 
-
-    public TrucksEditTruckThread() {
-        this.trucks = new ArrayList<>();
+    public AddItemThread( int id) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.item_type = item_type;
+        this.favorite = favorite;
     }
 
     @Override
-    protected void onPostExecute(Boolean success) {
-        if (success) {
-//            ((SeeTrucksActivity)context).applyChanges(trucks);
-        }
+    protected void onPostExecute(Boolean aBoolean) {
+        super.onPostExecute(aBoolean);
     }
 
     @Override
-    protected Boolean doInBackground(FoodItem... items) {
-        FoodItem item = items[0];
+    protected Boolean doInBackground(Integer... integers) {
+        String stringData = "item_id=" + id;
 
-        FoodItem editted = items[1];
-
-        String original = item.getName().replace(" ","%20");
-        String name = editted.getName().replace(" ","%20");
-        String bio = editted.getBio().replace(" ","%20");
-
-        String toPost = "original=" + original + "&newName=" + name + "&newHours=" + editted.getHours() + "&newBio=" + bio;
-        postData = toPost.getBytes();
-
-        Log.d(TAG, "doInBackground: " + toPost);
+        byte[] postData = stringData.getBytes();
 
         try {
-            URL url = new URL(DbConnection.EDIT_TRUCK);
+            // determine which script to call
+            URL url = new URL(DbConnection.ADD_ITEM);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
             connection.setRequestMethod("POST");
@@ -66,15 +59,14 @@ public class TrucksEditTruckThread extends AsyncTask<FoodItem,Void, Boolean> {
 
             BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
             String line;
-
+            String result = "";
             while ((line = reader.readLine()) != null) {
-                if (line.trim().equals("Server error") || line.trim().equalsIgnoreCase("Failure")) {
-                    Log.d(TAG, "doInBackground: failed");
-                    return false;
-                }
-
+                result += line;
             }
             reader.close();
+            if (!result.trim().equalsIgnoreCase("Success")) {
+                return false;
+            }
 
         } catch (MalformedURLException e) {
             System.err.println(TAG + "MalformedURLException : " + e.getMessage());

@@ -2,6 +2,7 @@ package com.example.curbside;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -31,22 +32,9 @@ public class AddMenuItemActivity extends AppCompatActivity {
         finalizeItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText newItemName = (EditText)findViewById(R.id.newItemName);
-                String  stringNewItemName = newItemName.getText().toString().trim();
-
-                EditText newItemDescription = (EditText)findViewById(R.id.newItemDescription);
-                String  stringNewItemDescription = newItemDescription.getText().toString().trim();
-
-                EditText editTruckName = (EditText)findViewById(R.id.newItemPrice);
-                String  stringNewItemPrice = newItemPrice.getText().toString().trim();
-
-
-//              send php code
-//
-//                Insert Into items ('name','description','price','favorite')
-//                Values (stringNewItemName, stringNewItemDescription, stringNewItemPrice, );
-
-//                async task, seperate thread to send tasks on
+                AddItemThread thread = new AddItemThread(DropItemThread.get(pos).getId());
+                thread.execute();
+                Log.d(TAG, "onCheckedChanged: item_id = " + items.getId());
 
 
                 finish();
