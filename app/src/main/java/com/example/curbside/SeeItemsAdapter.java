@@ -77,8 +77,16 @@ public class SeeItemsAdapter extends RecyclerView.Adapter<SeeItemsAdapter.ViewHo
 
         }
 
+
+
         @Override
-    public void onClick(View v) {
+        public void onClick(View v) {
+
+//            {
+//                DropItemThread thread = new DropItemThread(DropItemThread.get(pos).getId());
+//                thread.execute();
+//                Log.d(TAG, "onCheckedChanged: item_id = " + items.getId());
+//            }
 
             int position = this.getLayoutPosition();
 
