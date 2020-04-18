@@ -20,62 +20,20 @@
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
         android:background="@drawable/rounded_corner"/>
 
-    <LinearLayout
-        android:id="@+id/linearTruckMenus"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView3"
+        android:layout_width="370dp"
+        android:layout_height="334dp"
+        android:layout_margin="20dp"
         android:elevation="10dp"
         android:gravity="center"
         android:orientation="vertical"
-        android:layout_margin="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/navigationButton">
-
-
-        <Button
-            android:id="@+id/selectTruckPhotos"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:textAllCaps="false"
-            android:textColor="#ffa500"
-            android:background="@drawable/rounded_corner"
-            android:text="Photos" />
-
-        <Button
-            android:id="@+id/selectTruckMenu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAllCaps="false"
-            android:textColor="#ffa500"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/rounded_corner"
-            android:text="Menu" />
-
-        <Button
-            android:id="@+id/selectTruckReviews"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAllCaps="false"
-            android:textColor="#ffa500"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/rounded_corner"
-            android:text="Reviews" />
-
-        <Button
-            android:id="@+id/selectTruckContactVendor"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAllCaps="false"
-            android:textColor="#ffa500"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/rounded_corner"
-            android:text="Contact Vendor" />
-
-    </LinearLayout>
+    </androidx.recyclerview.widget.RecyclerView>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout2"

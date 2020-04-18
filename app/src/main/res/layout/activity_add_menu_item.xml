@@ -14,7 +14,7 @@
         android:background="@drawable/rounded_corner"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Item Name"
+        android:hint="Item Name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,19 +28,21 @@
         android:background="@drawable/rounded_corner"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Item Price"
+        android:hint="Item Price"
         app:layout_constraintEnd_toEndOf="@+id/newItemName"
         app:layout_constraintStart_toStartOf="@+id/newItemName"
         app:layout_constraintTop_toBottomOf="@+id/newItemName" />
 
     <EditText
         android:id="@+id/newItemDescription"
-        android:layout_height="40dp"
+        android:layout_width="305dp"
+        android:layout_height="66dp"
         android:layout_marginTop="48dp"
         android:background="@drawable/rounded_corner"
         android:ems="10"
+        android:hint="Item Description"
         android:inputType="textPersonName"
-        android:text="Item Description"
+        android:lines="2"
         app:layout_constraintEnd_toEndOf="@+id/newItemPrice"
         app:layout_constraintStart_toStartOf="@+id/newItemPrice"
         app:layout_constraintTop_toBottomOf="@+id/newItemPrice" />
@@ -59,49 +61,64 @@
         android:id="@+id/finalizeItem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="184dp"
+        android:layout_marginTop="212dp"
         android:background="@drawable/rounded_corner"
         android:text="Finalize Item"
         android:textColor="#ffa500"
         app:layout_constraintEnd_toEndOf="@+id/newItemDescription"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintStart_toStartOf="@+id/newItemDescription"
         app:layout_constraintTop_toBottomOf="@+id/newItemDescription" />
 
+
     <RadioGroup
+        android:id="@+id/typeGroup"
+        android:layout_width="101dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="73dp"
+        android:layout_marginEnd="48dp"
         android:background="@drawable/rounded_corner"
-        android:layout_width="99dp"
-        android:layout_height="152dp"
-        android:layout_marginTop="66dp"
         app:layout_constraintBottom_toTopOf="@+id/finalizeItem"
-        app:layout_constraintEnd_toEndOf="@+id/newItemDescription"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintStart_toEndOf="@+id/favCheck"
         app:layout_constraintTop_toBottomOf="@+id/newItemDescription"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintVertical_bias="0.8">
 
         <RadioButton
-            android:textColor="#ffa500"
             android:id="@+id/typeEntree"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:text="entree" />
+            android:text="entree"
+            android:textColor="#ffa500" />
 
         <RadioButton
-            android:textColor="#ffa500"
-
             android:id="@+id/typeSide"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:text="side" />
+            android:text="side"
+            android:textColor="#ffa500" />
 
         <RadioButton
-            android:textColor="#ffa500"
-
             android:id="@+id/typeDrink"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:text="drink" />
+            android:text="drink"
+            android:textColor="#ffa500" />
 
     </RadioGroup>
+
+    <CheckBox
+        android:id="@+id/favCheck"
+        android:layout_width="119dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="108dp"
+        android:background="@drawable/rounded_corner"
+        android:text="Favorite"
+        android:textColor="#ffa500"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/newItemDescription"
+        app:layout_constraintTop_toBottomOf="@+id/newItemDescription" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline4"
@@ -109,4 +126,5 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.21" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>

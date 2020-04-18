@@ -32,9 +32,10 @@ public class AddMenuItemActivity extends AppCompatActivity {
         finalizeItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AddItemThread thread = new AddItemThread(DropItemThread.get(pos).getId());
-                thread.execute();
-                Log.d(TAG, "onCheckedChanged: item_id = " + items.getId());
+                //TODO
+//                AddItemThread thread = new AddItemThread(DropItemThread.get(pos).getId());
+//                thread.execute();
+//                Log.d(TAG, "onCheckedChanged: item_id = " + items.getId());
 
 
                 finish();
