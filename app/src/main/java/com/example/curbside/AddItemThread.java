@@ -23,7 +23,7 @@ public class AddItemThread extends AsyncTask<Integer, Void, Boolean> {
     private String item_type;
     private int favorite;
 
-    public AddItemThread( int id) {
+    public AddItemThread( FoodItem item) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -39,7 +39,12 @@ public class AddItemThread extends AsyncTask<Integer, Void, Boolean> {
 
     @Override
     protected Boolean doInBackground(Integer... integers) {
-        String stringData = "item_id=" + id;
+        String stringData = "item_id=" + id +
+                "&item_name=" + name +
+                "&item_description=" + description +
+                "&item_price=" + price +
+                "&item_type=" + item_type +
+                "&item_favorite=" + favorite;
 
         byte[] postData = stringData.getBytes();
 

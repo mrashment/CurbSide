@@ -81,19 +81,18 @@ public class SeeItemsAdapter extends RecyclerView.Adapter<SeeItemsAdapter.ViewHo
 
         @Override
         public void onClick(View v) {
-
-//            {
-//                DropItemThread thread = new DropItemThread(DropItemThread.get(pos).getId());
-//                thread.execute();
-//                Log.d(TAG, "onCheckedChanged: item_id = " + items.getId());
-//            }
-
             int position = this.getLayoutPosition();
 
-            //TODO need to pass item ID so that we can populate the "AddMenuItemActivity".
-            Intent intent = new Intent((context), AddMenuItemActivity.class);
-            intent.putExtra("com.example.curbside.truck", items.get(position));
-            context.startActivity(intent);
+            if (v instanceof Button) {
+                DropItemThread thread = new DropItemThread(items.get(position).getId());
+                thread.execute();
+                Log.d(TAG, "onCheckedChanged: item_id = " + items.get(position).getId());
+            } else {
+                //TODO need to pass item ID so that we can populate the "AddMenuItemActivity".
+                Intent intent = new Intent((context), AddMenuItemActivity.class);
+                intent.putExtra("com.example.curbside.item", items.get(position));
+                context.startActivity(intent);
+            }
 
         }
     }
