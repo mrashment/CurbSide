@@ -12,7 +12,6 @@ public class Truck implements Serializable {
 
     private String bio;
     private Company company;
-    private ArrayList<FoodMenu> menus;
     private String hours;
     private Double lat,lng,distance;
 
@@ -87,10 +86,5 @@ public class Truck implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
-    public void addMenu(FoodMenu menu) {
-        menus.add(menu);
-    }
-    public ArrayList<FoodMenu> getMenus() {
-        return this.menus;
-    }
+
 }

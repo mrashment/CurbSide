@@ -85,7 +85,6 @@ public class SeeTrucksCardAdapter extends RecyclerView.Adapter<SeeTrucksCardAdap
             this.imageView = itemView.findViewById(R.id.imageView);
             this.context = context;
 
-//            should this be up in the "onCreate" section?
             this.broadcastSwitch = itemView.findViewById(R.id.broadcastSwitch);
             broadcastSwitch.setOnClickListener(this);
         }
