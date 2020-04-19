@@ -34,7 +34,8 @@
         <activity android:name=".EditMenuInterface" />
         <activity android:name=".SearchActivity" />
         <activity android:name=".VendorOptionsActivity" />
-        <activity android:name=".Emaildev" />
+        <activity android:name=".AddMenuItemActivity"/>
+        <activity android:name=".Emaildev"/>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

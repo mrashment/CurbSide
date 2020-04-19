@@ -27,6 +27,10 @@ public class DbConnection {
     public static final String EDIT_TRUCK = "https://cgi.sice.indiana.edu/~team59/edittruck.php";
     public static final String COMPANY_TRUCKS = "https://cgi.sice.indiana.edu/~team59/companytrucks.php";
     public static final String BROADCAST = "https://cgi.sice.indiana.edu/~team59/broadcast.php";
+    public static final String SEE_ITEMS = "https://cgi.sice.indiana.edu/~team59/getitems.php";
+    public static final String DROP_ITEM = "https://cgi.sice.indiana.edu/~team59/dropitem.php";
+    public static final String ADD_ITEM = "https://cgi.sice.indiana.edu/~team59/additem.php";
+    public static final String EDIT_MENU = "https://cgi.sice.indiana.edu/~team59/editmenu.php";
     public static final String ADD_REWARDS = "https://cgi.sice.indiana.edu/~team59/qrrewards.php";
 
 

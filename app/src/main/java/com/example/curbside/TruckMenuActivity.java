@@ -2,6 +2,9 @@ package com.example.curbside;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -27,7 +30,15 @@ public class TruckMenuActivity extends AppCompatActivity {
     private TextView hoursTruckText;
     private DbConnection conn;
     private Integer[] favs;
+    private ArrayList<FoodItem> items;
+    private RecyclerView recyclerView3;
+    private SeeItemsTruckAdapter SeeItemsTruckAdapter;
     private boolean isPressed = false;
+
+    protected void onResume() {
+        super.onResume();
+        new SeeItemsTruckThread(this).execute(DbConnection.getInstance().getUser().getCompanyID());
+    }
 
 
     @Override
@@ -43,6 +54,7 @@ public class TruckMenuActivity extends AppCompatActivity {
         truckNameText = findViewById(R.id.truckNameText);
         companyNameText = findViewById(R.id.companyNameText);
         hoursTruckText = findViewById(R.id.hoursTruckText);
+        recyclerView3 = findViewById(R.id.recyclerView3);
 
         truckNameText.setText(truck.getName());
         companyNameText.setText(truck.getCompany().getName());
@@ -112,6 +124,24 @@ public class TruckMenuActivity extends AppCompatActivity {
                 }
             }
         });
+
+
+    }
+
+    public void displayItems(ArrayList<FoodItem> fromThread) {
+        items = fromThread;
+        if (items != null) {
+            recyclerView3.setVisibility(RecyclerView.VISIBLE);
+            recyclerView3.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
+            SeeItemsTruckAdapter = new SeeItemsTruckAdapter(items, this);
+            recyclerView3.setAdapter(SeeItemsTruckAdapter);
+            recyclerView3.addItemDecoration(new DividerItemDecoration(this,
+                    DividerItemDecoration.VERTICAL));
+
+        } else {
+            Toast.makeText(this,"No Company Items",Toast.LENGTH_LONG).show();
+        }
+//        cardAdapter2.notifyDataSetChanged();
     }
 
     private ImageButton imageButton;

@@ -16,12 +16,12 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class SeeItemsThread extends AsyncTask<Integer, Void, Boolean> {
+public class SeeItemsTruckThread extends AsyncTask<Integer, Void, Boolean> {
     private static final String TAG = "SeeItemsThread";
     private ArrayList<FoodItem> items;
     private Context context;
 
-    public SeeItemsThread(Context context) {
+    public SeeItemsTruckThread(Context context) {
         this.context = context;
         this.items = new ArrayList<>();
     }
@@ -29,7 +29,7 @@ public class SeeItemsThread extends AsyncTask<Integer, Void, Boolean> {
     @Override
     protected void onPostExecute(Boolean success) {
         if (success) {
-            ((EditMenuInterface)context).displayItems(items);
+            ((TruckMenuActivity)context).displayItems(items);
         }
     }
 
