@@ -9,13 +9,14 @@
     android:textColor="#E91E63"
     tools:context=".Notifications">
 
-    <Button
+    <TextView
         android:id="@+id/announcmentsText"
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:background="@drawable/rounded_corner"
         android:text="Announcements"
         android:textAlignment="center"
+        android:gravity="center"
         android:textColor="#ffa500"
         app:layout_constraintBottom_toTopOf="@+id/order_ReadyText"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,13 +24,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/backToMenu" />
 
-    <Button
+    <TextView
         android:id="@+id/order_ReadyText"
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:background="@drawable/rounded_corner"
         android:text="Order Ready"
         android:textAlignment="center"
+        android:gravity="center"
         android:textColor="#ffa500"
         app:layout_constraintBottom_toTopOf="@+id/location_ChangeText"
         app:layout_constraintEnd_toEndOf="parent"
@@ -37,13 +39,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/announcmentsText" />
 
-    <Button
+    <TextView
         android:id="@+id/location_ChangeText"
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:background="@drawable/rounded_corner"
         android:text="Location Change"
         android:textAlignment="center"
+        android:gravity="center"
         android:textColor="#ffa500"
         app:layout_constraintBottom_toTopOf="@+id/dealsText"
         app:layout_constraintEnd_toEndOf="parent"
@@ -51,13 +54,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/order_ReadyText" />
 
-    <Button
+    <TextView
         android:id="@+id/dealsText"
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:background="@drawable/rounded_corner"
         android:text="Deals"
         android:textAlignment="center"
+        android:gravity="center"
         android:textColor="#ffa500"
         app:layout_constraintBottom_toTopOf="@+id/socialText"
         app:layout_constraintEnd_toEndOf="parent"
@@ -65,13 +69,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/location_ChangeText" />
 
-    <Button
+    <TextView
         android:id="@+id/socialText"
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:background="@drawable/rounded_corner"
         android:text="Social"
         android:textAlignment="center"
+        android:gravity="center"
         android:textColor="#ffa500"
         app:layout_constraintBottom_toTopOf="@+id/offersText"
         app:layout_constraintEnd_toEndOf="parent"
@@ -79,13 +84,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/dealsText" />
 
-    <Button
+    <TextView
         android:id="@+id/offersText"
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:background="@drawable/rounded_corner"
         android:text="Offers"
         android:textAlignment="center"
+        android:gravity="center"
         android:textColor="#ffa500"
         app:layout_constraintBottom_toTopOf="@+id/emailText"
         app:layout_constraintEnd_toEndOf="parent"
@@ -93,11 +99,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/socialText" />
 
-    <Button
+    <TextView
         android:id="@+id/emailText"
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:background="@drawable/rounded_corner"
+        android:gravity="center"
         android:text="Email"
         android:textAlignment="center"
         android:textColor="#ffa500"
@@ -120,12 +127,31 @@
 
     <Switch
         android:id="@+id/switch1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="On/Off"
+        android:layout_width="78dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="12dp"
         android:textColor="#3F51B5"
-        tools:layout_editor_absoluteX="280dp"
-        tools:layout_editor_absoluteY="41dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/emailText"
+        app:layout_constraintEnd_toEndOf="@+id/emailText"
+        app:layout_constraintHorizontal_bias="0.90"
+        app:layout_constraintStart_toStartOf="@+id/emailText"
+        app:layout_constraintTop_toTopOf="@+id/emailText"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Switch
+        android:id="@+id/switch2"
+        android:layout_width="78dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="12dp"
+        android:textColor="#3F51B5"
+        app:layout_constraintBottom_toBottomOf="@+id/offersText"
+        app:layout_constraintEnd_toEndOf="@+id/offersText"
+        app:layout_constraintHorizontal_bias="0.90"
+        app:layout_constraintStart_toStartOf="@+id/offersText"
+        app:layout_constraintTop_toTopOf="@+id/offersText"
+        app:layout_constraintVertical_bias="0.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
