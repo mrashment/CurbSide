@@ -40,13 +40,12 @@ public class TrucksEditTruckThread extends AsyncTask<Truck,Void, Boolean> {
     protected Boolean doInBackground(Truck... trucks) {
         Truck truck = trucks[0];
 
-        Truck editted = trucks[1];
+        int original = truck.getId();
+        String name = truck.getName().replace(" ","%20");
+        String bio = truck.getBio().replace(" ","%20");
 
-        String original = truck.getName().replace(" ","%20");
-        String name = editted.getName().replace(" ","%20");
-        String bio = editted.getBio().replace(" ","%20");
-
-        String toPost = "original=" + original + "&newName=" + name + "&newHours=" + editted.getHours() + "&newBio=" + bio;
+        String toPost = "original=" + original + "&company_id=" + truck.getCompany().getId() +
+                            "&newName=" + name + "&newHours=" + truck.getHours() + "&newBio=" + bio;
         postData = toPost.getBytes();
 
         Log.d(TAG, "doInBackground: " + toPost);

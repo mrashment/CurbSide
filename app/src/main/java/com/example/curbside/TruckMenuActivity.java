@@ -35,11 +35,6 @@ public class TruckMenuActivity extends AppCompatActivity {
     private SeeItemsTruckAdapter SeeItemsTruckAdapter;
     private boolean isPressed = false;
 
-    protected void onResume() {
-        super.onResume();
-        new SeeItemsTruckThread(this).execute(DbConnection.getInstance().getUser().getCompanyID());
-    }
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +42,8 @@ public class TruckMenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_truck_menu);
         Intent intent = getIntent();
         truck = (Truck)intent.getSerializableExtra("com.example.curbside.truck");
+
+        new SeeItemsTruckThread(this).execute(truck.getCompany().getId());
 
         conn = DbConnection.getInstance();
         favs = conn.getUser().getFavIds();
