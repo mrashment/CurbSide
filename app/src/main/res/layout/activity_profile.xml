@@ -54,7 +54,6 @@
             android:text="Rewards"
             android:textColor="#ffa500" />
 
-
         <Button
             android:id="@+id/privacyButton"
             android:layout_width="match_parent"
