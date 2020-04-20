@@ -51,9 +51,9 @@
             android:id="@+id/backToHomeButton"
             android:layout_width="46dp"
             android:layout_height="wrap_content"
+            android:background="@drawable/ic_arrow_back"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:background="@drawable/ic_arrow_back"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/truckNameText"
@@ -61,8 +61,8 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="Truck Name"
+            android:textColor="#000000"
             android:textSize="40sp"
-            android:textColor="#ffffff"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -81,8 +81,10 @@
             android:id="@+id/companyNameText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="92dp"
             android:text="Company Name"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/truckNameText" />
 
@@ -92,23 +94,24 @@
             android:layout_height="wrap_content"
             android:text="Truck Hours"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/companyNameText" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <ImageView
-        android:id="@+id/truckImage"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:alpha="0.4"
-        android:padding="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/navigationButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/cublogo" />
+        <ImageView
+            android:id="@+id/truckImage"
+            android:layout_width="400dp"
+            android:layout_height="412dp"
+            android:alpha="0.4"
+            android:background="@drawable/ic_logo"
+            android:padding="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/navigationButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"

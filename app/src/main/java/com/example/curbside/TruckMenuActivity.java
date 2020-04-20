@@ -34,6 +34,7 @@ public class TruckMenuActivity extends AppCompatActivity {
     private RecyclerView recyclerView3;
     private SeeItemsTruckAdapter SeeItemsTruckAdapter;
     private boolean isPressed = false;
+    private View ConstraintLayout2;
 
 
     @Override
@@ -69,6 +70,9 @@ public class TruckMenuActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        ConstraintLayout2 = findViewById(R.id.constraintLayout2);
+        ConstraintLayout2.bringToFront();
 
         backToHomeButton = findViewById(R.id.backToHomeButton);
 
