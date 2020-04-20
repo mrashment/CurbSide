@@ -27,7 +27,6 @@ public class AddMenuItemActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_menu_item);
 
-
         newItemName = findViewById(R.id.newItemName);
         newItemDescription = findViewById(R.id.newItemDescription);
         newItemPrice = findViewById(R.id.newItemPrice);
