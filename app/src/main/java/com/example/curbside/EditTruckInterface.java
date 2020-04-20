@@ -46,13 +46,13 @@ public class EditTruckInterface extends AppCompatActivity {
 
         try {
             truck = (Truck) intent.getSerializableExtra("com.example.curbside.truck");
-        editTruckName.setText(truck.getName());
-        String hours[] = truck.getHours().split("-");
-        String open = hours[0];
-        String close = hours[1];
-        editTruckHours.setText(open);
-        editTruckHours2.setText(close);
-        editTruckBio.setText(truck.getBio());
+            editTruckName.setText(truck.getName());
+            String hours[] = truck.getHours().split("-");
+            String open = hours[0];
+            String close = hours[1];
+            editTruckHours.setText(open);
+            editTruckHours2.setText(close);
+            editTruckBio.setText(truck.getBio());
         } catch (Exception e) {
             // no truck, add it
             truck = null;
@@ -72,15 +72,17 @@ public class EditTruckInterface extends AppCompatActivity {
                     truck = new Truck(editTruckName.getText().toString(), new Company("temp",conn.getUser().getCompanyID()));
                     truck.setId(-1);
                 }
-                    truck.setName(editTruckName.getText().toString());
-                    String desiredOpen = editTruckHours.getText().toString();
-                    String desiredClose = editTruckHours2.getText().toString();
-                    truck.setHours(desiredOpen + "-" + desiredClose);
-                    truck.setBio(editTruckBio.getText().toString());
+                truck.setName(editTruckName.getText().toString());
+                String desiredOpen = editTruckHours.getText().toString();
+                String desiredClose = editTruckHours2.getText().toString();
+                truck.setHours(desiredOpen + "-" + desiredClose);
+                truck.setBio(editTruckBio.getText().toString());
 
                 TrucksEditTruckThread thread = new TrucksEditTruckThread();
                 thread.execute(truck);
                 Log.d(TAG, "onClick: " + truck.getName() + " Companyid: " + truck.getCompany().getId());
+
+                finish();
 
             }
         });

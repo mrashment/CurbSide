@@ -38,7 +38,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
     public void onBindViewHolder(@NonNull SearchViewHolder holder, int position) {
         holder.truckNameTextView.setText(searchResults.get(position).getName());
         holder.companyNameTextView.setText(searchResults.get(position).getCompany().getName());
-        holder.hoursTextView.setText(searchResults.get(position).getHoursFormatted());
+        holder.hoursTextView.setText(searchResults.get(position).getHours());
         holder.distanceTextView.setText(Double.toString(searchResults.get(position).getDistance()));
     }
 
