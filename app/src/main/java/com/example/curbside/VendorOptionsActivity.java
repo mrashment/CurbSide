@@ -9,7 +9,7 @@ import android.widget.Button;
 
 public class VendorOptionsActivity extends AppCompatActivity {
 
-    private Button backToHomeButton, trucksButton, menusButton,retrieveQRButton;
+    private Button backToHomeButton, trucksButton, menusButton,retrieveQRButton, notificationsButton;
     private double lat, lng;
 
     @Override
@@ -23,6 +23,7 @@ public class VendorOptionsActivity extends AppCompatActivity {
         trucksButton = findViewById(R.id.trucksButton);
         menusButton = findViewById(R.id.menusButton);
         retrieveQRButton = findViewById(R.id.retqr);
+        notificationsButton = findViewById(R.id.notificationsButton);
 
         backToHomeButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,6 +46,14 @@ public class VendorOptionsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(VendorOptionsActivity.this, EditMenuInterface.class);
+                startActivity(intent);
+            }
+        });
+
+        notificationsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(VendorOptionsActivity.this, Notifications.class);
                 startActivity(intent);
             }
         });
