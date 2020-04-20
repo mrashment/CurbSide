@@ -36,11 +36,6 @@ public class TruckMenuActivity extends AppCompatActivity {
     private boolean isPressed = false;
     private View ConstraintLayout2;
 
-    protected void onResume() {
-        super.onResume();
-        new SeeItemsTruckThread(this).execute(DbConnection.getInstance().getUser().getCompanyID());
-    }
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +43,8 @@ public class TruckMenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_truck_menu);
         Intent intent = getIntent();
         truck = (Truck)intent.getSerializableExtra("com.example.curbside.truck");
+
+        new SeeItemsTruckThread(this).execute(truck.getCompany().getId());
 
         conn = DbConnection.getInstance();
         favs = conn.getUser().getFavIds();
@@ -88,7 +85,7 @@ public class TruckMenuActivity extends AppCompatActivity {
 
         List<Integer> favList = Arrays.asList(favs);
         if (favList.contains(truck.getCompany().getId())) {
-            imageButton.setBackgroundResource(R.drawable.ic_nonfavorite);
+            imageButton.setBackgroundResource(R.drawable.ic_favorite);
             isPressed = true;
         }
 
@@ -97,7 +94,7 @@ public class TruckMenuActivity extends AppCompatActivity {
 
                 if(isPressed==false){ // favoriting
 
-                    imageButton.setBackgroundResource(R.drawable.ic_nonfavorite);
+                    imageButton.setBackgroundResource(R.drawable.ic_favorite);
                     isPressed=true;
                     Integer[] curFavs = conn.getUser().getFavIds();
                     Integer[] newFavs = Arrays.copyOf(curFavs,curFavs.length + 1);
@@ -110,7 +107,7 @@ public class TruckMenuActivity extends AppCompatActivity {
 
                 }else if(isPressed==true){ // unfavoriting
 
-                    imageButton.setBackgroundResource(R.drawable.ic_favorite);
+                    imageButton.setBackgroundResource(R.drawable.ic_nonfavorite);
                     isPressed=false;
                     UpdateFavoriteThread thread = new UpdateFavoriteThread(UpdateFavoriteThread.Operation.DELETE);
                     thread.execute(conn.getUser().getId(),truck.getCompany().getId());

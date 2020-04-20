@@ -6,16 +6,17 @@
     android:layout_height="match_parent"
     android:background="@drawable/curbside_gradient_background"
     android:padding="20dp"
-    android:textColor="#ffa500"
+    android:textColor="#E91E63"
     tools:context=".Notifications">
 
-    <Button
+    <TextView
         android:id="@+id/announcmentsText"
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:background="@drawable/rounded_corner"
         android:text="Announcements"
         android:textAlignment="center"
+        android:gravity="center"
         android:textColor="#ffa500"
         app:layout_constraintBottom_toTopOf="@+id/order_ReadyText"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,27 +24,29 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/backToMenu" />
 
-    <Button
+    <TextView
         android:id="@+id/order_ReadyText"
-        android:textColor="#ffa500"
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:background="@drawable/rounded_corner"
         android:text="Order Ready"
         android:textAlignment="center"
+        android:gravity="center"
+        android:textColor="#ffa500"
         app:layout_constraintBottom_toTopOf="@+id/location_ChangeText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.432"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/announcmentsText" />
 
-    <Button
+    <TextView
         android:id="@+id/location_ChangeText"
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:background="@drawable/rounded_corner"
         android:text="Location Change"
         android:textAlignment="center"
+        android:gravity="center"
         android:textColor="#ffa500"
         app:layout_constraintBottom_toTopOf="@+id/dealsText"
         app:layout_constraintEnd_toEndOf="parent"
@@ -51,56 +54,60 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/order_ReadyText" />
 
-    <Button
+    <TextView
         android:id="@+id/dealsText"
         android:layout_width="0dp"
-        android:textColor="#ffa500"
         android:layout_height="60dp"
         android:background="@drawable/rounded_corner"
         android:text="Deals"
         android:textAlignment="center"
+        android:gravity="center"
+        android:textColor="#ffa500"
         app:layout_constraintBottom_toTopOf="@+id/socialText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.567"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/location_ChangeText" />
 
-    <Button
+    <TextView
         android:id="@+id/socialText"
         android:layout_width="0dp"
-        android:textColor="#ffa500"
         android:layout_height="60dp"
         android:background="@drawable/rounded_corner"
         android:text="Social"
         android:textAlignment="center"
+        android:gravity="center"
+        android:textColor="#ffa500"
         app:layout_constraintBottom_toTopOf="@+id/offersText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.48"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/dealsText" />
 
-    <Button
+    <TextView
         android:id="@+id/offersText"
         android:layout_width="0dp"
-        android:textColor="#ffa500"
         android:layout_height="60dp"
         android:background="@drawable/rounded_corner"
         android:text="Offers"
         android:textAlignment="center"
+        android:gravity="center"
+        android:textColor="#ffa500"
         app:layout_constraintBottom_toTopOf="@+id/emailText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.486"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/socialText" />
 
-    <Button
+    <TextView
         android:id="@+id/emailText"
         android:layout_width="0dp"
         android:layout_height="60dp"
-        android:textColor="#ffa500"
         android:background="@drawable/rounded_corner"
+        android:gravity="center"
         android:text="Email"
         android:textAlignment="center"
+        android:textColor="#ffa500"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.486"
@@ -108,15 +115,113 @@
         app:layout_constraintTop_toBottomOf="@id/offersText" />
 
     <Button
-        android:elevation="10dp"
         android:id="@+id/backToMenu"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/ic_arrow_back"
+        android:elevation="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Switch
+        android:id="@+id/switch1"
+        android:layout_width="78dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="12dp"
+        android:textColor="#3F51B5"
+        app:layout_constraintBottom_toBottomOf="@+id/emailText"
+        app:layout_constraintEnd_toEndOf="@+id/emailText"
+        app:layout_constraintHorizontal_bias="0.90"
+        app:layout_constraintStart_toStartOf="@+id/emailText"
+        app:layout_constraintTop_toTopOf="@+id/emailText"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Switch
+        android:id="@+id/switch2"
+        android:layout_width="78dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="12dp"
+        android:textColor="#3F51B5"
+        app:layout_constraintBottom_toBottomOf="@+id/offersText"
+        app:layout_constraintEnd_toEndOf="@+id/offersText"
+        app:layout_constraintHorizontal_bias="0.90"
+        app:layout_constraintStart_toStartOf="@+id/offersText"
+        app:layout_constraintTop_toTopOf="@+id/offersText"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Switch
+    android:id="@+id/switch3"
+    android:layout_width="78dp"
+    android:layout_height="27dp"
+    android:layout_marginTop="20dp"
+    android:layout_marginBottom="12dp"
+    android:textColor="#3F51B5"
+    app:layout_constraintBottom_toBottomOf="@+id/socialText"
+    app:layout_constraintEnd_toEndOf="@+id/socialText"
+    app:layout_constraintHorizontal_bias="0.90"
+    app:layout_constraintStart_toStartOf="@+id/socialText"
+    app:layout_constraintTop_toTopOf="@+id/socialText"
+    app:layout_constraintVertical_bias="0.0" />
+
+    <Switch
+        android:id="@+id/switch4"
+        android:layout_width="78dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="12dp"
+        android:textColor="#3F51B5"
+        app:layout_constraintBottom_toBottomOf="@+id/dealsText"
+        app:layout_constraintEnd_toEndOf="@+id/dealsText"
+        app:layout_constraintHorizontal_bias="0.90"
+        app:layout_constraintStart_toStartOf="@+id/dealsText"
+        app:layout_constraintTop_toTopOf="@+id/dealsText"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Switch
+    android:id="@+id/switch5"
+    android:layout_width="78dp"
+    android:layout_height="27dp"
+    android:layout_marginTop="20dp"
+    android:layout_marginBottom="12dp"
+    android:textColor="#3F51B5"
+    app:layout_constraintBottom_toBottomOf="@+id/location_ChangeText"
+    app:layout_constraintEnd_toEndOf="@+id/location_ChangeText"
+    app:layout_constraintHorizontal_bias="0.90"
+    app:layout_constraintStart_toStartOf="@+id/location_ChangeText"
+    app:layout_constraintTop_toTopOf="@+id/location_ChangeText"
+    app:layout_constraintVertical_bias="0.0" />
+
+    <Switch
+    android:id="@+id/switch6"
+    android:layout_width="78dp"
+    android:layout_height="27dp"
+    android:layout_marginTop="20dp"
+    android:layout_marginBottom="12dp"
+    android:textColor="#3F51B5"
+    app:layout_constraintBottom_toBottomOf="@+id/order_ReadyText"
+    app:layout_constraintEnd_toEndOf="@+id/order_ReadyText"
+    app:layout_constraintHorizontal_bias="0.90"
+    app:layout_constraintStart_toStartOf="@+id/order_ReadyText"
+    app:layout_constraintTop_toTopOf="@+id/order_ReadyText"
+    app:layout_constraintVertical_bias="0.0" />
+
+    <Switch
+        android:id="@+id/switch7"
+        android:layout_width="95dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="12dp"
+        android:textColor="#3F51B5"
+        app:layout_constraintBottom_toBottomOf="@+id/announcmentsText"
+        app:layout_constraintEnd_toEndOf="@+id/announcmentsText"
+        app:layout_constraintHorizontal_bias="0.90"
+        app:layout_constraintStart_toStartOf="@+id/announcmentsText"
+        app:layout_constraintTop_toTopOf="@+id/announcmentsText"
+        app:layout_constraintVertical_bias="0.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

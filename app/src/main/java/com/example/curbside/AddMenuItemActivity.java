@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -69,20 +70,27 @@ public class AddMenuItemActivity extends AppCompatActivity {
         finalizeItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                item.setName(newItemName.getText().toString());
-                item.setDescription(newItemDescription.getText().toString());
-                item.setPrice(Double.parseDouble(newItemPrice.getText().toString().trim()));
-                if (favCheck.isChecked()) {
-                    item.setFavorite(1);
-                } else {
-                    item.setFavorite(0);
+                try {
+                    item.setName(newItemName.getText().toString());
+                    item.setDescription(newItemDescription.getText().toString());
+                    item.setPrice(Double.parseDouble(newItemPrice.getText().toString().trim()));
+                    if (favCheck.isChecked()) {
+                        item.setFavorite(1);
+                    } else {
+                        item.setFavorite(0);
+                    }
+                    item.setItem_type(((RadioButton)findViewById(typeGroup.getCheckedRadioButtonId())).getText().toString());
+                } catch (NullPointerException e) {
+                    Toast.makeText(AddMenuItemActivity.this, "Please complete all fields", Toast.LENGTH_LONG).show();
+                    return;
+                } catch (NumberFormatException e) {
+                    Toast.makeText(AddMenuItemActivity.this, "Trouble reading price - Should be in form 00.00", Toast.LENGTH_LONG).show();
+                    return;
                 }
-                item.setItem_type(((RadioButton)findViewById(typeGroup.getCheckedRadioButtonId())).getText().toString());
 
                 AddItemThread thread = new AddItemThread(item);
                 thread.execute();
-                Log.d(TAG, "onCheckedChanged: item_id = " + item.getId());
+                Log.d(TAG, "onCheckedChanged: " + item.getId() + item.getName() + item.getDescription() + item.getFavorite() + item.getItem_type());
 
                 finish();
             }

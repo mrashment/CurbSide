@@ -27,7 +27,7 @@ public class SeeTrucksActivity extends AppCompatActivity {
     private ArrayList<Truck> trucks;
     private RecyclerView recyclerView1;
     private SeeTrucksCardAdapter cardAdapter1;
-    private Button backToVendorOptions;
+    private Button backToVendorOptions, newTruckButton;
     private double lat,lng;
 
     @Override
@@ -44,6 +44,14 @@ public class SeeTrucksActivity extends AppCompatActivity {
         lat = getIntent().getDoubleExtra("lat",0);
         lng = getIntent().getDoubleExtra("lng",0);
 
+        newTruckButton = findViewById(R.id.newTruckButton);
+        newTruckButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SeeTrucksActivity.this,EditTruckInterface.class);
+                startActivity(intent);
+            }
+        });
         recyclerView1 = findViewById(R.id.recyclerView1);
         recyclerView1.setVisibility(RecyclerView.INVISIBLE);
 

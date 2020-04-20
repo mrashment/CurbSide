@@ -16,7 +16,7 @@ import com.google.android.gms.common.api.Status;
 
 public class Profile extends AppCompatActivity {
 
-    private Button settingsButton, backToHomeButton, signOutButton,favoritesButton,rewardsButton, notificationsButton;
+    private Button privacyButton, backToHomeButton, signOutButton,favoritesButton,rewardsButton, notificationsButton;
     GoogleApiClient mGoogleApiClient;
 
     @Override
@@ -39,7 +39,7 @@ public class Profile extends AppCompatActivity {
         signOutButton = findViewById(R.id.signOutButton);
         notificationsButton = findViewById(R.id.notificationsButton);
         backToHomeButton = findViewById(R.id.backToHomeButton);
-        settingsButton = findViewById(R.id.settingsButton);
+        privacyButton = findViewById(R.id.privacyButton);
         favoritesButton = findViewById(R.id.favoritesButton);
         rewardsButton = findViewById(R.id.rewardsButton);
 
@@ -80,11 +80,12 @@ public class Profile extends AppCompatActivity {
                 finish();
             }
         });
-        settingsButton.setOnClickListener(new View.OnClickListener() {
+
+        privacyButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Profile.this, Notifications.class);
+                Intent intent = new Intent(Profile.this, UserPrivacy.class);
                 startActivity(intent);
             }
         });

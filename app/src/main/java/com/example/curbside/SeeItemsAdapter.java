@@ -87,8 +87,8 @@ public class SeeItemsAdapter extends RecyclerView.Adapter<SeeItemsAdapter.ViewHo
                 DropItemThread thread = new DropItemThread(items.get(position).getId());
                 thread.execute();
                 Log.d(TAG, "onCheckedChanged: item_id = " + items.get(position).getId());
+                new SeeItemsThread(context).execute(DbConnection.getInstance().getUser().getCompanyID());
             } else {
-                //TODO need to pass item ID so that we can populate the "AddMenuItemActivity".
                 Intent intent = new Intent((context), AddMenuItemActivity.class);
                 intent.putExtra("com.example.curbside.item", items.get(position));
                 context.startActivity(intent);

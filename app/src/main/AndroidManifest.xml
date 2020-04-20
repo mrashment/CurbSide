@@ -21,12 +21,13 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_logo_truck"
         android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
         android:roundIcon="@drawable/ic_logo_truck"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:usesCleartextTraffic="true"
-        android:requestLegacyExternalStorage="true">
-        <activity android:name=".RetrieveQRActivity"/>
+        android:usesCleartextTraffic="true">
+        <activity android:name=".UserPrivacy"></activity>
+        <activity android:name=".RetrieveQRActivity" />
         <activity android:name=".VendorInviteActivity" />
         <activity android:name=".ScannedBarcodeActivity" />
         <activity android:name=".FavoritesActivity" />
@@ -34,8 +35,8 @@
         <activity android:name=".EditMenuInterface" />
         <activity android:name=".SearchActivity" />
         <activity android:name=".VendorOptionsActivity" />
-        <activity android:name=".AddMenuItemActivity"/>
-        <activity android:name=".Emaildev"/>
+        <activity android:name=".AddMenuItemActivity" />
+        <activity android:name=".Emaildev" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

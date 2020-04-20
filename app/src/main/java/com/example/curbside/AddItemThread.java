@@ -24,12 +24,12 @@ public class AddItemThread extends AsyncTask<Integer, Void, Boolean> {
     private int favorite;
 
     public AddItemThread( FoodItem item) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.price = price;
-        this.item_type = item_type;
-        this.favorite = favorite;
+        this.id = item.getId();
+        this.name = item.getName().replace(" ","%20");
+        this.description = item.getDescription().replace(" ","%20");
+        this.price = item.getPrice();
+        this.item_type = item.getItem_type();
+        this.favorite = item.getFavorite();
     }
 
     @Override
@@ -39,7 +39,10 @@ public class AddItemThread extends AsyncTask<Integer, Void, Boolean> {
 
     @Override
     protected Boolean doInBackground(Integer... integers) {
+
+
         String stringData = "item_id=" + id +
+                "&company_id=" + DbConnection.getInstance().getUser().getCompanyID() +
                 "&item_name=" + name +
                 "&item_description=" + description +
                 "&item_price=" + price +
@@ -50,7 +53,7 @@ public class AddItemThread extends AsyncTask<Integer, Void, Boolean> {
 
         try {
             // determine which script to call
-            URL url = new URL(DbConnection.ADD_ITEM);
+            URL url = new URL(DbConnection.EDIT_ITEM);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
             connection.setRequestMethod("POST");
