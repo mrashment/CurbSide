@@ -153,5 +153,75 @@
         app:layout_constraintTop_toTopOf="@+id/offersText"
         app:layout_constraintVertical_bias="0.0" />
 
+    <Switch
+    android:id="@+id/switch3"
+    android:layout_width="78dp"
+    android:layout_height="27dp"
+    android:layout_marginTop="20dp"
+    android:layout_marginBottom="12dp"
+    android:textColor="#3F51B5"
+    app:layout_constraintBottom_toBottomOf="@+id/socialText"
+    app:layout_constraintEnd_toEndOf="@+id/socialText"
+    app:layout_constraintHorizontal_bias="0.90"
+    app:layout_constraintStart_toStartOf="@+id/socialText"
+    app:layout_constraintTop_toTopOf="@+id/socialText"
+    app:layout_constraintVertical_bias="0.0" />
+
+    <Switch
+        android:id="@+id/switch4"
+        android:layout_width="78dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="12dp"
+        android:textColor="#3F51B5"
+        app:layout_constraintBottom_toBottomOf="@+id/dealsText"
+        app:layout_constraintEnd_toEndOf="@+id/dealsText"
+        app:layout_constraintHorizontal_bias="0.90"
+        app:layout_constraintStart_toStartOf="@+id/dealsText"
+        app:layout_constraintTop_toTopOf="@+id/dealsText"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Switch
+    android:id="@+id/switch5"
+    android:layout_width="78dp"
+    android:layout_height="27dp"
+    android:layout_marginTop="20dp"
+    android:layout_marginBottom="12dp"
+    android:textColor="#3F51B5"
+    app:layout_constraintBottom_toBottomOf="@+id/location_ChangeText"
+    app:layout_constraintEnd_toEndOf="@+id/location_ChangeText"
+    app:layout_constraintHorizontal_bias="0.90"
+    app:layout_constraintStart_toStartOf="@+id/location_ChangeText"
+    app:layout_constraintTop_toTopOf="@+id/location_ChangeText"
+    app:layout_constraintVertical_bias="0.0" />
+
+    <Switch
+    android:id="@+id/switch6"
+    android:layout_width="78dp"
+    android:layout_height="27dp"
+    android:layout_marginTop="20dp"
+    android:layout_marginBottom="12dp"
+    android:textColor="#3F51B5"
+    app:layout_constraintBottom_toBottomOf="@+id/order_ReadyText"
+    app:layout_constraintEnd_toEndOf="@+id/order_ReadyText"
+    app:layout_constraintHorizontal_bias="0.90"
+    app:layout_constraintStart_toStartOf="@+id/order_ReadyText"
+    app:layout_constraintTop_toTopOf="@+id/order_ReadyText"
+    app:layout_constraintVertical_bias="0.0" />
+
+    <Switch
+        android:id="@+id/switch7"
+        android:layout_width="78dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="12dp"
+        android:textColor="#3F51B5"
+        app:layout_constraintBottom_toBottomOf="@+id/announcmentsText"
+        app:layout_constraintEnd_toEndOf="@+id/announcmentsText"
+        app:layout_constraintHorizontal_bias="0.90"
+        app:layout_constraintStart_toStartOf="@+id/announcmentsText"
+        app:layout_constraintTop_toTopOf="@+id/announcmentsText"
+        app:layout_constraintVertical_bias="0.0" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
