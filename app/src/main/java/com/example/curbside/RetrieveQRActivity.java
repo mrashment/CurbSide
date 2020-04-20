@@ -35,7 +35,7 @@ public class RetrieveQRActivity extends AppCompatActivity {
         downloadButton = findViewById(R.id.downloadButton);
         backToHomeButton = findViewById(R.id.backToHomeButton);
 
-        downloadButton.setOnClickListener(new View.OnClickListener() {
+        backToHomeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
