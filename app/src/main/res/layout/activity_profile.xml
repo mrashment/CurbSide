@@ -54,14 +54,6 @@
             android:text="Rewards"
             android:textColor="#ffa500" />
 
-        <Button
-            android:id="@+id/accountButton"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/rounded_corner"
-            android:text="Account"
-            android:textColor="#ffa500" />
 
         <Button
             android:id="@+id/privacyButton"
