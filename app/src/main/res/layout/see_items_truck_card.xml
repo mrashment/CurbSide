@@ -6,28 +6,30 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:layout_margin="10dp"
+    android:layout_marginTop="10dp"
     app:cardCornerRadius="15dp"
-    android:padding="30dp"
+    android:padding="50dp"
     android:background="#ffffff"
     >
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_marginTop="10dp"
         android:id="@+id/constraintLayout"
-        android:layout_width="340dp"
-        android:layout_height="75dp"
-        android:layout_gravity="center_horizontal|fill|center_vertical"
-        android:layout_margin="10dp">
+        android:layout_width="match_parent"
+        android:layout_height="108dp"
+        android:layout_gravity="center_horizontal|fill|center_vertical">
 
         <TextView
             android:id="@+id/itemDescriptionTextView1"
             android:layout_width="258dp"
-            android:layout_height="46dp"
-            android:textSize="14sp"
+            android:layout_height="43dp"
             android:layout_marginTop="10dp"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/itemNameTextView1"
             app:layout_constraintTop_toBottomOf="@id/itemNameTextView1"
+            app:layout_constraintVertical_bias="0.384"
             tools:text="Item description" />
 
         <TextView
@@ -60,6 +62,8 @@
             android:id="@+id/itemNameTextView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
