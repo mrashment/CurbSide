@@ -57,19 +57,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <Button
         android:id="@+id/finalizeItem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="212dp"
+        android:layout_marginTop="156dp"
         android:background="@drawable/rounded_corner"
         android:text="Finalize Item"
         android:textColor="#ffa500"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/newItemDescription"
-        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="@+id/newItemDescription"
-        app:layout_constraintTop_toBottomOf="@+id/newItemDescription" />
-
+        app:layout_constraintTop_toBottomOf="@+id/newItemDescription"
+        app:layout_constraintVertical_bias="0.083" />
 
     <RadioGroup
         android:id="@+id/typeGroup"
@@ -112,7 +114,7 @@
         android:id="@+id/favCheck"
         android:layout_width="119dp"
         android:layout_height="51dp"
-        android:layout_marginTop="108dp"
+        android:layout_marginTop="44dp"
         android:background="@drawable/rounded_corner"
         android:text="Favorite"
         android:textColor="#ffa500"

@@ -2,17 +2,17 @@ package com.example.curbside;
 
 import java.io.Serializable;
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 public class Truck implements Serializable {
 
     private String name;
     private int id;
-
-
     private String bio;
     private Company company;
     private String hours;
+    private String[] hoursFormatted;
     private Double lat,lng,distance;
 
 
@@ -65,6 +65,16 @@ public class Truck implements Serializable {
 
     public void setLng(Double lng) {
         this.lng = lng;
+    }
+
+    public String getHoursFormatted() {
+        hoursFormatted = getHours().split("-");
+        SimpleDateFormat formatted = new SimpleDateFormat("hh:mm");
+        String[] hours = new String[2];
+        hours[0] = formatted.format(hoursFormatted[0]);
+        hours[1] = formatted.format(hoursFormatted[1]);
+        String hoursResolved = hours[0] + " - " + hours[1];
+        return hoursResolved;
     }
 
     public String getHours() {
