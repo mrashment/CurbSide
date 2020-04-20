@@ -84,7 +84,7 @@ public class TruckMenuActivity extends AppCompatActivity {
 
         List<Integer> favList = Arrays.asList(favs);
         if (favList.contains(truck.getCompany().getId())) {
-            imageButton.setBackgroundResource(R.drawable.ic_nonfavorite);
+            imageButton.setBackgroundResource(R.drawable.ic_favorite);
             isPressed = true;
         }
 
@@ -93,7 +93,7 @@ public class TruckMenuActivity extends AppCompatActivity {
 
                 if(isPressed==false){ // favoriting
 
-                    imageButton.setBackgroundResource(R.drawable.ic_nonfavorite);
+                    imageButton.setBackgroundResource(R.drawable.ic_favorite);
                     isPressed=true;
                     Integer[] curFavs = conn.getUser().getFavIds();
                     Integer[] newFavs = Arrays.copyOf(curFavs,curFavs.length + 1);
@@ -106,7 +106,7 @@ public class TruckMenuActivity extends AppCompatActivity {
 
                 }else if(isPressed==true){ // unfavoriting
 
-                    imageButton.setBackgroundResource(R.drawable.ic_favorite);
+                    imageButton.setBackgroundResource(R.drawable.ic_nonfavorite);
                     isPressed=false;
                     UpdateFavoriteThread thread = new UpdateFavoriteThread(UpdateFavoriteThread.Operation.DELETE);
                     thread.execute(conn.getUser().getId(),truck.getCompany().getId());
