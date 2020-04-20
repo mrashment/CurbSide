@@ -83,7 +83,7 @@ public class AddMenuItemActivity extends AppCompatActivity {
 
                 AddItemThread thread = new AddItemThread(item);
                 thread.execute();
-                Log.d(TAG, "onCheckedChanged: item_id = " + item.getId());
+                Log.d(TAG, "onCheckedChanged: " + item.getId() + item.getName() + item.getDescription() + item.getFavorite() + item.getItem_type());
 
                 finish();
             }

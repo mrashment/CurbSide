@@ -61,7 +61,6 @@ public class EditMenuInterface extends AppCompatActivity {
         });
     }
 
-
     public void displayItems(ArrayList<FoodItem> fromThread) {
         items = fromThread;
         if (items != null) {
