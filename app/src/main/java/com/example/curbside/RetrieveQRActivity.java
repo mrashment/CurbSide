@@ -24,7 +24,7 @@ import java.io.IOException;
 public class RetrieveQRActivity extends AppCompatActivity {
     private static final String TAG = "RetrieveQRActivity";
 
-    private Button downloadButton;
+    private Button downloadButton, backToHomeButton;
     private static final int WRITE_PERMISSION = 1;
 
     @Override
@@ -33,6 +33,15 @@ public class RetrieveQRActivity extends AppCompatActivity {
         setContentView(R.layout.activity_retrieve_q_r);
 
         downloadButton = findViewById(R.id.downloadButton);
+        backToHomeButton = findViewById(R.id.backToHomeButton);
+
+        downloadButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
         downloadButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
