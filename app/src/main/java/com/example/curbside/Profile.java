@@ -80,6 +80,7 @@ public class Profile extends AppCompatActivity {
                 finish();
             }
         });
+
         privacyButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
