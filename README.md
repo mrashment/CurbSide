@@ -15,16 +15,11 @@ CurbSide provides a way for food truck vendors and mobile eats enthusiasts to co
 |Description|An application which can be used to find local food trucks.|
 
 ## Team Members
-You can find information on our team below.
 
 ### Ashment, Mason (mashment)
-Main Role: Developer
 
 ### Serrani, Augustus (gserrani)
-Main Role: Research and Outreach, UI/UX Dev
 
 ### Van Fossen, Nick (nvanfoss)
-Main Role: GPS tracking and data storage
 
 ### Morrow, Joseph (joemorro)
-Main Role: Backend Developer
